@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>کارنما | مدیریت نامه‌ها و پروژه‌ها</title>
+  <title>کارنما | اتوماسیون اداری و مدیریت پروژه</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
@@ -13,11 +13,11 @@
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Header -->
-  <header class="bg-blue-900 text-white py-6 shadow-md">
+  <header class="bg-blue-900 text-white py-6 shadow-md backdrop-blur-md bg-opacity-90">
     <div class="container mx-auto px-4 flex justify-between items-center">
       <!-- Logo -->
-      <div class="flex items-center space-x-3">
-        <img src="logo-url.png" alt="لوگوی کارنما" class="w-10 h-10 rounded-full" />
+      <div class="flex items-center gap-3">
+        <img src="logo-karnama.png" alt="لوگوی کارنما" class="w-10 h-10 rounded-full shadow" />
         <h1 class="text-2xl font-bold">کارنما</h1>
       </div>
       <nav class="space-x-4">
@@ -28,29 +28,32 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="text-center py-16 bg-white">
-    <h2 class="text-4xl font-extrabold text-blue-900 mb-4">اتوماسیون اداری، مدیریت پروژه و نامه‌ها در یک جا</h2>
-    <p class="text-lg text-gray-600 mb-6">با کارنما، همه چیز منظم، سریع و قابل پیگیری است.</p>
-    <a href="#features" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-full transition">شروع کنید</a>
+  <section class="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-teal-600 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-white bg-opacity-10 backdrop-blur-md"></div>
+    <div class="relative z-10 text-center px-4">
+      <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg">کارنما</h2>
+      <p class="text-lg text-white/80 mb-6">اتوماسیون اداری، مدیریت پروژه و نامه‌ها در یک محیط روان و زیبا</p>
+      <a href="#features" class="px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow hover:scale-105 transition">شروع کنید</a>
+    </div>
   </section>
 
   <!-- Features -->
   <section id="features" class="py-16 bg-gray-100">
     <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <i class="ph ph-file-text text-teal-500 text-4xl mb-4"></i>
+      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+        <i class="ph ph-file-text text-teal-500 text-5xl mb-4"></i>
         <h3 class="text-blue-900 text-xl font-bold mb-2">مدیریت نامه‌ها</h3>
-        <p class="text-gray-600">ثبت، پیگیری و آرشیو نامه‌ها با قابلیت جستجوی پیشرفته.</p>
+        <p class="text-gray-600">ثبت، پیگیری و آرشیو نامه‌ها با قابلیت جستجوی پیشرفته و دسترسی سریع.</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <i class="ph ph-projector-screen-chart text-teal-500 text-4xl mb-4"></i>
+      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+        <i class="ph ph-projector-screen-chart text-teal-500 text-5xl mb-4"></i>
         <h3 class="text-blue-900 text-xl font-bold mb-2">مدیریت پروژه</h3>
-        <p class="text-gray-600">برنامه‌ریزی، زمان‌بندی و گزارش‌گیری از پروژه‌ها به‌صورت هوشمند.</p>
+        <p class="text-gray-600">برنامه‌ریزی، زمان‌بندی و گزارش‌گیری از پروژه‌ها به‌صورت هوشمند و قابل پیگیری.</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <i class="ph ph-gear-six text-teal-500 text-4xl mb-4"></i>
+      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+        <i class="ph ph-gear-six text-teal-500 text-5xl mb-4"></i>
         <h3 class="text-blue-900 text-xl font-bold mb-2">اتوماسیون اداری</h3>
-        <p class="text-gray-600">گردش کار خودکار، اطلاع‌رسانی و کنترل فرآیندهای سازمانی.</p>
+        <p class="text-gray-600">گردش کار خودکار، اطلاع‌رسانی و کنترل فرآیندهای سازمانی با سرعت و دقت بالا.</p>
       </div>
     </div>
   </section>
