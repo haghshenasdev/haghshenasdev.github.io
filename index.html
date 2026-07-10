@@ -2,385 +2,1681 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سایت شخصی محمد مهدی حق شناس</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>محمد مهدی حق شناس | Full Stack Developer</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+  <!-- Vazirmatn -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <script>
+
     tailwind.config = {
+
       theme: {
+
         extend: {
+
           colors: {
-            clifford: '#da373d',
+
+            primary: '#3B82F6',
+
+            secondary: '#2563EB'
+
           }
+
         }
+
       }
+
     }
+
   </script>
-  <style> #app { position: relative; z-index: 1; } #particles-js { position: absolute; width: 100%; height: 100%; z-index: 0; } </style>
-  <link href="style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    * {
+      font-family: Vazirmatn;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+
+      background: #020617;
+
+      overflow-x: hidden;
+
+    }
+
+    ::-webkit-scrollbar {
+
+      width: 10px;
+
+    }
+
+    ::-webkit-scrollbar-thumb {
+
+      background: #3b82f6;
+
+      border-radius: 50px;
+
+    }
+
+    .glass {
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: rgba(10, 15, 30, .55);
+
+      border: 1px solid rgba(255, 255, 255, .08);
+
+      backdrop-filter: blur(25px);
+
+      -webkit-backdrop-filter: blur(25px);
+
+      box-shadow:
+
+        0 10px 40px rgba(0, 0, 0, .35);
+
+    }
+
+    .glass::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: linear-gradient(135deg,
+
+          rgba(255, 255, 255, .12),
+
+          rgba(255, 255, 255, 0));
+
+      pointer-events: none;
+
+    }
+
+    .light1 {
+
+      position: absolute;
+
+      width: 550px;
+
+      height: 550px;
+
+      background: #2563eb;
+
+      filter: blur(180px);
+
+      opacity: .25;
+
+      border-radius: 100%;
+
+      top: -150px;
+
+      right: -120px;
+
+    }
+
+    .light2 {
+
+      position: absolute;
+
+      width: 450px;
+
+      height: 450px;
+
+      background: #06b6d4;
+
+      filter: blur(180px);
+
+      opacity: .15;
+
+      border-radius: 100%;
+
+      bottom: -150px;
+
+      left: -120px;
+
+    }
+
+    .light3 {
+
+      position: absolute;
+
+      width: 400px;
+
+      height: 400px;
+
+      background: #7c3aed;
+
+      filter: blur(180px);
+
+      opacity: .18;
+
+      border-radius: 100%;
+
+      top: 40%;
+
+      left: 40%;
+
+    }
+
+    .hero-image {
+
+      animation: float 6s ease-in-out infinite;
+
+    }
+
+    @keyframes float {
+
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+
+    }
+
+    .btn {
+
+      transition: .35s;
+
+    }
+
+    .btn:hover {
+
+      transform: translateY(-4px);
+
+      box-shadow: 0 15px 40px rgba(59, 130, 246, .35);
+
+    }
+
+    .card-hover {
+
+      transition: .35s;
+
+    }
+
+    .card-hover:hover {
+
+      transform: translateY(-8px);
+
+      border-color: rgba(59, 130, 246, .35);
+
+    }
+  </style>
+
 </head>
 
-<body class="bg-slate-950 text-white overflow-x-hidden" style="font-family: Yekan, sans-serif;">
-  <!-- header -->
-  <div id="particles-js"></div> <div id="app">
-    
-  <div> <!-- Navbar -->
-    <nav class="bg-slate-800 p-3 w-full md:w-4/5 rounded-full mx-auto my-5">
-      <ul class="flex flex-wrap justify-center space-x-4">
-        <li><a href="#" class="hover:text-gray-400 ml-4">صفحه اصلی</a></li>
-        <li><a href="#" class="hover:text-gray-400">درباره من</a></li>
-        <li><a href="#" class="hover:text-gray-400">خدمات</a></li>
-        <li><a href="#" class="hover:text-gray-400">نمونه کار ها</a></li>
-        <li><a href="#" class="hover:text-gray-400">ارتباط با من</a></li>
+<body class="text-white">
+
+  <div class="light1"></div>
+
+  <div class="light2"></div>
+
+  <div class="light3"></div>
+
+  <!--================ NAVBAR =================-->
+
+  <nav class="fixed top-6 z-50 w-full">
+
+    <div class="glass max-w-7xl mx-auto rounded-full px-8 py-4 flex items-center justify-between shadow-2xl">
+
+      <div class="font-bold text-xl">
+
+        محمد مهدی حق شناس
+
+      </div>
+
+      <ul class="hidden lg:flex gap-8 text-sm">
+
+        <li><a href="#">خانه</a></li>
+
+        <li><a href="#about">درباره من</a></li>
+
+        <li><a href="#skills">مهارت‌ها</a></li>
+
+        <li><a href="#services">خدمات</a></li>
+
+        <li><a href="#portfolio">نمونه کارها</a></li>
+
+        <li><a href="#contact">تماس</a></li>
+
       </ul>
-    </nav> <!-- Main Content -->
-    <div class="flex flex-col-reverse  md:flex-row items-center">
-      <div class="md:w-1/2 w-full  flex justify-center relative"> <img class="w-full md:h-dvh md:w-auto mr-0 md:mr-20"
-          src="./assets/profile.png" alt="">
-        <div
-          class="shadow-cyan-500/50 shadow-2xl bg-[#4778FA] top-0 md:top-20 w-full md:w-auto md:h-dvh aspect-square rounded-full start-5 absolute -z-50">
-        </div>
-      </div>
-      <div class="md:w-1/2 p-5 text-center">
-        <h1 class="font-[Lalezar] text-3xl sm:text-5xl md:text-[70px]">محمد مهدی حق شناس</h1>
-        <h2 class="font-sans text-2xl sm:text-4xl md:text-[60px]">برنامه نویس وب</h2>
-        <p class="my-5 text-sm sm:text-base md:text-lg">من بسیار علاقه مند به برنامه نویسی هستم و همراه تلاش می‌کنم
-          مهارت‌هایم را ارتقاء بدهم فلذا میزان مهارت‌های موجود در این رزومه روز به روز در حال تغییر و پیشرفت می باشد</p>
-        <a href="#" class="bg-[#4778FA] px-8 sm:px-12 py-2 sm:py-3 rounded-lg font-sans">دانلود رزومه pdf</a>
-      </div>
-    </div>
-  </div>
-  <!-- end header -->
 
-  <!-- maharat -->
-  <div class="bg-slate-800 container-full mx-auto p-4 ">
-    <div class="text-center py-5">
-      <h3 class="mt-3 font-[Lalezar] text-[45px]">مهارت ها</h3>
+      <a href="#contact" class="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-full transition">
+
+        همکاری با من
+
+      </a>
+
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mx-auto w-full max-w-7xl mb-5 p-5">
-      <div class="bg-slate-700 rounded-lg p-3 flex flex-col items-center"> <img src="./assets/wordpess.svg"
-          alt="wordpress" class="w-1/3 mb-3">
-        <div class="text-center">
-          <p class="font-sans text-2xl text-white">وردپرس</p>
-          <div class="flex justify-center gap-2 mt-3">
-            <div class="bg-[#4778FA] aspect-square w-10 h-10 rounded-lg"></div>
-            <div class="bg-[#4778FA] aspect-square w-10 h-10 rounded-lg"></div>
-            <div class="bg-[#4778FA] aspect-square w-10 h-10 rounded-lg"></div>
-            <div class="bg-[#4778FA] aspect-square w-10 h-10 rounded-lg"></div>
-            <div class="bg-[#4778FA] aspect-square w-10 h-10 rounded-lg"></div>
-            <div class="bg-[#4778FA] aspect-square w-10 h-10 rounded-lg"></div>
+  </nav>
+
+
+
+  <!--================ HERO =================-->
+
+  <section class="min-h-screen flex items-center pt-40">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Right -->
+
+        <div data-aos="fade-left">
+
+          <div class="inline-flex glass rounded-full px-5 py-2 mb-8 text-blue-300">
+
+            👋 خوش آمدید به وب سایت شخصی من
+
           </div>
+
+          <h1 class="text-5xl lg:text-7xl font-black leading-tight mb-6">
+
+            محمد مهدی
+
+            <span class="text-blue-500">
+
+              حق شناس
+
+            </span>
+
+          </h1>
+
+          <h2 class="text-2xl lg:text-4xl font-bold text-slate-300 mb-8">
+
+            Full Stack Developer
+
+          </h2>
+
+          <p class="text-slate-400 leading-9 text-lg">
+
+            بیش از ۱۲ سال تجربه در طراحی و توسعه نرم‌افزارهای تحت وب،
+            اپلیکیشن‌های موبایل و سیستم‌های سازمانی. علاقه‌مند به طراحی
+            نرم‌افزارهای سریع، امن و مقیاس‌پذیر با استفاده از جدیدترین
+            تکنولوژی‌های روز دنیا.
+
+          </p>
+
+          <div class="flex flex-wrap gap-5 mt-10">
+
+            <a href="#portfolio" class="btn bg-blue-600 px-8 py-4 rounded-2xl">
+
+              مشاهده نمونه کارها
+
+            </a>
+
+            <a href="#" class="btn glass px-8 py-4 rounded-2xl">
+
+              دانلود رزومه
+
+            </a>
+
+          </div>
+
         </div>
-      </div>
-    </div>
 
-  </div>
-  <!-- end maharat -->
 
-  <!-- karha -->
-  <div class="w-11/12 lg:w-2/3 mx-auto mb-8">
-    <div class="text-center py-5 mb-5">
-      <h3 class="mt-3 font-[Lalezar] text-3xl sm:text-4xl lg:text-[45px]">کارهایی که از دست من برمیاد</h3>
-      <p class="text-base sm:text-lg">همونطور که بالاتر گفتم، تخصص من برنامه نویسی هست. حالا بخوایم تقسیم‌بندی کنیم
-        بخش‌ها رو، می‌تونم بگم توی سه بخش برنامه نویسی سایت، برنامه نویسی موبایل (اندروید و بزودی iOS) و آموزش دادن
-        برنامه نویسی می‌تونم فعالیت کنم</p>
-    </div>
-    <div
-      class="blur-sm shadow-cyan-500/100 shadow-2xl bg-[#4778FA] h-64 md:h-80 lg:h-dvh aspect-square rounded-full mr-4 sm:mr-10 lg:mr-20 absolute -z-50 end-0">
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div class="bg-slate-800 rounded-lg p-5">
-        <p class="font-[Sans] text-2xl sm:text-3xl lg:text-[30px] mb-5">طراحی سایت</p>
-        <p class="text-sm sm:text-base lg:text-lg">بیش از 12 سال هست که بصورت تخصصی دارم برنامه نویسی سایت انجام میدم.
-          توی این مدت تجربه‌های زیادی کسب کردم. معمولاً سرعتم توی انجام پروژه‌های مربوط به سایت زیاده. سایتی که برنامه
-          نویسی می‌کنم معمولاً باگ نداره. در مورد امنیت سایت هم که سعی می‌کنم همه موارد رو ذره به ذره چک کنم که یه وقت
-          کسی نیاد سایتی که نوشتم رو هک کنه و یا سوء استفاده کنه ازش. </p>
-      </div>
-      <div class="bg-slate-800 rounded-lg p-5">
-        <p class="font-[Sans] text-2xl sm:text-3xl lg:text-[30px] mb-5">طراحی سایت</p>
-        <p class="text-sm sm:text-base lg:text-lg">بیش از 12 سال هست که بصورت تخصصی دارم برنامه نویسی سایت انجام میدم.
-          توی این مدت تجربه‌های زیادی کسب کردم. معمولاً سرعتم توی انجام پروژه‌های مربوط به سایت زیاده. سایتی که برنامه
-          نویسی می‌کنم معمولاً باگ نداره. در مورد امنیت سایت هم که سعی می‌کنم همه موارد رو ذره به ذره چک کنم که یه وقت
-          کسی نیاد سایتی که نوشتم رو هک کنه و یا سوء استفاده کنه ازش. </p>
-      </div>
-    </div>
-  </div>
-  <!-- end karha -->
 
-  <!-- nemoneh -->
-   <div class="bg-slate-800 container-full  mx-auto p-4 my-5 select-none"> <div class="text-center py-5"> <h3 class="mt-3 font-[Lalezar] text-3xl md:text-4xl lg:text-[45px]">نمونه کارها</h3> </div> <div class="overflow-auto p-8"> <div class="flex flex-wrap md:flex-nowrap gap-4"> <div class="bg-slate-700 rounded-lg p-5 w-full md:w-2/5 flex-none transition ease-in-out delay-150 hover:bg-slate-600 hover:-translate-y-5 duration-300"> <img src="./assets/photos/sc-kheiriehemamali.ir.png" alt="" class="rounded-lg w-full aspect-video mb-3"> <p>سایت خیریه امام علی ابن ابیطالب (ع) شهر گرگاب</p> <div class="flex flex-wrap gap-2 pt-4 text-sm text-sky-600"> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">php</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">css</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">html</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">bootstrap</div> </div> </div> <div class="bg-slate-700 rounded-lg p-5 w-full md:w-2/5 flex-none transition ease-in-out delay-150 hover:bg-slate-600 hover:-translate-y-5 duration-300"> <img src="./assets/photos/sc-kheiriehemamali.ir.png" alt="" class="rounded-lg w-full aspect-video mb-3"> <p>سایت خیریه امام علی ابن ابیطالب (ع) شهر گرگاب</p> <div class="flex flex-wrap gap-2 pt-4 text-sm text-sky-600"> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">php</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">css</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">html</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">bootstrap</div> </div> </div> <div class="bg-slate-700 rounded-lg p-5 w-full md:w-2/5 flex-none transition ease-in-out delay-150 hover:bg-slate-600 hover:-translate-y-5 duration-300"> <img src="./assets/photos/sc-kheiriehemamali.ir.png" alt="" class="rounded-lg w-full aspect-video mb-3"> <p>سایت خیریه امام علی ابن ابیطالب (ع) شهر گرگاب</p> <div class="flex flex-wrap gap-2 pt-4 text-sm text-sky-600"> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">php</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">css</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">html</div> <div class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 dark:text-sky-300 dark:border-sky-500/15 dark:bg-sky-500/10">bootstrap</div> </div> </div> </div> </div> </div>
-  <!-- end nemoneh -->
+        <!-- Left -->
 
-  <!-- Contact Section -->
-  <section id="contact" class="w-2/3 mx-auto mb-8 ">
-    <div
-      class="blur-xl shadow-cyan-500/100 shadow-2xl bg-[#4778FA]  w-1/3 aspect-square rounded-full mr-20 absolute -z-50 start-0 mt-[-300px]">
-    </div>
-    <h2 class="text-center py-5 mb-5 mt-3 font-[Lalezar] text-[45px]">ارتباط با من</h2>
+        <div class="flex justify-center relative" data-aos="fade-right">
 
-    <div class="mt-4 flex flex-col md:flex-row justify-between items-center gap-5">
-      <div class="space-y-4 md:w-1/3">
-        <div class="flex items-center bg-slate-800 p-2 rounded-lg hover:bg-slate-600">
-          <i class="fas fa-envelope text-xl ml-2"></i>
-          <span class="text-lg">
-            <script> document.write('mhgorgab' + '@' + 'gmail' + '.' + 'com'); </script>
-          </span>
+          <div class="glass rounded-[40px] p-8 hero-image">
+
+            <img src="./assets/profile.png" class="w-[420px]">
+
+          </div>
+
         </div>
-        <div class="flex items-center bg-slate-800 p-2 rounded-lg cursor-pointer hover:bg-slate-600"
-          onclick="window.location.href='https://t' + 'me' + '/Haghshenas_developer';">
-          <i class="fab fa-telegram-plane text-xl  ml-2"></i>
-          <p class="text-lg">تلگرام</p>
-        </div>
-        <div class="flex items-center bg-slate-800 p-2 rounded-lg cursor-pointer hover:bg-slate-600"
-          onclick="window.location.href='https://eit' + 'aa' + '.com/Haghshenas_developer';">
-          <i class="fas fa-envelope-open-text text-xl ml-2"></i>
-          <p class="text-lg">ایتا</p>
-        </div>
+
       </div>
 
-      <p class="text-center mb-4 md:mb-0 md:w-2/3"> اگر نیاز به انجام پروژه‌ای دارید، می‌توانید از طریق این راه‌های
-        ارتباطی با من در تماس باشید. من آماده همکاری و انجام پروژه‌های شما هستم! </p>
+
+
+      <!--================ Statistics =================-->
+
+      <div class="grid md:grid-cols-4 gap-8 mt-28">
+
+        <div class="glass rounded-3xl p-8 text-center card-hover">
+
+          <h3 class="text-5xl font-black text-blue-400">
+
+            +12
+
+          </h3>
+
+          <p class="text-slate-400 mt-3">
+
+            سال تجربه
+
+          </p>
+
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover">
+
+          <h3 class="text-5xl font-black text-blue-400">
+
+            +80
+
+          </h3>
+
+          <p class="text-slate-400 mt-3">
+
+            پروژه انجام شده
+
+          </p>
+
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover">
+
+          <h3 class="text-5xl font-black text-blue-400">
+
+            +20
+
+          </h3>
+
+          <p class="text-slate-400 mt-3">
+
+            مشتری فعال
+
+          </p>
+
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover">
+
+          <h3 class="text-5xl font-black text-blue-400">
+
+            15
+
+          </h3>
+
+          <p class="text-slate-400 mt-3">
+
+            تکنولوژی تخصصی
+
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
+
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-slate-800 text-white py-4">
-    <div class="container mx-auto px-6 flex justify-between items-center">
-      <div class="text-center"> &copy; 2024 تمامی حقوق محفوظ است. </div>
-      <div class="bg-slate-700 text-white p-3 rounded-full cursor-pointer transition duration-300 hover:bg-slate-600"
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' });"> <i class="fas fa-arrow-up"></i> </div>
+  <!--==================== ABOUT ====================-->
+
+  <section id="about" class="py-32 relative">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20" data-aos="fade-up">
+
+        <span class="text-blue-400 tracking-widest">
+          ABOUT ME
+        </span>
+
+        <h2 class="text-5xl font-black mt-4">
+
+          درباره من
+
+        </h2>
+
+        <p class="text-slate-400 mt-6 max-w-3xl mx-auto leading-9">
+
+          من محمد مهدی حق شناس هستم. بیش از ۱۲ سال است که به صورت تخصصی در
+          زمینه طراحی و توسعه نرم افزار فعالیت می‌کنم. علاقه اصلی من طراحی
+          سیستم‌های سازمانی، اتوماسیون‌های اداری، اپلیکیشن‌های موبایل و
+          توسعه API های سریع و امن است. همیشه سعی می‌کنم پروژه‌هایی تولید
+          کنم که علاوه بر ظاهر زیبا، از نظر سرعت، امنیت و توسعه‌پذیری نیز
+          در بالاترین سطح باشند.
+
+        </p>
+
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10">
+
+        <div class="glass rounded-[35px] p-10 card-hover">
+
+          <h3 class="text-3xl font-bold mb-8">
+
+            تخصص‌های من
+
+          </h3>
+
+          <div class="grid grid-cols-2 gap-4">
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-4">
+              <i class="fab fa-laravel text-4xl text-red-500"></i>
+              <div>
+                <h4 class="font-bold">Laravel</h4>
+                <span class="text-slate-400 text-sm">Backend</span>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-4">
+              <i class="fab fa-php text-4xl text-indigo-400"></i>
+              <div>
+                <h4 class="font-bold">PHP</h4>
+                <span class="text-slate-400 text-sm">Backend</span>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-4">
+              <i class="fab fa-flutter text-4xl text-cyan-400"></i>
+              <div>
+                <h4 class="font-bold">Flutter</h4>
+                <span class="text-slate-400 text-sm">Mobile</span>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-4">
+              <i class="fas fa-code text-4xl text-sky-400"></i>
+              <div>
+                <h4 class="font-bold">Dart</h4>
+                <span class="text-slate-400 text-sm">Programming</span>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-4">
+              <i class="fab fa-microsoft text-4xl text-blue-500"></i>
+              <div>
+                <h4 class="font-bold">C#</h4>
+                <span class="text-slate-400 text-sm">Desktop</span>
+              </div>
+            </div>
+
+            <div class="glass rounded-2xl p-5 flex items-center gap-4">
+              <i class="fab fa-js text-4xl text-yellow-400"></i>
+              <div>
+                <h4 class="font-bold">JavaScript</h4>
+                <span class="text-slate-400 text-sm">Frontend</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="glass rounded-[35px] p-10 card-hover">
+
+          <h3 class="text-3xl font-bold mb-10">
+
+            تکنولوژی‌هایی که استفاده می‌کنم
+
+          </h3>
+
+          <div class="flex flex-wrap gap-4">
+
+            <span class="glass rounded-full px-5 py-3">Laravel</span>
+            <span class="glass rounded-full px-5 py-3">PHP</span>
+            <span class="glass rounded-full px-5 py-3">Filament</span>
+            <span class="glass rounded-full px-5 py-3">Flutter</span>
+            <span class="glass rounded-full px-5 py-3">Dart</span>
+            <span class="glass rounded-full px-5 py-3">C#</span>
+            <span class="glass rounded-full px-5 py-3">HTML5</span>
+            <span class="glass rounded-full px-5 py-3">CSS3</span>
+            <span class="glass rounded-full px-5 py-3">Tailwind CSS</span>
+            <span class="glass rounded-full px-5 py-3">JavaScript</span>
+            <span class="glass rounded-full px-5 py-3">Vite</span>
+            <span class="glass rounded-full px-5 py-3">REST API</span>
+            <span class="glass rounded-full px-5 py-3">MySQL</span>
+            <span class="glass rounded-full px-5 py-3">SQLite</span>
+            <span class="glass rounded-full px-5 py-3">Git</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+  </section>
+
+
+
+  <!--==================== SKILLS ====================-->
+
+  <section id="skills" class="pb-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+
+        <span class="text-blue-400">
+
+          MY SKILLS
+
+        </span>
+
+        <h2 class="text-5xl font-black mt-4">
+
+          مهارت‌های تخصصی
+
+        </h2>
+
+      </div>
+
+      <div class="glass rounded-[40px] p-10">
+
+        <!-- Laravel -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>Laravel</span>
+
+            <span>98%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full overflow-hidden">
+
+            <div class="bg-red-500 h-full rounded-full w-[98%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- PHP -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>PHP</span>
+
+            <span>98%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-indigo-500 h-full rounded-full w-[98%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- Flutter -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>Flutter</span>
+
+            <span>92%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-cyan-500 h-full rounded-full w-[92%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- Dart -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>Dart</span>
+
+            <span>92%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-sky-500 h-full rounded-full w-[92%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- C# -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>C#</span>
+
+            <span>90%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-blue-500 h-full rounded-full w-[90%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- HTML -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>HTML5</span>
+
+            <span>100%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-orange-500 h-full rounded-full w-full"></div>
+
+          </div>
+
+        </div>
+
+        <!-- CSS -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>CSS3</span>
+
+            <span>100%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-blue-400 h-full rounded-full w-full"></div>
+
+          </div>
+
+        </div>
+
+        <!-- Tailwind -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>Tailwind CSS</span>
+
+            <span>95%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-cyan-400 h-full rounded-full w-[95%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- JavaScript -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>JavaScript</span>
+
+            <span>95%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-yellow-400 h-full rounded-full w-[95%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- Vite -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>Vite</span>
+
+            <span>90%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-violet-500 h-full rounded-full w-[90%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- REST API -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>REST API</span>
+
+            <span>95%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-green-500 h-full rounded-full w-[95%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- MySQL -->
+
+        <div class="mb-8">
+
+          <div class="flex justify-between mb-3">
+
+            <span>MySQL</span>
+
+            <span>95%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-blue-600 h-full rounded-full w-[95%]"></div>
+
+          </div>
+
+        </div>
+
+        <!-- SQLite -->
+
+        <div>
+
+          <div class="flex justify-between mb-3">
+
+            <span>SQLite</span>
+
+            <span>95%</span>
+
+          </div>
+
+          <div class="h-3 bg-slate-700 rounded-full">
+
+            <div class="bg-emerald-500 h-full rounded-full w-[95%]"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!--==================== SERVICES ====================-->
+
+  <section id="services" class="py-32 relative">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20" data-aos="fade-up">
+
+        <span class="text-blue-400 tracking-widest">
+          SERVICES
+        </span>
+
+        <h2 class="text-5xl font-black mt-4">
+          خدمات من
+        </h2>
+
+        <p class="text-slate-400 mt-6 max-w-3xl mx-auto leading-9">
+          طراحی و توسعه انواع نرم افزارهای تحت وب، اپلیکیشن موبایل، نرم افزارهای
+          سازمانی و سیستم‌های مدیریت اطلاعات با تمرکز بر سرعت، امنیت و تجربه کاربری.
+        </p>
+
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+
+        <div class="glass rounded-[35px] p-8 card-hover">
+
+          <div class="w-20 h-20 rounded-3xl bg-blue-600 flex items-center justify-center text-4xl mb-8">
+
+            <i class="fas fa-globe"></i>
+
+          </div>
+
+          <h3 class="text-2xl font-bold mb-4">
+
+            طراحی وب سایت
+
+          </h3>
+
+          <p class="text-slate-400 leading-8">
+
+            طراحی وب سایت های اختصاصی با Laravel ، PHP ، TailwindCSS و
+            معماری کاملاً استاندارد و امن.
+
+          </p>
+
+        </div>
+
+        <div class="glass rounded-[35px] p-8 card-hover">
+
+          <div class="w-20 h-20 rounded-3xl bg-cyan-600 flex items-center justify-center text-4xl mb-8">
+
+            <i class="fas fa-mobile-screen-button"></i>
+
+          </div>
+
+          <h3 class="text-2xl font-bold mb-4">
+
+            اپلیکیشن Flutter
+
+          </h3>
+
+          <p class="text-slate-400 leading-8">
+
+            طراحی اپلیکیشن اندروید و ویندوز با Flutter و Dart با سرعت بالا
+            و رابط کاربری مدرن.
+
+          </p>
+
+        </div>
+
+        <div class="glass rounded-[35px] p-8 card-hover">
+
+          <div class="w-20 h-20 rounded-3xl bg-violet-600 flex items-center justify-center text-4xl mb-8">
+
+            <i class="fas fa-database"></i>
+
+          </div>
+
+          <h3 class="text-2xl font-bold mb-4">
+
+            اتوماسیون سازمانی
+
+          </h3>
+
+          <p class="text-slate-400 leading-8">
+
+            توسعه نرم افزارهای دبیرخانه، CRM، ERP، سیستم های مدیریت اسناد،
+            بایگانی و اتوماسیون های اداری.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!--==================== PORTFOLIO ====================-->
+
+  <section id="portfolio" class="pb-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+
+        <span class="text-blue-400 tracking-widest">
+
+          PORTFOLIO
+
+        </span>
+
+        <h2 class="text-5xl font-black mt-4">
+
+          نمونه کارها
+
+        </h2>
+
+        <p class="text-slate-400 mt-6">
+
+          بخشی از پروژه هایی که در سال های گذشته توسعه داده ام.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="grid lg:grid-cols-2 gap-10">
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work1.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              کارنما راهکار نوین اتوماسیون اداری
+
+            </h3>
+
+            <p class="text-slate-400 mt-4 leading-8">
+
+              طراحی و توسعه سامانه اتوماسیون اداری تحت وب جهت مدیریت نامه ها،
+              بایگانی اسناد، گردش مکاتبات و مدیریت کاربران.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-6">
+
+              <span class="glass rounded-full px-4 py-2">Laravel</span>
+              <span class="glass rounded-full px-4 py-2">PHP</span>
+              <span class="glass rounded-full px-4 py-2">Filament</span>
+              <span class="glass rounded-full px-4 py-2">Tailwind</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work2.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              آرشینو
+
+            </h3>
+
+            <p class="text-slate-400 mt-4 leading-8">
+
+              نرم افزار مدیریت فایل و تصاویر هوشمند با قابلیت دسته بندی،
+              جستجوی سریع، حذف تصاویر تکراری و مدیریت آرشیو.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-6">
+
+              <span class="glass rounded-full px-4 py-2">Flutter</span>
+              <span class="glass rounded-full px-4 py-2">SQLite</span>
+              <span class="glass rounded-full px-4 py-2">Laravel API</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work3.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              نرم افزار دبیرخانه آفلاین
+
+            </h3>
+
+            <p class="text-slate-400 mt-4 leading-8">
+
+              سیستم مدیریت دبیرخانه برای ویندوز و اندروید با پایگاه داده SQLite،
+              ثبت نامه ها، جستجو، دسته بندی و مدیریت فایل های پیوست.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-6">
+
+              <span class="glass rounded-full px-4 py-2">Flutter</span>
+              <span class="glass rounded-full px-4 py-2">SQLite</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work4.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              CRM خیریه امام علی (ع) شهر گرگاب
+
+            </h3>
+
+            <p class="text-slate-400 mt-4 leading-8">
+
+              سامانه مدیریت خیرین، پرونده مددجویان، پرداخت ها، گزارش گیری،
+              پیامک و مدیریت کاربران.
+
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-6">
+
+              <span class="glass rounded-full px-4 py-2">Laravel</span>
+              <span class="glass rounded-full px-4 py-2">PHP</span>
+              <span class="glass rounded-full px-4 py-2">MySQL</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work5.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              سیستم مدیریت اسناد
+
+            </h3>
+
+            <p class="text-slate-400 mt-4">
+
+              سیستم بایگانی دیجیتال اسناد و پرونده ها.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work6.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              اپلیکیشن Flutter
+
+            </h3>
+
+            <p class="text-slate-400 mt-4">
+
+              اپلیکیشن چند سکویی برای اندروید، ویندوز و Linux.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work7.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              REST API
+
+            </h3>
+
+            <p class="text-slate-400 mt-4">
+
+              طراحی REST API های امن و سریع با Laravel.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- project -->
+
+        <div class="glass rounded-[35px] overflow-hidden card-hover">
+
+          <img src="./assets/projects/work8.jpg" class="aspect-video object-cover w-full">
+
+          <div class="p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              پنل مدیریت اختصاصی
+
+            </h3>
+
+            <p class="text-slate-400 mt-4">
+
+              طراحی پنل مدیریت حرفه ای با Laravel + Filament.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!--==================== EXPERIENCE ====================-->
+
+  <section class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+
+        <span class="text-blue-400 tracking-widest">
+
+          EXPERIENCE
+
+        </span>
+
+        <h2 class="text-5xl font-black mt-4">
+
+          سابقه فعالیت
+
+        </h2>
+
+      </div>
+
+      <div class="relative border-r border-blue-500/30 pr-10">
+
+        <!-- item -->
+
+        <div class="mb-16 relative">
+
+          <span class="absolute w-5 h-5 rounded-full bg-blue-500 -right-[50px] top-3"></span>
+
+          <div class="glass rounded-3xl p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              برنامه نویس Full Stack
+
+            </h3>
+
+            <p class="text-blue-400 mt-2">
+
+              ۱۳۹۲ تاکنون
+
+            </p>
+
+            <p class="text-slate-400 leading-8 mt-4">
+
+              توسعه نرم افزارهای تحت وب، سیستم های سازمانی، اپلیکیشن های
+              موبایل، API و سامانه های مدیریت اطلاعات.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- item -->
+
+        <div class="mb-16 relative">
+
+          <span class="absolute w-5 h-5 rounded-full bg-cyan-500 -right-[50px] top-3"></span>
+
+          <div class="glass rounded-3xl p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              توسعه دهنده Laravel
+
+            </h3>
+
+            <p class="text-blue-400 mt-2">
+
+              بیش از ۹۰ پروژه
+
+            </p>
+
+            <p class="text-slate-400 leading-8 mt-4">
+
+              طراحی انواع سامانه های اختصاصی، CRM، اتوماسیون، پنل های
+              مدیریتی و REST API.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- item -->
+
+        <div class="relative">
+
+          <span class="absolute w-5 h-5 rounded-full bg-violet-500 -right-[50px] top-3"></span>
+
+          <div class="glass rounded-3xl p-8">
+
+            <h3 class="text-2xl font-bold">
+
+              Flutter Developer
+
+            </h3>
+
+            <p class="text-blue-400 mt-2">
+
+              Android • Windows
+
+            </p>
+
+            <p class="text-slate-400 leading-8 mt-4">
+
+              طراحی نرم افزارهای چند سکویی با Flutter و SQLite.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!--==================== CONTACT ====================-->
+
+  <section id="contact" class="pb-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+
+        <span class="text-blue-400">
+
+          CONTACT
+
+        </span>
+
+        <h2 class="text-5xl font-black mt-4">
+
+          ارتباط با من
+
+        </h2>
+
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10">
+
+        <!-- info -->
+
+        <div class="glass rounded-[40px] p-10">
+
+          <h3 class="text-3xl font-bold mb-10">
+
+            اطلاعات تماس
+
+          </h3>
+
+          <div class="space-y-6">
+
+            <div class="flex items-center gap-5">
+
+              <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center">
+
+                <i class="fas fa-envelope"></i>
+
+              </div>
+
+              <div>
+
+                <p class="text-slate-400">
+
+                  ایمیل
+
+                </p>
+
+                <p>
+
+                  mhgorgab@gmail.com
+
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="flex items-center gap-5">
+
+              <div class="w-16 h-16 rounded-2xl bg-cyan-600 flex items-center justify-center">
+
+                <i class="fab fa-telegram"></i>
+
+              </div>
+
+              <div>
+
+                <p class="text-slate-400">
+
+                  Telegram
+
+                </p>
+
+                <p>
+
+                  @Haghshenas_developer
+
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="flex items-center gap-5">
+
+              <div class="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center">
+
+                <i class="fas fa-location-dot"></i>
+
+              </div>
+
+              <div>
+
+                <p class="text-slate-400">
+
+                  موقعیت
+
+                </p>
+
+                <p>
+
+                  اصفهان - ایران
+
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- form -->
+
+        <div class="glass rounded-[40px] p-10">
+
+          <form>
+
+            <div class="mb-6">
+
+              <input type="text" placeholder="نام شما" class="w-full glass rounded-2xl p-4 outline-none">
+
+            </div>
+
+            <div class="mb-6">
+
+              <input type="email" placeholder="ایمیل" class="w-full glass rounded-2xl p-4 outline-none">
+
+            </div>
+
+            <div class="mb-6">
+
+              <textarea rows="6" placeholder="متن پیام..."
+                class="w-full glass rounded-2xl p-4 outline-none resize-none"></textarea>
+
+            </div>
+
+            <button class="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-2xl transition">
+
+              ارسال پیام
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!--==================== FOOTER ====================-->
+
+  <footer class="border-t border-white/10 py-10">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
+
+        <div>
+
+          <h3 class="text-2xl font-bold">
+
+            محمد مهدی حق شناس
+
+          </h3>
+
+          <p class="text-slate-400 mt-3">
+
+            Full Stack Developer
+
+          </p>
+
+        </div>
+
+        <div class="flex gap-5 text-2xl">
+
+          <a href="#"
+            class="glass w-14 h-14 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+
+            <i class="fab fa-github"></i>
+
+          </a>
+
+          <a href="#"
+            class="glass w-14 h-14 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+
+            <i class="fab fa-linkedin"></i>
+
+          </a>
+
+          <a href="#"
+            class="glass w-14 h-14 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+
+            <i class="fab fa-telegram"></i>
+
+          </a>
+
+          <a href="#"
+            class="glass w-14 h-14 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+
+            <i class="fas fa-envelope"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="text-center text-slate-500 mt-10">
+
+        © 2026 تمامی حقوق برای محمد مهدی حق شناس محفوظ است.
+
+      </div>
+
+    </div>
+
   </footer>
 
-    <!-- اضافه کردن Particles.js از طریق CDN -->
+
+
+  <!-- Scroll To Top -->
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    class="fixed bottom-8 left-8 w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-500 transition shadow-2xl">
+
+    <i class="fas fa-arrow-up"></i>
+
+  </button>
+
+
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+
+    AOS.init({
+
+      duration: 900,
+
+      once: true
+
+    });
+
+  </script>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <script>
 
-    particlesJS('particles-js', {
+    particlesJS("particles-js", {
 
-      "particles": {
+      particles: {
 
-        "number": {
+        number: { value: 80 },
 
-          "value": 80,
+        color: { value: "#3b82f6" },
 
-          "density": {
+        shape: { type: "circle" },
 
-            "enable": true,
+        opacity: { value: .4 },
 
-            "value_area": 800
+        size: { value: 3 },
 
-          }
+        move: { enable: true, speed: 2 },
 
-        },
+        line_linked: {
 
-        "color": {
+          enable: true,
 
-          "value": "#ffffff"
+          distance: 150,
 
-        },
+          color: "#3b82f6",
 
-        "shape": {
-
-          "type": "circle",
-
-          "stroke": {
-
-            "width": 0,
-
-            "color": "#000000"
-
-          },
-
-          "polygon": {
-
-            "nb_sides": 5
-
-          },
-
-          "image": {
-
-            "src": "img/github.svg",
-
-            "width": 100,
-
-            "height": 100
-
-          }
-
-        },
-
-        "opacity": {
-
-          "value": 0.5,
-
-          "random": false,
-
-          "anim": {
-
-            "enable": false,
-
-            "speed": 1,
-
-            "opacity_min": 0.1,
-
-            "sync": false
-
-          }
-
-        },
-
-        "size": {
-
-          "value": 3,
-
-          "random": true,
-
-          "anim": {
-
-            "enable": false,
-
-            "speed": 40,
-
-            "size_min": 0.1,
-
-            "sync": false
-
-          }
-
-        },
-
-        "line_linked": {
-
-          "enable": true,
-
-          "distance": 150,
-
-          "color": "#ffffff",
-
-          "opacity": 0.4,
-
-          "width": 1
-
-        },
-
-        "move": {
-
-          "enable": true,
-
-          "speed": 6,
-
-          "direction": "none",
-
-          "random": false,
-
-          "straight": false,
-
-          "out_mode": "out",
-
-          "attract": {
-
-            "enable": false,
-
-            "rotateX": 600,
-
-            "rotateY": 1200
-
-          }
+          opacity: .2
 
         }
 
-      },
-
-      "interactivity": {
-
-        "detect_on": "canvas",
-
-        "events": {
-
-          "onhover": {
-
-            "enable": true,
-
-            "mode": "repulse"
-
-          },
-
-          "onclick": {
-
-            "enable": true,
-
-            "mode": "push"
-
-          },
-
-          "resize": true
-
-        },
-
-        "modes": {
-
-          "grab": {
-
-            "distance": 400,
-
-            "line_linked": {
-
-              "opacity": 1
-
-            }
-
-          },
-
-          "bubble": {
-
-            "distance": 400,
-
-            "size": 40,
-
-            "duration": 2,
-
-            "opacity": 8,
-
-            "speed": 3
-
-          },
-
-          "repulse": {
-
-            "distance": 200,
-
-            "duration": 0.4
-
-          },
-
-          "push": {
-
-            "particles_nb": 4
-
-          },
-
-          "remove": {
-
-            "particles_nb": 2
-
-          }
-
-        }
-
-      },
-
-      "retina_detect": true
+      }
 
     });
 
-          </script>
-    
+  </script>
+
 </body>
 
 </html>
