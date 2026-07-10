@@ -253,68 +253,42 @@
 
   <!--================ NAVBAR =================-->
 
-  <nav class="fixed top-5 left-0 right-0 z-50">
+  <nav class="fixed top-6 z-50 w-full">
 
-    <div class="glass w-[95%] lg:max-w-7xl mx-auto rounded-full px-5 lg:px-8 py-4">
+    <div class="glass max-w-7xl mx-auto rounded-full px-8 py-4 flex items-center justify-between shadow-2xl">
 
-      <div class="flex items-center justify-between">
+      <div class="font-bold text-xl">
 
-        <h2 class="font-bold text-lg lg:text-xl">
-
-          محمد مهدی حق شناس
-
-        </h2>
-
-        <!-- Desktop -->
-
-        <ul class="hidden lg:flex gap-8">
-
-          <li><a href="#about">درباره من</a></li>
-          <li><a href="#skills">مهارت‌ها</a></li>
-          <li><a href="#services">خدمات</a></li>
-          <li><a href="#portfolio">نمونه کارها</a></li>
-          <li><a href="#contact">تماس</a></li>
-
-        </ul>
-
-        <!-- Desktop Button -->
-
-        <a href="#contact" class="hidden lg:block bg-blue-600 px-6 py-3 rounded-full">
-
-          همکاری با من
-
-        </a>
-
-        <!-- Mobile Button -->
-
-        <button id="menuBtn" class="lg:hidden text-2xl">
-
-          <i class="fas fa-bars"></i>
-
-        </button>
+        محمد مهدی حق شناس
 
       </div>
+
+      <ul class="hidden lg:flex gap-8 text-sm">
+
+        <li><a href="#">خانه</a></li>
+
+        <li><a href="#about">درباره من</a></li>
+
+        <li><a href="#skills">مهارت‌ها</a></li>
+
+        <li><a href="#services">خدمات</a></li>
+
+        <li><a href="#portfolio">نمونه کارها</a></li>
+
+        <li><a href="#contact">تماس</a></li>
+
+      </ul>
+
+      <a href="#contact" class="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-full transition">
+
+        همکاری با من
+
+      </a>
 
     </div>
 
   </nav>
-  <div id="mobileMenu" class="fixed top-24 left-0 right-0 w-[92%] mx-auto glass rounded-3xl p-6 hidden z-40">
 
-    <ul class="space-y-5 text-center">
-
-      <li><a href="#about">درباره من</a></li>
-
-      <li><a href="#skills">مهارت‌ها</a></li>
-
-      <li><a href="#services">خدمات</a></li>
-
-      <li><a href="#portfolio">نمونه کارها</a></li>
-
-      <li><a href="#contact">تماس با من</a></li>
-
-    </ul>
-
-  </div>
 
 
   <!--================ HERO =================-->
@@ -1700,16 +1674,6 @@
       }
 
     });
-
-    const menuBtn = document.getElementById("menuBtn");
-
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    menuBtn.onclick = () => {
-
-      mobileMenu.classList.toggle("hidden");
-
-    }
 
   </script>
 
