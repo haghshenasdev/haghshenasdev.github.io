@@ -239,6 +239,333 @@
       border-color: rgba(59, 130, 246, .35);
 
     }
+
+    /* =========================================================
+   PROFILE IMAGE
+   ========================================================= */
+
+.profile-card {
+  position: relative;
+  padding: 14px !important;
+  border-radius: 42px !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(59, 130, 246, 0.18),
+      rgba(6, 182, 212, 0.08),
+      rgba(15, 23, 42, 0.65)
+    );
+}
+
+.profile-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 42px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, .7),
+    rgba(6, 182, 212, .35),
+    transparent 60%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.profile-image {
+  display: block;
+  width: min(420px, 100%);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 32px;
+  position: relative;
+  z-index: 1;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+
+/* =========================================================
+   PORTFOLIO
+   ========================================================= */
+
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .4s ease,
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(59, 130, 246, .45);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, .45),
+    0 0 40px rgba(59, 130, 246, .08);
+}
+
+.portfolio-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #0f172a;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.portfolio-card:hover .portfolio-image {
+  transform: scale(1.045);
+}
+
+.portfolio-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(2, 6, 23, .55)
+    );
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SOFTWARE ICON
+   ========================================================= */
+
+.software-icon {
+  position: absolute;
+  z-index: 5;
+  right: 24px;
+  bottom: 24px;
+
+  width: 76px;
+  height: 76px;
+
+  padding: 7px;
+
+  border-radius: 22px;
+
+  background: rgba(15, 23, 42, .82);
+
+  border: 1px solid rgba(255, 255, 255, .14);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, .45),
+    0 0 30px rgba(59, 130, 246, .12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+}
+
+.software-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.software-icon i {
+  font-size: 32px;
+}
+
+.portfolio-card:hover .software-icon {
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, .55),
+    0 0 35px rgba(59, 130, 246, .22);
+}
+
+
+/* =========================================================
+   PROJECT CONTENT
+   ========================================================= */
+
+.portfolio-content {
+  padding: 32px;
+}
+
+.portfolio-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.portfolio-description {
+  color: #94a3b8;
+  line-height: 2;
+  min-height: 64px;
+}
+
+
+/* =========================================================
+   PROJECT TAGS
+   ========================================================= */
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, .045);
+  border: 1px solid rgba(255, 255, 255, .07);
+
+  color: #cbd5e1;
+
+  font-size: .82rem;
+
+  transition: .3s ease;
+}
+
+.project-tag:hover {
+  background: rgba(59, 130, 246, .12);
+  border-color: rgba(59, 130, 246, .25);
+  color: #fff;
+}
+
+
+/* =========================================================
+   PROJECT LINKS
+   ========================================================= */
+
+.project-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 17px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .08);
+
+  color: #e2e8f0;
+
+  font-size: .85rem;
+
+  transition: .3s ease;
+}
+
+.project-link:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FEATURED PROJECT
+   ========================================================= */
+
+.featured-project {
+  grid-column: span 2;
+}
+
+.featured-project .portfolio-image-wrapper {
+  aspect-ratio: 21 / 9;
+}
+
+.featured-project .software-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 25px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .featured-project {
+    grid-column: span 1;
+  }
+
+  .featured-project .portfolio-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+}
+
+@media (max-width: 640px) {
+
+  .profile-card {
+    padding: 10px !important;
+    border-radius: 30px !important;
+  }
+
+  .profile-image {
+    border-radius: 23px;
+  }
+
+  .portfolio-content {
+    padding: 24px;
+  }
+
+  .portfolio-title {
+    font-size: 1.2rem;
+  }
+
+  .software-icon {
+    width: 62px;
+    height: 62px;
+    right: 16px;
+    bottom: 16px;
+    border-radius: 18px;
+  }
+
+  .software-icon i {
+    font-size: 25px;
+  }
+
+  .project-links {
+    flex-wrap: wrap;
+  }
+
+}
   </style>
 
 </head>
@@ -360,11 +687,13 @@
 
         <div class="flex justify-center relative" data-aos="fade-right">
 
-          <div class="glass rounded-[40px] p-8 hero-image">
-
-            <img src="./assets/profile.png" class="w-[420px]">
-
-          </div>
+          <div class="glass profile-card hero-image">
+    <img
+        src="./assets/profile.png"
+        class="profile-image"
+        alt="محمد مهدی حق شناس - Full Stack Developer"
+    >
+</div>
 
         </div>
 
@@ -971,240 +1300,536 @@
 
 
   <!--==================== PORTFOLIO ====================-->
+<!--==================== PORTFOLIO ====================-->
+<section id="portfolio" class="pb-32">
 
-  <section id="portfolio" class="pb-32">
+  <div class="max-w-7xl mx-auto px-6">
 
-    <div class="max-w-7xl mx-auto px-6">
+    <!-- Portfolio Header -->
+    <div class="text-center mb-20" data-aos="fade-up">
 
-      <div class="text-center mb-20">
+      <span class="text-blue-400 tracking-widest">
+        PORTFOLIO
+      </span>
 
-        <span class="text-blue-400 tracking-widest">
+      <h2 class="text-5xl font-black mt-4">
+        نمونه کارها
+      </h2>
 
-          PORTFOLIO
-
-        </span>
-
-        <h2 class="text-5xl font-black mt-4">
-
-          نمونه کارها
-
-        </h2>
-
-        <p class="text-slate-400 mt-6">
-
-          بخشی از پروژه هایی که در سال های گذشته توسعه داده ام.
-
-        </p>
-
-      </div>
-
-
-
-      <div class="grid lg:grid-cols-2 gap-10">
-
-
-
-
-        <!-- project -->
-
-        <div class="glass rounded-[35px] overflow-hidden card-hover">
-
-          <img src="./assets/photos/ka.png" class="aspect-video object-cover w-full">
-
-          <div class="p-8">
-
-            <h3 class="text-2xl font-bold">
-
-              کارنما راهکار نوین اتوماسیون اداری
-
-            </h3>
-
-            <p class="text-slate-400 mt-4 leading-8">
-
-              طراحی و توسعه سامانه اتوماسیون اداری تحت وب جهت مدیریت نامه ها،
-              بایگانی اسناد، گردش مکاتبات و مدیریت کاربران.
-
-            </p>
-
-            <div class="flex flex-wrap gap-3 mt-6">
-
-              <span class="glass rounded-full px-4 py-2">Laravel</span>
-              <span class="glass rounded-full px-4 py-2">PHP</span>
-              <span class="glass rounded-full px-4 py-2">Filament</span>
-              <span class="glass rounded-full px-4 py-2">Tailwind</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-
-        <!-- project -->
-
-        <div class="glass rounded-[35px] overflow-hidden card-hover">
-
-          <img src="./assets/photos/arshino.png" class="aspect-video object-cover w-full">
-
-          <div class="p-8">
-
-            <h3 class="text-2xl font-bold">
-
-              آرشینو
-
-            </h3>
-
-            <p class="text-slate-400 mt-4 leading-8">
-
-              نرم افزار مدیریت فایل و تصاویر هوشمند با قابلیت دسته بندی،
-              جستجوی سریع، حذف تصاویر تکراری و مدیریت آرشیو.
-
-            </p>
-
-            <div class="flex flex-wrap gap-3 mt-6">
-
-              <span class="glass rounded-full px-4 py-2">Flutter</span>
-              <span class="glass rounded-full px-4 py-2">SQLite</span>
-              <span class="glass rounded-full px-4 py-2">Laravel API</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-
-        <!-- project -->
-
-        <div class="glass rounded-[35px] overflow-hidden card-hover">
-
-          <img src="./assets/photos/dabir.jpg" class="aspect-video object-cover w-full">
-
-          <div class="p-8">
-
-            <h3 class="text-2xl font-bold">
-
-              نرم افزار دبیرخانه آفلاین
-
-            </h3>
-
-            <p class="text-slate-400 mt-4 leading-8">
-
-              سیستم مدیریت دبیرخانه برای ویندوز و اندروید با پایگاه داده SQLite،
-              ثبت نامه ها، جستجو، دسته بندی و مدیریت فایل های پیوست.
-
-            </p>
-
-            <div class="flex flex-wrap gap-3 mt-6">
-
-              <span class="glass rounded-full px-4 py-2">Flutter</span>
-              <span class="glass rounded-full px-4 py-2">SQLite</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-
-        <!-- project -->
-
-        <div class="glass rounded-[35px] overflow-hidden card-hover">
-
-          <img src="./assets/photos/sc-kheiriehemamali.ir.png" class="aspect-video object-cover w-full">
-
-          <div class="p-8">
-
-            <h3 class="text-2xl font-bold">
-
-              CRM خیریه امام علی (ع) شهر گرگاب
-
-            </h3>
-
-            <p class="text-slate-400 mt-4 leading-8">
-
-              سامانه مدیریت خیرین، پرونده مددجویان، پرداخت ها، گزارش گیری،
-              پیامک و مدیریت کاربران.
-
-            </p>
-
-            <div class="flex flex-wrap gap-3 mt-6">
-
-              <span class="glass rounded-full px-4 py-2">Laravel</span>
-              <span class="glass rounded-full px-4 py-2">PHP</span>
-              <span class="glass rounded-full px-4 py-2">MySQL</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-
-        <!-- project -->
-
-        <div class="glass rounded-[35px] overflow-hidden card-hover">
-
-          <img src="./assets/photos/rased.png" class="aspect-video object-cover w-full">
-
-          <div class="p-8">
-
-            <h3 class="text-2xl font-bold">
-راصد
-            </h3>
-
-            <p class="text-slate-400 mt-4">
-
-سامانه رصد هوشمند اخبار سایت های خبری و کانال های ایتا
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-
-
-        <!-- project -->
-
-        <div class="glass rounded-[35px] overflow-hidden card-hover">
-
-          <img src="./assets/projects/work6.jpg" class="aspect-video object-cover w-full">
-
-          <div class="p-8">
-
-            <h3 class="text-2xl font-bold">
-
-crm نیکان
-            </h3>
-
-            <p class="text-slate-400 mt-4">
-
-نرم افزار مدیریت خیریه و نیکوکاری برای ارائه خدمات crm با هزینه مناسب به خیریه های محلی و ...
-            </p>
-
-          </div>
-
-        </div>
-
-
-
-
-
-      </div>
+      <p class="text-slate-400 mt-6 max-w-3xl mx-auto leading-8">
+        بخشی از نرم افزارها، سامانه ها و اپلیکیشن هایی که
+        طراحی و توسعه داده ام.
+      </p>
 
     </div>
 
-  </section>
+
+    <!-- Projects Grid -->
+    <div class="grid lg:grid-cols-2 gap-10">
+
+
+      <!-- =================================================
+           KARNAMA
+           ================================================= -->
+
+      <div
+        class="glass rounded-[35px] overflow-hidden card-hover"
+        data-aos="fade-up"
+      >
+
+        <!-- Project Image -->
+        <div class="relative overflow-hidden">
+
+          <img
+            src="./assets/photos/ka.png"
+            class="aspect-video object-cover w-full transition duration-500 hover:scale-105"
+            alt="کارنما راهکار نوین اتوماسیون اداری"
+          >
+
+          <!-- Software Icon -->
+          <div
+            class="absolute bottom-5 right-5 w-20 h-20 rounded-3xl
+                   bg-slate-900/80 backdrop-blur-xl
+                   border border-white/10
+                   shadow-2xl
+                   flex items-center justify-center p-2"
+          >
+
+            <img
+              src="./assets/photos/icons/karnama_icon.jpg"
+              class="w-full h-full object-cover rounded-2xl"
+              alt="آیکون کارنما"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- Content -->
+        <div class="p-8">
+
+          <h3 class="text-2xl font-bold">
+            کارنما راهکار نوین اتوماسیون اداری
+          </h3>
+
+          <p class="text-slate-400 mt-4 leading-8">
+            سامانه اتوماسیون اداری تحت وب برای مدیریت نامه ها،
+            بایگانی اسناد، گردش مکاتبات، مدیریت کاربران و
+            فرآیندهای سازمانی.
+          </p>
+
+
+          <!-- Technologies -->
+          <div class="flex flex-wrap gap-3 mt-6">
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Laravel
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              PHP
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Filament
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              TailwindCSS
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              MySQL
+            </span>
+
+          </div>
+
+
+          <!-- Project Links -->
+          <div class="flex flex-wrap gap-3 mt-7">
+
+            <a
+              href="./karnama.html"
+              class="btn bg-blue-600 hover:bg-blue-500
+                     px-6 py-3 rounded-2xl
+                     flex items-center gap-2"
+            >
+              <i class="fas fa-arrow-up-right-from-square"></i>
+              مشاهده پروژه
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           ARSHINO
+           ================================================= -->
+
+      <div
+        class="glass rounded-[35px] overflow-hidden card-hover"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+
+        <div class="relative overflow-hidden">
+
+          <img
+            src="./assets/photos/arshino.png"
+            class="aspect-video object-cover w-full transition duration-500 hover:scale-105"
+            alt="آرشینو"
+          >
+
+
+          <div
+            class="absolute bottom-5 right-5 w-20 h-20 rounded-3xl
+                   bg-slate-900/80 backdrop-blur-xl
+                   border border-white/10
+                   shadow-2xl
+                   flex items-center justify-center p-2"
+          >
+
+            <img
+              src="./assets/photos/icons/arshino_icon.png"
+              class="w-full h-full object-cover rounded-2xl"
+              alt="آیکون آرشینو"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="p-8">
+
+          <h3 class="text-2xl font-bold">
+            آرشینو
+          </h3>
+
+          <p class="text-slate-400 mt-4 leading-8">
+            نرم افزار مدیریت فایل و تصاویر با قابلیت
+            دسته بندی، جستجوی سریع، شناسایی تصاویر تکراری
+            و مدیریت آرشیو.
+          </p>
+
+
+          <div class="flex flex-wrap gap-3 mt-6">
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Flutter
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Dart
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              open cv
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              classification
+            </span>
+
+          </div>
+
+           <!-- Project Links -->
+          <div class="flex flex-wrap gap-3 mt-7">
+
+            <a
+              href="./arshino.html"
+              class="btn bg-blue-600 hover:bg-blue-500
+                     px-6 py-3 rounded-2xl
+                     flex items-center gap-2"
+            >
+              <i class="fas fa-arrow-up-right-from-square"></i>
+              مشاهده پروژه
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           OFFLINE SECRETARIAT
+           ================================================= -->
+
+      <div
+        class="glass rounded-[35px] overflow-hidden card-hover"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+
+        <div class="relative overflow-hidden">
+
+          <img
+            src="./assets/photos/dabir.jpg"
+            class="aspect-video object-cover w-full transition duration-500 hover:scale-105"
+            alt="نرم افزار دبیرخانه آفلاین"
+          >
+
+
+          <div
+            class="absolute bottom-5 right-5 w-20 h-20 rounded-3xl
+                   bg-slate-900/80 backdrop-blur-xl
+                   border border-white/10
+                   shadow-2xl
+                   flex items-center justify-center"
+          >
+
+            <img
+              src="./assets/photos/icons/dabirkhane_icon.png"
+              class="w-full h-full object-cover rounded-2xl"
+              alt="آیکون آرشینو"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="p-8">
+
+          <h3 class="text-2xl font-bold">
+            نرم افزار دبیرخانه آفلاین
+          </h3>
+
+          <p class="text-slate-400 mt-4 leading-8">
+            نرم افزار مدیریت دبیرخانه برای ویندوز و اندروید
+            با قابلیت ثبت و مدیریت نامه ها، جستجو،
+            دسته بندی و مدیریت فایل های پیوست.
+          </p>
+
+
+          <div class="flex flex-wrap gap-3 mt-6">
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Flutter
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Dart
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              SQLite
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Windows
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Android
+            </span>
+
+          </div>
+
+           <!-- Project Links -->
+          <div class="flex flex-wrap gap-3 mt-7">
+
+            <a
+              href="./dabirkhaneh.html"
+              class="btn bg-blue-600 hover:bg-blue-500
+                     px-6 py-3 rounded-2xl
+                     flex items-center gap-2"
+            >
+              <i class="fas fa-arrow-up-right-from-square"></i>
+              مشاهده پروژه
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           CRM EMAM ALI
+           ================================================= -->
+
+      <div
+        class="glass rounded-[35px] overflow-hidden card-hover"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+
+        <div class="relative overflow-hidden">
+
+          <img
+            src="./assets/photos/sc-kheiriehemamali.ir.png"
+            class="aspect-video object-cover w-full transition duration-500 hover:scale-105"
+            alt="CRM خیریه امام علی"
+          >
+
+
+          <div
+            class="absolute bottom-5 right-5 w-20 h-20 rounded-3xl
+                   bg-slate-900/80 backdrop-blur-xl
+                   border border-white/10
+                   shadow-2xl
+                   flex items-center justify-center"
+          >
+
+            <i class="fas fa-hand-holding-heart text-cyan-400 text-3xl"></i>
+
+          </div>
+
+        </div>
+
+
+        <div class="p-8">
+
+          <h3 class="text-2xl font-bold">
+            CRM خیریه امام علی (ع) شهر گرگاب
+          </h3>
+
+          <p class="text-slate-400 mt-4 leading-8">
+            سامانه مدیریت خیرین، پرونده مددجویان،
+            پرداخت ها، گزارش گیری، پیامک و مدیریت کاربران.
+          </p>
+
+
+          <div class="flex flex-wrap gap-3 mt-6">
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Laravel
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              PHP
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Filament
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              MySQL
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           DOCUMENT MANAGEMENT
+           ================================================= -->
+
+      <div
+        class="glass rounded-[35px] overflow-hidden card-hover"
+        data-aos="fade-up"
+        data-aos-delay="250"
+      >
+
+        <div class="relative overflow-hidden">
+
+          <img
+            src="./assets/photos/rased.png"
+            class="aspect-video object-cover w-full transition duration-500 hover:scale-105"
+            alt="راصد"
+          >
+
+
+          <div
+            class="absolute bottom-5 right-5 w-20 h-20 rounded-3xl
+                   bg-slate-900/80 backdrop-blur-xl
+                   border border-white/10
+                   shadow-2xl
+                   flex items-center justify-center"
+          >
+
+            <img
+              src="./assets/photos/icons/rased_icon.png"
+              class="w-full h-full object-cover rounded-2xl"
+              alt="آیکون آرشینو"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="p-8">
+
+          <h3 class="text-2xl font-bold">
+راصد          </h3>
+
+          <p class="text-slate-400 mt-4 leading-8">
+ سامانه رصد هوشمند اخبار سایت های خبری و کانال های ایتا 
+          </p>
+
+
+          <div class="flex flex-wrap gap-3 mt-6">
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Laravel
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              PHP
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              MySQL
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           FLUTTER APPLICATIONS
+           ================================================= -->
+
+      <div
+        class="glass rounded-[35px] overflow-hidden card-hover"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+
+        <div class="relative overflow-hidden">
+
+          <img
+            src="./assets/projects/work6.jpg"
+            class="aspect-video object-cover w-full transition duration-500 hover:scale-105"
+            alt="اپلیکیشن Flutter"
+          >
+
+
+          <div
+            class="absolute bottom-5 right-5 w-20 h-20 rounded-3xl
+                   bg-slate-900/80 backdrop-blur-xl
+                   border border-white/10
+                   shadow-2xl
+                   flex items-center justify-center"
+          >
+
+            <i class="fas fa-mobile-screen-button text-cyan-400 text-3xl"></i>
+
+          </div>
+
+        </div>
+
+
+        <div class="p-8">
+
+          <h3 class="text-2xl font-bold">
+نیکان          </h3>
+
+          <p class="text-slate-400 mt-4 leading-8">
+ نرم افزار مدیریت خیریه و نیکوکاری برای ارائه خدمات crm با هزینه مناسب به خیریه های محلی و ...           </p>
+
+
+          <div class="flex flex-wrap gap-3 mt-6">
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Flutter
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Dart
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Android
+            </span>
+
+            <span class="glass rounded-full px-4 py-2 text-sm">
+              Windows
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
   <!--==================== EXPERIENCE ====================-->
 
   <section class="py-32">
