@@ -1,40 +1,442 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="محمد مهدی حق شناس | Full Stack Developer">
   <title>محمد مهدی حق شناس | Full Stack Developer</title>
 
-  <!-- Tailwind -->
+  <!-- CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-  <!-- Vazirmatn -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
   <script>
-
     tailwind.config = {
-
+      darkMode: 'class',
       theme: {
-
         extend: {
+          fontFamily: { vazir: ['Vazirmatn', 'Tahoma', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-          colors: {
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-padding-top:90px}
+    body{
+      font-family:Vazirmatn,Tahoma,sans-serif;
+      background:
+        radial-gradient(circle at 85% 0%,rgba(34,211,238,.12),transparent 28rem),
+        radial-gradient(circle at 8% 30%,rgba(16,185,129,.08),transparent 28rem),
+        #f8fafc;color:#0f172a
+    }
+    .dark body{
+      background:
+        radial-gradient(circle at 85% 0%,rgba(34,211,238,.10),transparent 28rem),
+        radial-gradient(circle at 8% 30%,rgba(16,185,129,.07),transparent 28rem),
+        #07111f;color:#e5edf7
+    }
+    .glass{background:rgba(255,255,255,.72);border:1px solid rgba(15,23,42,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .dark .glass{background:rgba(12,27,45,.65);border-color:rgba(255,255,255,.08)}
+    .gradient-text{background:linear-gradient(110deg,#06b6d4,#10b981 50%,#3b82f6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .grid-bg{background-image:linear-gradient(rgba(15,23,42,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.035) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+    .dark .grid-bg{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px)}
+    .project{transition:.3s ease}
+    .project:hover{transform:translateY(-6px);box-shadow:0 25px 70px rgba(15,23,42,.11);border-color:rgba(6,182,212,.28)}
+    .dark .project:hover{box-shadow:0 25px 70px rgba(0,0,0,.25)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.show{opacity:1;transform:none}
+    .skill span{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#06b6d4,#10b981);transition:width 1s ease}
+    .mobile-menu{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .mobile-menu.open{max-height:500px}
+    .shot{object-fit:cover;object-position:top center}
+  </style>
+</head>
 
+<body class="font-vazir">
+<div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 pt-3">
+  <div class="max-w-6xl mx-auto glass rounded-2xl shadow-lg">
+    <div class="h-16 px-4 md:px-6 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-emerald-400 text-slate-950 grid place-items-center font-black">م</div>
+        <div>
+          <div class="font-bold text-sm">محمد مهدی حق شناس</div>
+          <div class="text-[10px] text-slate-500 dark:text-slate-400">Full Stack Developer</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-500 dark:text-slate-300">
+        <a class="hover:text-cyan-500 transition" href="#home">خانه</a>
+        <a class="hover:text-cyan-500 transition" href="#about">درباره من</a>
+        <a class="hover:text-cyan-500 transition" href="#services">خدمات</a>
+        <a class="hover:text-cyan-500 transition" href="#projects">نمونه‌کارها</a>
+        <a class="hover:text-cyan-500 transition" href="#skills">مهارت‌ها</a>
+        <a class="hover:text-cyan-500 transition" href="#contact">تماس</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <!-- System / Light / Dark -->
+        <div class="relative">
+          <button id="themeBtn" class="w-10 h-10 rounded-xl bg-slate-900/5 dark:bg-white/5 grid place-items-center" title="تنظیم تم">
+            <i id="themeIcon" data-lucide="monitor" class="w-5 h-5"></i>
+          </button>
+          <div id="themeMenu" class="hidden absolute left-0 top-12 w-36 glass rounded-xl p-1 shadow-xl text-xs">
+            <button data-theme="system" class="theme-option w-full text-right px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5">سیستم</button>
+            <button data-theme="light" class="theme-option w-full text-right px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5">روشن</button>
+            <button data-theme="dark" class="theme-option w-full text-right px-3 py-2 rounded-lg hover:bg-slate-900/5 dark:hover:bg-white/5">تیره</button>
+          </div>
+        </div>
+
+        <a href="#contact" class="hidden sm:flex px-4 py-2.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 text-xs font-bold">شروع همکاری</a>
+        <button id="menuBtn" class="md:hidden w-10 h-10 rounded-xl bg-slate-900/5 dark:bg-white/5 grid place-items-center">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu md:hidden border-t border-slate-900/10 dark:border-white/10">
+      <nav class="p-4 grid gap-1 text-sm">
+        <a class="p-3 rounded-xl hover:bg-slate-900/5 dark:hover:bg-white/5" href="#home">خانه</a>
+        <a class="p-3 rounded-xl hover:bg-slate-900/5 dark:hover:bg-white/5" href="#about">درباره من</a>
+        <a class="p-3 rounded-xl hover:bg-slate-900/5 dark:hover:bg-white/5" href="#services">خدمات</a>
+        <a class="p-3 rounded-xl hover:bg-slate-900/5 dark:hover:bg-white/5" href="#projects">نمونه‌کارها</a>
+        <a class="p-3 rounded-xl hover:bg-slate-900/5 dark:hover:bg-white/5" href="#skills">مهارت‌ها</a>
+        <a class="p-3 rounded-xl hover:bg-slate-900/5 dark:hover:bg-white/5" href="#contact">تماس</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="relative z-10">
+
+<!-- HERO: فاصله‌ها عمداً کمتر شده -->
+<section id="home" class="min-h-[92vh] pt-28 pb-10 px-4 flex items-center">
+  <div class="max-w-6xl mx-auto w-full">
+    <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-12 items-center">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-2 rounded-full glass text-xs text-cyan-600 dark:text-cyan-300 mb-5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Full Stack Developer · آماده همکاری
+        </div>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mb-2">سلام، من</p>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.15]">محمد مهدی <span class="block gradient-text">حق شناس</span></h1>
+        <p class="mt-5 text-lg text-slate-700 dark:text-slate-200 font-semibold">توسعه‌دهنده وب، نرم‌افزارهای سازمانی و اپلیکیشن‌های چندسکویی</p>
+        <p class="mt-4 max-w-2xl text-sm text-slate-500 dark:text-slate-400 leading-8">
+          بیش از ۱۲ سال تجربه در طراحی و توسعه نرم‌افزار با تمرکز روی Laravel، Flutter، API،
+          سیستم‌های سازمانی، اتوماسیون و تجربه کاربری مدرن.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#projects" class="px-5 py-3 rounded-xl bg-gradient-to-l from-emerald-400 to-cyan-400 text-slate-950 font-black text-sm flex items-center gap-2">نمونه‌کارها <i data-lucide="arrow-left" class="w-4 h-4"></i></a>
+          <a href="#contact" class="px-5 py-3 rounded-xl glass text-sm font-bold flex items-center gap-2">ارتباط با من <i data-lucide="send" class="w-4 h-4"></i></a>
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-8 max-w-xl">
+          <div class="glass rounded-2xl p-4"><b class="text-2xl gradient-text">12+</b><div class="text-[11px] text-slate-500 mt-1">سال تجربه</div></div>
+          <div class="glass rounded-2xl p-4"><b class="text-2xl gradient-text">90+</b><div class="text-[11px] text-slate-500 mt-1">پروژه</div></div>
+          <div class="glass rounded-2xl p-4"><b class="text-2xl gradient-text">15+</b><div class="text-[11px] text-slate-500 mt-1">تکنولوژی</div></div>
+        </div>
+      </div>
+
+      <div class="reveal flex justify-center" style="transition-delay:.1s">
+        <div class="relative w-[290px] h-[290px] sm:w-[360px] sm:h-[360px]">
+          <div class="absolute inset-0 rounded-full border border-cyan-400/20"></div>
+          <div class="absolute inset-8 rounded-full border border-emerald-400/20"></div>
+          <div class="absolute inset-20 rounded-[36px] glass grid place-items-center shadow-2xl">
+            <div class="text-center">
+              <div class="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-br from-cyan-400/15 to-emerald-400/15 grid place-items-center">
+                <i data-lucide="code-2" class="w-12 h-12 text-cyan-500"></i>
+              </div>
+              <div class="font-black text-xl mt-5">BUILD & CREATE</div>
+              <div class="text-xs text-slate-500 mt-2">Web · Mobile · Enterprise</div>
+            </div>
+          </div>
+          <div class="absolute top-7 right-0 glass rounded-2xl px-4 py-3 text-xs"><i data-lucide="server" class="w-4 h-4 inline text-cyan-500"></i> Laravel</div>
+          <div class="absolute bottom-7 left-0 glass rounded-2xl px-4 py-3 text-xs"><i data-lucide="smartphone" class="w-4 h-4 inline text-emerald-500"></i> Flutter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-12 sm:py-14 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-7">
+      <span class="text-xs text-cyan-500 font-bold tracking-[.2em]">ABOUT ME</span>
+      <h2 class="text-3xl sm:text-4xl font-black mt-2">درباره من</h2>
+    </div>
+    <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-5">
+      <div class="glass rounded-3xl p-7 sm:p-8 reveal">
+        <p class="text-slate-700 dark:text-slate-300 leading-9">
+          من محمد مهدی حق شناس هستم و بیش از ۱۲ سال در زمینه طراحی و توسعه نرم‌افزار فعالیت می‌کنم.
+          علاقه اصلی من ساخت سیستم‌های سازمانی، اتوماسیون اداری، اپلیکیشن‌های موبایل و APIهای سریع و امن است.
+        </p>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-8 mt-4">
+          برای من یک محصول خوب فقط ظاهر زیبا نیست؛ معماری درست، سرعت، امنیت، نگهداری آسان و تجربه کاربری مناسب اهمیت دارد.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 reveal">
+        <div class="glass rounded-3xl p-5"><i data-lucide="layers-3" class="w-7 h-7 text-cyan-500"></i><h3 class="font-bold mt-5">معماری تمیز</h3><p class="text-xs text-slate-500 mt-2">کد قابل توسعه</p></div>
+        <div class="glass rounded-3xl p-5"><i data-lucide="gauge" class="w-7 h-7 text-emerald-500"></i><h3 class="font-bold mt-5">Performance</h3><p class="text-xs text-slate-500 mt-2">سرعت و بهینه‌سازی</p></div>
+        <div class="glass rounded-3xl p-5"><i data-lucide="shield-check" class="w-7 h-7 text-blue-500"></i><h3 class="font-bold mt-5">امنیت</h3><p class="text-xs text-slate-500 mt-2">توسعه استاندارد</p></div>
+        <div class="glass rounded-3xl p-5"><i data-lucide="sparkles" class="w-7 h-7 text-cyan-500"></i><h3 class="font-bold mt-5">UI مدرن</h3><p class="text-xs text-slate-500 mt-2">تجربه کاربری</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-12 sm:py-14 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-7">
+      <span class="text-xs text-emerald-500 font-bold tracking-[.2em]">SERVICES</span>
+      <h2 class="text-3xl sm:text-4xl font-black mt-2">چه کاری انجام می‌دهم؟</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <article class="glass rounded-3xl p-7 project reveal"><div class="w-14 h-14 rounded-2xl bg-cyan-400/10 grid place-items-center"><i data-lucide="globe-2" class="w-7 h-7 text-cyan-500"></i></div><h3 class="font-bold text-lg mt-6">توسعه وب</h3><p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-3">سامانه‌های اختصاصی با Laravel، PHP، JavaScript و Tailwind.</p></article>
+      <article class="glass rounded-3xl p-7 project reveal"><div class="w-14 h-14 rounded-2xl bg-emerald-400/10 grid place-items-center"><i data-lucide="smartphone" class="w-7 h-7 text-emerald-500"></i></div><h3 class="font-bold text-lg mt-6">اپلیکیشن Flutter</h3><p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-3">اپلیکیشن Android و Windows با Flutter، Dart و SQLite.</p></article>
+      <article class="glass rounded-3xl p-7 project reveal"><div class="w-14 h-14 rounded-2xl bg-blue-400/10 grid place-items-center"><i data-lucide="building-2" class="w-7 h-7 text-blue-500"></i></div><h3 class="font-bold text-lg mt-6">نرم‌افزار سازمانی</h3><p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-3">دبیرخانه، CRM، ERP، مدیریت اسناد و اتوماسیون اداری.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-12 sm:py-14 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-7">
+      <span class="text-xs text-cyan-500 font-bold tracking-[.2em]">SELECTED PROJECTS</span>
+      <h2 class="text-3xl sm:text-4xl font-black mt-2">نمونه‌کارها</h2>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Screenshot واقعی + آیکون نرم‌افزار + لینک پروژه</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+
+      <!-- KARNAMA -->
+      <a href="https://haghshenasdev.github.io/karnama.html" target="_blank" rel="noopener" class="glass rounded-3xl overflow-hidden project reveal block">
+        <div class="h-60 sm:h-72 bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
+          <img src="https://haghshenasdev.github.io/assets/photos/ka.png" class="shot w-full h-full" alt="Screenshot کارنما">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/35 to-transparent"></div>
+          <img src="https://haghshenasdev.github.io/assets/photos/icons/karnama_icon.jpg" class="absolute right-5 bottom-5 w-20 h-20 rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800 bg-white" alt="آیکون کارنما">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center"><h3 class="font-black text-xl">کارنما</h3><span class="text-[10px] px-2 py-1 rounded-lg bg-cyan-400/10 text-cyan-600 dark:text-cyan-300">WEB</span></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-2">اتوماسیون اداری، مدیریت پروژه و نامه‌ها در یک محیط یکپارچه.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Laravel</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Filament</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">MySQL</span></div>
+          <div class="mt-5 text-xs text-cyan-600 dark:text-cyan-300 flex items-center gap-2">مشاهده پروژه <i data-lucide="external-link" class="w-4 h-4"></i></div>
+        </div>
+      </a>
+
+      <!-- ARSHINO -->
+      <a href="https://haghshenasdev.github.io/arshino.html" target="_blank" rel="noopener" class="glass rounded-3xl overflow-hidden project reveal block">
+        <div class="h-60 sm:h-72 bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
+          <img src="https://haghshenasdev.github.io/assets/photos/arshino.png" class="shot w-full h-full" alt="Screenshot آرشینو">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/35 to-transparent"></div>
+          <img src="https://haghshenasdev.github.io/assets/photos/icons/arshino_icon.png" class="absolute right-5 bottom-5 w-20 h-20 rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800 bg-white object-contain p-1" alt="آیکون آرشینو">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center"><h3 class="font-black text-xl">آرشینو</h3><span class="text-[10px] px-2 py-1 rounded-lg bg-emerald-400/10 text-emerald-600 dark:text-emerald-300">DESKTOP</span></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-2">مدیریت هوشمند آرشیو تصاویر و ویدئوها، جستجو و شناسایی فایل‌های تکراری.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Flutter</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Dart</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">OpenCV</span></div>
+          <div class="mt-5 text-xs text-emerald-600 dark:text-emerald-300 flex items-center gap-2">مشاهده پروژه <i data-lucide="external-link" class="w-4 h-4"></i></div>
+        </div>
+      </a>
+
+      <!-- DABIRKHANEH -->
+      <a href="https://haghshenasdev.github.io/dabirkhaneh.html" target="_blank" rel="noopener" class="glass rounded-3xl overflow-hidden project reveal block">
+        <div class="h-60 sm:h-72 bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
+          <img src="https://haghshenasdev.github.io/assets/photos/dabir.jpg" class="shot w-full h-full" alt="Screenshot دبیرخانه">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/35 to-transparent"></div>
+          <img src="https://haghshenasdev.github.io/assets/photos/icons/dabirkhane_icon.png" class="absolute right-5 bottom-5 w-20 h-20 rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800 bg-white object-contain p-1" alt="آیکون دبیرخانه">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center"><h3 class="font-black text-xl">دبیرخانه</h3><span class="text-[10px] px-2 py-1 rounded-lg bg-blue-400/10 text-blue-600 dark:text-blue-300">APP</span></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-2">مدیریت مکاتبات و نامه‌ها به‌صورت آفلاین برای Windows و Android.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Flutter</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">SQLite</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Windows</span></div>
+          <div class="mt-5 text-xs text-blue-600 dark:text-blue-300 flex items-center gap-2">مشاهده پروژه <i data-lucide="external-link" class="w-4 h-4"></i></div>
+        </div>
+      </a>
+
+      <!-- CRM -->
+      <article class="glass rounded-3xl overflow-hidden project reveal">
+        <div class="h-60 sm:h-72 bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
+          <img src="https://haghshenasdev.github.io/assets/photos/sc-kheiriehemamali.ir.png" class="shot w-full h-full" alt="Screenshot CRM خیریه امام علی">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/35 to-transparent"></div>
+          <div class="absolute right-5 bottom-5 w-20 h-20 rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800 bg-white grid place-items-center">
+            <i data-lucide="heart-handshake" class="w-10 h-10 text-blue-600"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center"><h3 class="font-black text-xl">CRM خیریه امام علی (ع)</h3><span class="text-[10px] px-2 py-1 rounded-lg bg-violet-400/10 text-violet-600 dark:text-violet-300">CRM</span></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-2">مدیریت خیرین، مددجویان، پرداخت‌ها، گزارش‌ها و کاربران.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Laravel</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Filament</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">MySQL</span></div>
+        </div>
+      </article>
+
+      <!-- RASED -->
+      <article class="glass rounded-3xl overflow-hidden project reveal">
+        <div class="h-60 sm:h-72 bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-950/20 dark:to-blue-950/20 overflow-hidden relative flex items-center justify-center">
+          <img src="https://haghshenasdev.github.io/assets/photos/icons/rased_icon.png" class="w-48 h-48 object-contain" alt="آیکون راصد">
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center"><h3 class="font-black text-xl">راصد</h3><span class="text-[10px] px-2 py-1 rounded-lg bg-cyan-400/10 text-cyan-600 dark:text-cyan-300">MONITORING</span></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-2">سامانه رصد هوشمند اخبار سایت‌های خبری و کانال‌های ایتا.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Laravel</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">RSS</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">MySQL</span></div>
+          <a href="https://github.com/haghshenasdev/rased" target="_blank" rel="noopener" class="mt-5 text-xs text-cyan-600 dark:text-cyan-300 flex items-center gap-2">GitHub پروژه <i data-lucide="github" class="w-4 h-4"></i></a>
+        </div>
+      </article>
+
+      <!-- NIKAN -->
+      <article class="glass rounded-3xl overflow-hidden project reveal">
+        <div class="h-60 sm:h-72 bg-gradient-to-br from-amber-50 to-emerald-50 dark:from-amber-950/20 dark:to-emerald-950/20 flex items-center justify-center">
+          <div class="w-28 h-28 rounded-[30px] bg-gradient-to-br from-amber-300 to-emerald-400 grid place-items-center shadow-xl">
+            <i data-lucide="heart-handshake" class="w-14 h-14 text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center"><h3 class="font-black text-xl">نیکان</h3><span class="text-[10px] px-2 py-1 rounded-lg bg-amber-400/10 text-amber-600 dark:text-amber-300">MOBILE</span></div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-7 mt-2">نرم‌افزار مدیریت خیریه و نیکوکاری برای ارائه CRM اقتصادی به خیریه‌های محلی.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Flutter</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Dart</span><span class="px-2 py-1 rounded-lg bg-slate-900/5 dark:bg-white/5">Android</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-12 sm:py-14 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-7"><span class="text-xs text-emerald-500 font-bold tracking-[.2em]">TECH STACK</span><h2 class="text-3xl sm:text-4xl font-black mt-2">مهارت‌های تخصصی</h2></div>
+    <div class="glass rounded-3xl p-7 sm:p-9 grid md:grid-cols-2 gap-x-10 gap-y-6">
+      <div class="reveal"><div class="flex justify-between text-sm mb-2"><span>Laravel / PHP</span><b>98%</b></div><div class="skill h-2 bg-slate-900/5 dark:bg-white/5 rounded-full"><span data-w="98%"></span></div></div>
+      <div class="reveal"><div class="flex justify-between text-sm mb-2"><span>Flutter / Dart</span><b>92%</b></div><div class="skill h-2 bg-slate-900/5 dark:bg-white/5 rounded-full"><span data-w="92%"></span></div></div>
+      <div class="reveal"><div class="flex justify-between text-sm mb-2"><span>JavaScript</span><b>95%</b></div><div class="skill h-2 bg-slate-900/5 dark:bg-white/5 rounded-full"><span data-w="95%"></span></div></div>
+      <div class="reveal"><div class="flex justify-between text-sm mb-2"><span>Tailwind CSS</span><b>95%</b></div><div class="skill h-2 bg-slate-900/5 dark:bg-white/5 rounded-full"><span data-w="95%"></span></div></div>
+      <div class="reveal"><div class="flex justify-between text-sm mb-2"><span>REST API</span><b>95%</b></div><div class="skill h-2 bg-slate-900/5 dark:bg-white/5 rounded-full"><span data-w="95%"></span></div></div>
+      <div class="reveal"><div class="flex justify-between text-sm mb-2"><span>MySQL / SQLite</span><b>95%</b></div><div class="skill h-2 bg-slate-900/5 dark:bg-white/5 rounded-full"><span data-w="95%"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-12 sm:py-14 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="glass rounded-[32px] p-7 sm:p-10 reveal">
+      <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-10">
+        <div>
+          <span class="text-xs text-cyan-500 font-bold tracking-[.2em]">LET'S TALK</span>
+          <h2 class="text-4xl sm:text-5xl font-black leading-tight mt-3">یک ایده داری؟ <span class="block gradient-text">بسازیمش.</span></h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-8 mt-4">برای طراحی سامانه، اپلیکیشن یا همکاری روی یک پروژه نرم‌افزاری با من در ارتباط باشید.</p>
+          <div class="space-y-3 mt-7">
+            <a href="mailto:mhgorgab@gmail.com" class="glass rounded-2xl p-4 flex items-center gap-4"><div class="w-11 h-11 rounded-xl bg-cyan-400/10 grid place-items-center"><i data-lucide="mail" class="text-cyan-500"></i></div><div><small class="block text-slate-500">ایمیل</small><b class="text-sm">mhgorgab@gmail.com</b></div></a>
+            <a href="https://t.me/Haghshenas_developer" target="_blank" rel="noopener" class="glass rounded-2xl p-4 flex items-center gap-4"><div class="w-11 h-11 rounded-xl bg-emerald-400/10 grid place-items-center"><i data-lucide="send" class="text-emerald-500"></i></div><div><small class="block text-slate-500">Telegram</small><b class="text-sm">@Haghshenas_developer</b></div></a>
+          </div>
+        </div>
+        <form id="contactForm" class="glass rounded-3xl p-5 sm:p-7">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input required name="name" class="w-full rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 px-4 py-3 text-sm outline-none" placeholder="نام">
+            <input required type="email" name="email" class="w-full rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 px-4 py-3 text-sm outline-none" placeholder="ایمیل">
+          </div>
+          <input name="subject" class="mt-4 w-full rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 px-4 py-3 text-sm outline-none" placeholder="موضوع">
+          <textarea required name="message" rows="5" class="mt-4 w-full rounded-xl bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 px-4 py-3 text-sm outline-none resize-none" placeholder="پیام شما..."></textarea>
+          <button class="mt-4 w-full py-3.5 rounded-xl bg-gradient-to-l from-emerald-400 to-cyan-400 text-slate-950 font-black text-sm">ارسال پیام</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="relative z-10 max-w-6xl mx-auto px-4 pb-7">
+  <div class="border-t border-slate-900/10 dark:border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+    <span>© ۱۴۰۵ محمد مهدی حق شناس</span>
+    <a href="#home" class="flex items-center gap-2 hover:text-cyan-500">بازگشت به بالا <i data-lucide="arrow-up" class="w-4 h-4"></i></a>
+  </div>
+</footer>
+
+<script>
+  /*
+   * Theme:
+   * Default = System.
+   * User can choose System / Light / Dark.
+   */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const themeMenu = document.getElementById('themeMenu');
+  const themeIcon = document.getElementById('themeIcon');
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function getThemePreference() {
+    return localStorage.getItem('theme') || 'system';
+  }
+
+  function applyTheme() {
+    const preference = getThemePreference();
+    const dark = preference === 'dark' || (preference === 'system' && media.matches);
+    root.classList.toggle('dark', dark);
+    themeIcon.setAttribute('data-lucide',
+      preference === 'system' ? 'monitor' : (dark ? 'sun' : 'moon')
+    );
+    lucide.createIcons();
+  }
+
+  themeBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    themeMenu.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.theme-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      localStorage.setItem('theme', btn.dataset.theme);
+      themeMenu.classList.add('hidden');
+      applyTheme();
+    });
+  });
+
+  document.addEventListener('click', () => themeMenu.classList.add('hidden'));
+  media.addEventListener('change', () => {
+    if (getThemePreference() === 'system') applyTheme();
+  });
+
+  applyTheme();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Reveal animations + skills
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        entry.target.querySelectorAll?.('.skill span').forEach(bar => bar.style.width = bar.dataset.w);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .10 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Contact -> mail client
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const subject = data.get('subject') || 'پیام از سایت شخصی';
+    const body = `نام: ${data.get('name')}\nایمیل: ${data.get('email')}\n\nپیام:\n${data.get('message')}`;
+    location.href = `mailto:mhgorgab@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  lucide.createIcons();
+</script>
+</body>
+</html>
             primary: '#3B82F6',
 
             secondary: '#2563EB'
