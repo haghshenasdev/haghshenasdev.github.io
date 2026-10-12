@@ -1,2019 +1,425 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>آرشینو | مدیریت هوشمند آرشیو رسانه‌ای</title>
-
-    <meta name="description"
-          content="آرشینو؛ نرم‌افزار مدرن مدیریت، دسته‌بندی و سامان‌دهی عکس‌ها و ویدئوها برای روابط عمومی‌ها و تیم‌های رسانه‌ای.">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#effdf8',
-                            100: '#d9fbed',
-                            200: '#b5f4db',
-                            300: '#7ee9c4',
-                            400: '#42d6a5',
-                            500: '#18b887',
-                            600: '#0f966e',
-                            700: '#107859',
-                            800: '#116048',
-                            900: '#104f3d',
-                        }
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8fafc">
+  <title>آرشینو | مدیریت هوشمند آرشیو تصاویر و ویدئوها</title>
+  <meta name="description" content="آرشینو؛ ابزار دسکتاپ برای دسته‌بندی زمانی و پوشه‌ای عکس‌ها و ویدئوها، شناسایی تصاویر مشابه، مدیریت چهره‌ها و نگهداری آرشیو رسانه‌ای.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+          colors: {
+            ink: '#172033',
+            brand: {
+              50:'#eefbf6',100:'#d5f6e8',200:'#a9ecd3',300:'#72dcb8',
+              400:'#38c99a',500:'#16ad7c',600:'#0e8b65',700:'#0d7054',
+              800:'#105944',900:'#104a3a'
             }
+          },
+          boxShadow: {
+            soft: '0 16px 45px rgba(15, 23, 42, .07)',
+            lift: '0 28px 70px rgba(15, 23, 42, .13)'
+          }
         }
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
-        }
-
-        .hero-grid {
-            background-image:
-                linear-gradient(rgba(16, 185, 129, .06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 185, 129, .06) 1px, transparent 1px);
-            background-size: 42px 42px;
-        }
-
-        .glass {
-            background: rgba(255,255,255,.72);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .gradient-text {
-            background: linear-gradient(
-                135deg,
-                #10b981 0%,
-                #06b6d4 50%,
-                #3b82f6 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gradient-bg {
-            background: linear-gradient(
-                135deg,
-                #10b981 0%,
-                #06b6d4 55%,
-                #3b82f6 100%
-            );
-        }
-
-        .shadow-brand {
-            box-shadow:
-                0 25px 70px rgba(16, 185, 129, .18);
-        }
-
-        .floating {
-            animation: floating 5s ease-in-out infinite;
-        }
-
-        .floating-slow {
-            animation: floating 7s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-        }
-
-        .blob {
-            filter: blur(50px);
-            opacity: .25;
-        }
-
-        .feature-card {
-            transition:
-                transform .3s ease,
-                box-shadow .3s ease,
-                border-color .3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 25px 60px rgba(15, 23, 42, .09);
-            border-color: rgba(16, 185, 129, .25);
-        }
-
-        .step-line {
-            background: linear-gradient(
-                90deg,
-                #10b981,
-                #06b6d4,
-                #3b82f6
-            );
-        }
-
-        .mockup {
-            box-shadow:
-                0 35px 90px rgba(15, 23, 42, .16),
-                0 10px 30px rgba(16, 185, 129, .10);
-        }
-    </style>
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { font-family: Vazirmatn, Tahoma, sans-serif; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(22,173,124,.055) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(22,173,124,.055) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .text-gradient {
+      background: linear-gradient(110deg,#0e8b65 10%,#0891b2 55%,#4f46e5 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .gradient-panel { background: linear-gradient(135deg,#0d7054 0%,#0e8b65 42%,#0e7490 100%); }
+    .nav-glass { background: rgba(255,255,255,.88); backdrop-filter: blur(18px); }
+    .feature-card { transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 20px 55px rgba(15,23,42,.09); border-color: #a9ecd3; }
+    .shot-frame { background: #f1f5f9; border: 1px solid #dbe4ee; box-shadow: 0 24px 70px rgba(15,23,42,.12); }
+    .shot-placeholder {
+      min-height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 24px; text-align: center; color: #64748b;
+      background: radial-gradient(circle at 20% 10%, rgba(16,185,129,.08), transparent 35%), #f8fafc;
+      border: 2px dashed #b8c9d9; border-radius: 14px;
+    }
+    .shot-placeholder .placeholder-icon { width: 54px; height: 54px; display:grid; place-items:center; border-radius:16px; background:#e0f5ed; color:#0e8b65; }
+    .shot-placeholder small { max-width: 390px; line-height: 1.9; }
+    .window-bar { height: 42px; background:#fff; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; padding:0 14px; border-radius:13px 13px 0 0; }
+    .dot { width:8px;height:8px;border-radius:50%;display:inline-block;background:#cbd5e1; }
+    .mock-side { width:100px; flex-shrink:0; background:#f8fafc; border-left:1px solid #e2e8f0; padding:12px 8px; }
+    .mock-line { height:8px; background:#e2e8f0; border-radius:99px; margin:9px 0; }
+    .mock-thumb { border-radius:8px; background:linear-gradient(140deg,#bbf7d0,#99f6e4 45%,#bfdbfe); min-height:65px; }
+    .mock-thumb:nth-child(3n) { background:linear-gradient(140deg,#fed7aa,#fbcfe8); }
+    .mock-thumb:nth-child(4n) { background:linear-gradient(140deg,#c7d2fe,#bae6fd); }
+    .fade-up { animation: fadeUp .7s ease both; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+  </style>
 </head>
-
-<body class="bg-white text-slate-800 antialiased">
-
-<!-- ========================================================= -->
-<!-- NAVBAR -->
-<!-- ========================================================= -->
-
-<header class="fixed top-0 right-0 left-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-
-        <nav class="glass border border-white/70 rounded-2xl shadow-sm">
-
-            <div class="flex items-center justify-between px-5 py-3">
-
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3">
-
-                    <div class="w-11 h-11 rounded-xl gradient-bg
-                                flex items-center justify-center
-                                text-white shadow-lg">
-
-                        <!-- Folder icon -->
-                        <svg
-                            class="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M3 7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-                        </svg>
-                    </div>
-
-                    <div>
-                        <div class="font-black text-xl text-slate-900">
-                            آرشینو
-                        </div>
-
-                        <div class="text-[10px] text-slate-500">
-                            مدیریت هوشمند آرشیو
-                        </div>
-                    </div>
-
-                </a>
-
-                <!-- Desktop navigation -->
-                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-
-                    <a
-                        href="#features"
-                        class="text-slate-600 hover:text-brand-600 transition">
-                        قابلیت‌ها
-                    </a>
-
-                    <a
-                        href="#how"
-                        class="text-slate-600 hover:text-brand-600 transition">
-                        نحوه کار
-                    </a>
-
-                    <a
-                        href="#audience"
-                        class="text-slate-600 hover:text-brand-600 transition">
-                        مناسب چه کسانی است؟
-                    </a>
-
-                </div>
-
-                <!-- CTA -->
-                <a
-                    href="#download"
-                    class="hidden sm:inline-flex items-center gap-2
-                           px-5 py-2.5 rounded-xl
-                           gradient-bg text-white
-                           text-sm font-bold
-                           shadow-lg shadow-emerald-500/20
-                           hover:scale-[1.03]
-                           transition">
-
-                    شروع کنید
-
-                    <svg
-                        class="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15 19l-7-7 7-7"/>
-                    </svg>
-
-                </a>
-
-            </div>
-
-        </nav>
-    </div>
-</header>
-
-
-<!-- ========================================================= -->
-<!-- HERO -->
-<!-- ========================================================= -->
-
-<section
-    class="relative overflow-hidden pt-36 pb-24 hero-grid">
-
-    <!-- Background blobs -->
-
-    <div
-        class="blob absolute -top-32 -right-20
-               w-96 h-96 rounded-full bg-emerald-400">
-    </div>
-
-    <div
-        class="blob absolute top-40 -left-32
-               w-96 h-96 rounded-full bg-cyan-400">
-    </div>
-
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-            <!-- Text -->
-
-            <div class="text-center lg:text-right">
-
-                <div
-                    class="inline-flex items-center gap-2
-                           px-4 py-2 rounded-full
-                           bg-emerald-50
-                           border border-emerald-100
-                           text-emerald-700
-                           text-sm font-medium mb-7">
-
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-
-                    نسل جدید مدیریت آرشیو رسانه‌ای
-
-                </div>
-
-
-                <h1
-                    class="text-4xl sm:text-5xl lg:text-6xl
-                           font-black
-                           leading-[1.25]
-                           tracking-tight
-                           text-slate-950">
-
-                    آرشیو رسانه‌ای خود را
-
-                    <span class="gradient-text">
-                        هوشمندانه
-                    </span>
-
-                    مدیریت کنید.
-
-                </h1>
-
-
-                <p
-                    class="mt-7 text-lg
-                           leading-9
-                           text-slate-600
-                           max-w-xl
-                           mx-auto lg:mx-0">
-
-                    آرشینو یک نرم‌افزار مدرن برای مدیریت، دسته‌بندی
-                    و سامان‌دهی عکس‌ها و ویدئوهای شماست؛
-                    تا دیگر هیچ فایل مهمی در میان هزاران فایل گم نشود.
-
-                </p>
-
-
-                <div
-                    class="mt-9 flex flex-col sm:flex-row
-                           justify-center lg:justify-start
-                           gap-4">
-
-                    <a
-                        href="#download"
-                        class="gradient-bg
-                               text-white
-                               px-7 py-4
-                               rounded-2xl
-                               font-bold
-                               shadow-xl
-                               shadow-emerald-500/20
-                               hover:-translate-y-1
-                               transition
-                               flex items-center justify-center gap-3">
-
-                        دریافت آرشینو
-
-                        <svg
-                            class="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M12 16V4m0 12l-4-4m4 4l4-4M5 20h14"/>
-                        </svg>
-
-                    </a>
-
-
-                    <a
-                        href="#features"
-                        class="px-7 py-4
-                               rounded-2xl
-                               font-bold
-                               border border-slate-200
-                               bg-white
-                               text-slate-700
-                               hover:border-emerald-200
-                               hover:text-emerald-600
-                               transition">
-
-                        آشنایی با امکانات
-
-                    </a>
-
-                </div>
-
-
-                <!-- Small trust -->
-
-                <div
-                    class="mt-9 flex items-center
-                           justify-center lg:justify-start
-                           gap-6 text-sm text-slate-500">
-
-                    <div class="flex items-center gap-2">
-
-                        <svg
-                            class="w-5 h-5 text-emerald-500"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7"/>
-
-                        </svg>
-
-                        ساده و سریع
-
-                    </div>
-
-                    <div class="flex items-center gap-2">
-
-                        <svg
-                            class="w-5 h-5 text-emerald-500"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24">
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7"/>
-
-                        </svg>
-
-                        مناسب تیم‌های رسانه‌ای
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Product mockup -->
-
-            <div class="relative">
-
-                <!-- floating card -->
-
-                <div
-                    class="floating absolute
-                           -top-8 -right-5
-                           z-20
-                           bg-white
-                           rounded-2xl
-                           border border-slate-100
-                           shadow-xl
-                           p-4
-                           hidden sm:block">
-
-                    <div class="flex items-center gap-3">
-
-                        <div
-                            class="w-10 h-10
-                                   rounded-xl
-                                   bg-emerald-50
-                                   flex items-center justify-center">
-
-                            <svg
-                                class="w-5 h-5 text-emerald-600"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                viewBox="0 0 24 24">
-
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M4 7h16M4 12h16M4 17h10"/>
-
-                            </svg>
-
-                        </div>
-
-                        <div>
-
-                            <div class="text-xs text-slate-400">
-                                فایل‌های سازمان‌دهی شده
-                            </div>
-
-                            <div class="font-black text-slate-800">
-                                مرتب و آماده
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Main application -->
-
-                <div
-                    class="mockup
-                           relative
-                           bg-white
-                           rounded-3xl
-                           border border-slate-200
-                           overflow-hidden">
-
-                    <!-- Window top -->
-
-                    <div
-                        class="h-14
-                               border-b border-slate-100
-                               flex items-center
-                               justify-between
-                               px-5">
-
-                        <div class="flex gap-2">
-
-                            <span class="w-3 h-3 rounded-full bg-red-300"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-300"></span>
-                            <span class="w-3 h-3 rounded-full bg-green-300"></span>
-
-                        </div>
-
-                        <div
-                            class="text-xs font-bold text-slate-500">
-                            آرشینو
-                        </div>
-
-                    </div>
-
-
-                    <div class="flex min-h-[430px]">
-
-                        <!-- Sidebar -->
-
-                        <aside
-                            class="w-44
-                                   bg-slate-50
-                                   border-l border-slate-100
-                                   p-4
-                                   hidden sm:block">
-
-                            <div
-                                class="h-9 rounded-xl
-                                       gradient-bg
-                                       text-white
-                                       flex items-center
-                                       px-3 text-xs
-                                       font-bold mb-5">
-
-                                آرشیو من
-
-                            </div>
-
-
-                            <div class="space-y-2 text-xs">
-
-                                <div
-                                    class="bg-emerald-50
-                                           text-emerald-700
-                                           rounded-lg
-                                           p-3 font-semibold">
-
-                                    همه فایل‌ها
-
-                                </div>
-
-                                <div class="p-3 text-slate-500">
-                                    تصاویر
-                                </div>
-
-                                <div class="p-3 text-slate-500">
-                                    ویدئوها
-                                </div>
-
-                                <div class="p-3 text-slate-500">
-                                    رویدادها
-                                </div>
-
-                                <div class="p-3 text-slate-500">
-                                    پوشه‌ها
-                                </div>
-
-                            </div>
-
-                        </aside>
-
-
-                        <!-- Content -->
-
-                        <main class="flex-1 p-5">
-
-                            <div
-                                class="flex items-center
-                                       justify-between mb-5">
-
-                                <div>
-
-                                    <div
-                                        class="text-sm
-                                               font-black
-                                               text-slate-800">
-
-                                        آرشیو رسانه‌ای
-
-                                    </div>
-
-                                    <div
-                                        class="text-[10px]
-                                               text-slate-400
-                                               mt-1">
-
-                                        ۲٬۴۸۰ فایل
-
-                                    </div>
-
-                                </div>
-
-
-                                <div
-                                    class="w-32 h-8
-                                           rounded-lg
-                                           bg-slate-100">
-                                </div>
-
-                            </div>
-
-
-                            <!-- folders -->
-
-                            <div
-                                class="grid grid-cols-2
-                                       sm:grid-cols-3
-                                       gap-3">
-
-                                <div
-                                    class="rounded-2xl
-                                           bg-emerald-50
-                                           p-4">
-
-                                    <div
-                                        class="w-10 h-10
-                                               rounded-xl
-                                               bg-white
-                                               flex items-center
-                                               justify-center
-                                               text-emerald-500
-                                               mb-3">
-
-                                        <svg
-                                            class="w-5 h-5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            viewBox="0 0 24 24">
-
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                d="M3 7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-
-                                        </svg>
-
-                                    </div>
-
-                                    <div
-                                        class="text-xs font-bold">
-                                        مراسم‌ها
-                                    </div>
-
-                                    <div
-                                        class="text-[9px]
-                                               text-slate-400 mt-1">
-                                        ۴۸۶ فایل
-                                    </div>
-
-                                </div>
-
-
-                                <div
-                                    class="rounded-2xl
-                                           bg-cyan-50
-                                           p-4">
-
-                                    <div
-                                        class="w-10 h-10
-                                               rounded-xl
-                                               bg-white
-                                               flex items-center
-                                               justify-center
-                                               text-cyan-500
-                                               mb-3">
-
-                                        <svg
-                                            class="w-5 h-5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            viewBox="0 0 24 24">
-
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-
-                                        </svg>
-
-                                    </div>
-
-                                    <div
-                                        class="text-xs font-bold">
-                                        ویدئوها
-                                    </div>
-
-                                    <div
-                                        class="text-[9px]
-                                               text-slate-400 mt-1">
-                                        ۳۱۲ فایل
-                                    </div>
-
-                                </div>
-
-
-                                <div
-                                    class="rounded-2xl
-                                           bg-blue-50
-                                           p-4">
-
-                                    <div
-                                        class="w-10 h-10
-                                               rounded-xl
-                                               bg-white
-                                               flex items-center
-                                               justify-center
-                                               text-blue-500
-                                               mb-3">
-
-                                        <svg
-                                            class="w-5 h-5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            viewBox="0 0 24 24">
-
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M5 20h14a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v14a1 1 0 001 1z"/>
-
-                                        </svg>
-
-                                    </div>
-
-                                    <div
-                                        class="text-xs font-bold">
-                                        تصاویر
-                                    </div>
-
-                                    <div
-                                        class="text-[9px]
-                                               text-slate-400 mt-1">
-                                        ۱٬۶۸۲ فایل
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- media cards -->
-
-                            <div
-                                class="mt-5
-                                       grid grid-cols-3
-                                       gap-3">
-
-                                <div
-                                    class="h-24
-                                           rounded-xl
-                                           bg-gradient-to-br
-                                           from-emerald-100
-                                           to-cyan-100">
-                                </div>
-
-                                <div
-                                    class="h-24
-                                           rounded-xl
-                                           bg-gradient-to-br
-                                           from-cyan-100
-                                           to-blue-100">
-                                </div>
-
-                                <div
-                                    class="h-24
-                                           rounded-xl
-                                           bg-gradient-to-br
-                                           from-blue-100
-                                           to-indigo-100">
-                                </div>
-
-                            </div>
-
-                        </main>
-
-                    </div>
-
-                </div>
-
-
-                <!-- bottom floating -->
-
-                <div
-                    class="floating-slow
-                           absolute
-                           -bottom-7 -left-7
-                           bg-white
-                           rounded-2xl
-                           border border-slate-100
-                           shadow-xl
-                           p-4
-                           hidden sm:block">
-
-                    <div
-                        class="flex items-center gap-3">
-
-                        <div
-                            class="w-10 h-10
-                                   rounded-full
-                                   gradient-bg
-                                   flex items-center
-                                   justify-center
-                                   text-white">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <div
-                                class="text-xs text-slate-400">
-                                سازمان‌دهی
-                            </div>
-
-                            <div
-                                class="font-black text-sm">
-                                فایل‌ها مرتب شدند
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <!-- NAVBAR -->
+  <header class="fixed inset-x-0 top-0 z-50 px-3 sm:px-5 pt-3">
+    <nav class="nav-glass mx-auto max-w-7xl rounded-2xl border border-white shadow-sm ring-1 ring-slate-200/70">
+      <div class="flex items-center justify-between gap-4 px-4 sm:px-6 py-3">
+        <a href="#top" class="flex items-center gap-3 shrink-0">
+          <span class="grid h-11 w-11 place-items-center rounded-2xl gradient-panel text-white shadow-md"><i data-lucide="images" class="w-6 h-6"></i></span>
+          <span><b class="block text-lg font-black text-slate-950">آرشینو</b><span class="block text-[11px] text-slate-500">مدیریت آرشیو رسانه‌ای</span></span>
+        </a>
+        <div class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a class="hover:text-brand-700" href="#features">قابلیت‌ها</a>
+          <a class="hover:text-brand-700" href="#workflow">روند کار</a>
+          <a class="hover:text-brand-700" href="#screenshots">محیط نرم‌افزار</a>
+          <a class="hover:text-brand-700" href="#archive">آرشیو قابل‌حمل</a>
+        </div>
+        <a href="#download" class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 sm:px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-700">
+          دریافت آرشینو <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="relative overflow-hidden pt-36 sm:pt-40 pb-16 sm:pb-24 grid-bg">
+      <div class="pointer-events-none absolute -top-24 right-[-80px] h-80 w-80 rounded-full bg-emerald-200/60 blur-3xl"></div>
+      <div class="pointer-events-none absolute top-64 left-[-90px] h-80 w-80 rounded-full bg-cyan-200/50 blur-3xl"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[.92fr_1.08fr] lg:gap-16">
+        <div class="fade-up text-center lg:text-right">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/85 px-4 py-2 text-sm font-semibold text-brand-800 shadow-sm">
+            <span class="h-2 w-2 rounded-full bg-brand-500"></span>
+            ساخته‌شده برای آرشیوهای بزرگ عکس و ویدئو
+          </div>
+          <h1 class="text-4xl sm:text-5xl xl:text-[3.65rem] font-black leading-[1.35] tracking-tight text-slate-950">
+            از هزاران فایل رسانه‌ای،
+            <span class="text-gradient">یک آرشیو مرتب</span>
+            بسازید.
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-9 text-slate-600 lg:mx-0">
+            آرشینو ابزار دسکتاپی برای سامان‌دهی عکس‌ها و ویدئوهاست؛ با دسته‌بندی زمانی و پوشه‌ای، پیدا کردن تصاویر مشابه، گروه‌بندی عکس‌های پشت‌سرهم و مدیریت چهره‌ها، آرشیوتان را قابل‌جست‌وجو و قابل‌استفاده نگه دارید.
+          </p>
+          <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <a href="#download" class="inline-flex items-center justify-center gap-3 rounded-2xl gradient-panel px-7 py-4 font-extrabold text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-1">
+              <i data-lucide="download" class="h-5 w-5"></i> دریافت نرم‌افزار
+            </a>
+            <a href="#screenshots" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-7 py-4 font-bold text-slate-700 transition hover:border-brand-200 hover:text-brand-800">
+              <i data-lucide="monitor" class="h-5 w-5"></i> دیدن محیط آرشینو
+            </a>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm text-slate-500 lg:justify-start">
+            <span class="inline-flex items-center gap-2"><i data-lucide="check-circle-2" class="h-4 w-4 text-brand-600"></i> کنترل انتخاب و انتقال فایل‌ها</span>
+            <span class="inline-flex items-center gap-2"><i data-lucide="check-circle-2" class="h-4 w-4 text-brand-600"></i> پایگاه اطلاعات قابل‌حمل</span>
+          </div>
         </div>
 
+        <!-- HERO SCREENSHOT SLOT: replace the placeholder with <img src="screenshots/archino-main.png" alt="نمای اصلی آرشینو" class="w-full h-auto"> -->
+        <div class="relative fade-up" style="animation-delay:.12s">
+          <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-200/60 via-cyan-100/40 to-indigo-100/50 blur-2xl"></div>
+          <div class="shot-frame relative overflow-hidden rounded-2xl sm:rounded-3xl">
+            <div class="window-bar">
+              <div class="flex items-center gap-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mr-2 text-xs font-bold text-slate-500">آرشینو — مدیریت تصاویر</span></div>
+              <i data-lucide="panel-right" class="h-4 w-4 text-slate-400"></i>
+            </div>
+            <div class="flex min-h-[330px] sm:min-h-[420px] bg-white">
+              <aside class="mock-side hidden sm:block">
+                <div class="mb-4 flex items-center gap-2 text-[10px] font-bold text-brand-800"><i data-lucide="calendar-days" class="h-3 w-3"></i> تایم‌لاین</div>
+                <div class="mock-line w-4/5"></div><div class="mock-line w-3/5"></div>
+                <div class="mr-2 border-r-2 border-brand-200 pr-2"><div class="mock-line w-full"></div><div class="mock-line w-3/4"></div><div class="mock-line w-4/5"></div></div>
+                <div class="mt-5 flex items-center gap-2 text-[10px] font-bold text-slate-500"><i data-lucide="folder-tree" class="h-3 w-3"></i> پوشه‌ها</div>
+                <div class="mock-line w-4/5"></div><div class="mock-line w-3/5"></div>
+              </aside>
+              <div class="min-w-0 flex-1 p-3 sm:p-5">
+                <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+                  <div><div class="text-sm sm:text-base font-black text-slate-800">گالری تصاویر</div><div class="mt-1 text-[10px] sm:text-xs text-slate-400">مرتب‌سازی، فیلتر و انتخاب گروهی</div></div>
+                  <div class="flex gap-2"><span class="rounded-lg bg-brand-50 px-2 py-1 text-[10px] font-bold text-brand-800">فیلتر نمایش</span><span class="rounded-lg bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-600">مرتب‌سازی</span></div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3">
+                  <div class="mock-thumb relative"><span class="absolute right-1 top-1 rounded-full bg-emerald-500 p-1 text-white"><i data-lucide="check" class="h-3 w-3"></i></span></div>
+                  <div class="mock-thumb"></div><div class="mock-thumb"></div><div class="mock-thumb hidden sm:block"></div>
+                  <div class="mock-thumb"></div><div class="mock-thumb relative"><span class="absolute right-1 top-1 rounded-full bg-emerald-500 p-1 text-white"><i data-lucide="check" class="h-3 w-3"></i></span></div><div class="mock-thumb"></div><div class="mock-thumb hidden sm:block"></div>
+                  <div class="mock-thumb"></div><div class="mock-thumb"></div><div class="mock-thumb relative"><span class="absolute right-1 top-1 rounded-full bg-emerald-500 p-1 text-white"><i data-lucide="layers" class="h-3 w-3"></i></span></div><div class="mock-thumb hidden sm:block"></div>
+                </div>
+                <div class="mt-4 flex flex-wrap gap-2 text-[10px] text-slate-500"><span class="rounded-full border border-slate-200 px-2 py-1">تصاویر تکی</span><span class="rounded-full border border-slate-200 px-2 py-1">گروه‌های تکراری</span><span class="rounded-full border border-slate-200 px-2 py-1">ویدئوها</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 right-4 hidden rounded-2xl border border-slate-100 bg-white p-4 shadow-soft sm:block">
+            <div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-50 text-brand-700"><i data-lucide="scan-face" class="h-5 w-5"></i></span><span><b class="block text-sm text-slate-800">مدیریت چهره‌ها</b><small class="text-slate-500">ثبت و گروه‌بندی اشخاص</small></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE STRIP -->
+    <section class="relative z-10 mx-auto -mt-2 max-w-7xl px-4 sm:px-6">
+      <div class="grid gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-soft sm:grid-cols-2 lg:grid-cols-4 lg:p-5">
+        <div class="flex items-center gap-3 rounded-2xl p-3"><span class="grid h-11 w-11 place-items-center rounded-xl bg-emerald-50 text-brand-700"><i data-lucide="calendar-range" class="h-5 w-5"></i></span><span><b class="block text-sm">تایم‌لاین شمسی</b><small class="text-xs text-slate-500">مرور بر اساس سال و ماه</small></span></div>
+        <div class="flex items-center gap-3 rounded-2xl p-3"><span class="grid h-11 w-11 place-items-center rounded-xl bg-cyan-50 text-cyan-700"><i data-lucide="copy-check" class="h-5 w-5"></i></span><span><b class="block text-sm">تشخیص تصاویر مشابه</b><small class="text-xs text-slate-500">شناسایی گروه‌های تکراری</small></span></div>
+        <div class="flex items-center gap-3 rounded-2xl p-3"><span class="grid h-11 w-11 place-items-center rounded-xl bg-violet-50 text-violet-700"><i data-lucide="scan-face" class="h-5 w-5"></i></span><span><b class="block text-sm">مدیریت چهره‌ها</b><small class="text-xs text-slate-500">اشخاص، تطبیق و ادغام</small></span></div>
+        <div class="flex items-center gap-3 rounded-2xl p-3"><span class="grid h-11 w-11 place-items-center rounded-xl bg-amber-50 text-amber-700"><i data-lucide="hard-drive" class="h-5 w-5"></i></span><span><b class="block text-sm">آرشیو قابل‌حمل</b><small class="text-xs text-slate-500">نگهداری اطلاعات کنار آرشیو</small></span></div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <span class="text-sm font-extrabold text-brand-700">قابلیت‌های اصلی</span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-black leading-relaxed text-slate-950">ابزارهای آرشیو، در یک محیط یکپارچه</h2>
+          <p class="mt-4 leading-8 text-slate-600">به‌جای جست‌وجوی دستی میان پوشه‌ها، از نمایی استفاده کنید که برای بررسی، انتخاب و آماده‌سازی آرشیو طراحی شده است.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-brand-700"><i data-lucide="calendar-days" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">تایم‌لاین شمسی و پوشه‌ای</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">مرور رسانه‌ها بر اساس سال و ماه شمسی یا مسیر پوشه‌های واقعی؛ با گروه‌های جمع‌شونده برای پیدا کردن سریع‌تر بخش موردنظر.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-50 text-cyan-700"><i data-lucide="copy-check" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">گروه‌بندی تصاویر تکراری</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">نمایش تصاویر مشابه در گروه‌های قابل بررسی، انتخاب نسخه مناسب و کنترل اینکه کدام فایل‌ها برای انتقال یا نگهداری انتخاب شوند.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-violet-700"><i data-lucide="gallery-horizontal-end" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">عکس‌های پشت‌سرهم</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">شناسایی مجموعه عکس‌هایی که در فاصله زمانی کوتاه ثبت شده‌اند و نمایش بازه زمانی، تعداد تصاویر و انتخاب‌های هر گروه.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-50 text-rose-700"><i data-lucide="scan-face" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">شناسایی و مدیریت چهره‌ها</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">ساخت فهرست اشخاص، مرور عکس‌های مرتبط، جست‌وجوی چهره و ادغام مواردی که به یک شخص تعلق دارند.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-amber-700"><i data-lucide="scan-search" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">بررسی کیفیت تصاویر</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">امتیازدهی کیفیت و بررسی تاری برای کمک به انتخاب عکس‌های مناسب‌تر، به‌ویژه در مجموعه‌های پرحجم.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-700"><i data-lucide="folder-output" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">دسته‌بندی و انتقال کنترل‌شده</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">انتخاب فایل‌ها و آماده‌سازی ساختار خروجی با پوشه‌بندی دسته‌ها؛ تصمیم نهایی درباره فایل‌ها دست خود شماست.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-50 text-indigo-700"><i data-lucide="database" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">پروژه و دیتابیس قابل‌حمل</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">ذخیره پروژه، بازیابی اطلاعات آرشیو و خروجی گرفتن از دیتابیس SQLite برای استفاده و نگهداری در مسیر دلخواه.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-teal-700"><i data-lucide="chart-no-axes-combined" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">آمار جامع آرشیو</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">نمایی کلی از تعداد رسانه‌ها، گروه‌ها، اشخاص و کیفیت مجموعه برای شناخت بهتر وضعیت آرشیو.</p>
+          </article>
+          <article class="feature-card rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-slate-100 text-slate-700"><i data-lucide="sliders-horizontal" class="h-6 w-6"></i></span>
+            <h3 class="mt-5 text-lg font-extrabold">فیلتر و مرتب‌سازی گرید</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">فیلتر تصاویر تکی، گروه‌های تکراری و ویدئوها؛ مرتب‌سازی بر اساس تاریخ، نام و نوع فایل برای تمرکز روی موارد لازم.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="screenshots" class="border-y border-slate-200 bg-white py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div class="max-w-2xl">
+            <span class="text-sm font-extrabold text-brand-700">از نزدیک ببینید</span>
+            <h2 class="mt-3 text-3xl sm:text-4xl font-black leading-relaxed text-slate-950">محیط واقعی برنامه را نشان دهید</h2>
+            <p class="mt-4 leading-8 text-slate-600">این جایگاه‌ها برای اسکرین‌شات‌های واقعی آرشینو در نظر گرفته شده‌اند. کافی است تصویر هر بخش را جایگزین کادر راهنما کنید.</p>
+          </div>
+          <span class="inline-flex w-fit items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-xs font-bold text-slate-600"><i data-lucide="image-plus" class="h-4 w-4"></i> جایگاه آماده برای تصاویر برنامه</span>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <article class="min-w-0">
+            <div class="shot-frame overflow-hidden rounded-2xl">
+              <div class="window-bar"><div class="flex items-center gap-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b class="mr-2 text-xs text-slate-500">نمای اصلی و گرید تصاویر</b></div><i data-lucide="monitor" class="h-4 w-4 text-slate-400"></i></div>
+              <!-- SCREENSHOT SLOT: replace .shot-placeholder with <img src="screenshots/01-main-grid.png" alt="نمای اصلی آرشینو و گرید تصاویر" class="block w-full h-auto"> -->
+              <div class="shot-placeholder"><span class="placeholder-icon"><i data-lucide="images" class="h-7 w-7"></i></span><b class="text-slate-800">اسکرین‌شات ۱ — نمای اصلی</b><small>تصویر پیشنهادی: نوار ابزار، تایم‌لاین و گرید تصاویر در یک قاب. فایل پیشنهادی: <code dir="ltr">screenshots/01-main-grid.png</code></small></div>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold">همه چیز در یک نمای کاری</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">نمایش تایم‌لاین، فیلترها، مرتب‌سازی و گروه‌های رسانه‌ای.</p>
+          </article>
+          <article class="min-w-0">
+            <div class="shot-frame overflow-hidden rounded-2xl">
+              <div class="window-bar"><div class="flex items-center gap-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b class="mr-2 text-xs text-slate-500">گروه‌های مشابه و عکس‌های متوالی</b></div><i data-lucide="layers" class="h-4 w-4 text-slate-400"></i></div>
+              <!-- SCREENSHOT SLOT: replace .shot-placeholder with <img src="screenshots/02-groups.png" alt="گروه‌های تکراری و عکس‌های پشت‌سرهم" class="block w-full h-auto"> -->
+              <div class="shot-placeholder"><span class="placeholder-icon"><i data-lucide="layers" class="h-7 w-7"></i></span><b class="text-slate-800">اسکرین‌شات ۲ — گروه‌بندی تصاویر</b><small>تصویر پیشنهادی: کارت‌های عکس تکراری و تب عکس‌های پشت‌سرهم. فایل پیشنهادی: <code dir="ltr">screenshots/02-groups.png</code></small></div>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold">بررسی گروهی به‌جای تک‌به‌تک</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">دیدن اعضای گروه، انتخاب عکس مناسب و مدیریت عکس‌های پشت‌سرهم.</p>
+          </article>
+          <article class="min-w-0">
+            <div class="shot-frame overflow-hidden rounded-2xl">
+              <div class="window-bar"><div class="flex items-center gap-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b class="mr-2 text-xs text-slate-500">افراد و چهره‌ها</b></div><i data-lucide="scan-face" class="h-4 w-4 text-slate-400"></i></div>
+              <!-- SCREENSHOT SLOT: replace .shot-placeholder with <img src="screenshots/03-faces.png" alt="پنل اشخاص و چهره‌های شناسایی شده" class="block w-full h-auto"> -->
+              <div class="shot-placeholder"><span class="placeholder-icon"><i data-lucide="scan-face" class="h-7 w-7"></i></span><b class="text-slate-800">اسکرین‌شات ۳ — پنل چهره‌ها</b><small>تصویر پیشنهادی: فهرست اشخاص، عکس‌های مرتبط و پیشنهادهای ادغام. فایل پیشنهادی: <code dir="ltr">screenshots/03-faces.png</code></small></div>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold">چهره‌ها و اشخاص را مدیریت کنید</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">نمایش اشخاص شناسایی‌شده و تصاویر مرتبط با هر شخص.</p>
+          </article>
+          <article class="min-w-0">
+            <div class="shot-frame overflow-hidden rounded-2xl">
+              <div class="window-bar"><div class="flex items-center gap-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b class="mr-2 text-xs text-slate-500">آمار و تحلیل آرشیو</b></div><i data-lucide="chart-no-axes-combined" class="h-4 w-4 text-slate-400"></i></div>
+              <!-- SCREENSHOT SLOT: replace .shot-placeholder with <img src="screenshots/04-statistics.png" alt="صفحه آمار جامع آرشینو" class="block w-full h-auto"> -->
+              <div class="shot-placeholder"><span class="placeholder-icon"><i data-lucide="chart-no-axes-combined" class="h-7 w-7"></i></span><b class="text-slate-800">اسکرین‌شات ۴ — آمار جامع</b><small>تصویر پیشنهادی: کارت‌های آماری و نمودارهای واقعی نرم‌افزار. فایل پیشنهادی: <code dir="ltr">screenshots/04-statistics.png</code></small></div>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold">وضعیت آرشیو را یک‌جا ببینید</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600">نمای کلی از رسانه‌ها و نتایج تحلیل مجموعه.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="workflow" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mx-auto mb-14 max-w-3xl text-center">
+          <span class="text-sm font-extrabold text-brand-700">روند استفاده</span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-black leading-relaxed text-slate-950">از پوشه‌های پراکنده تا آرشیو آماده</h2>
+          <p class="mt-4 leading-8 text-slate-600">روند کار طوری طراحی شده که ابتدا مجموعه را بررسی کنید و بعد با کنترل خودتان، خروجی را آماده سازید.</p>
+        </div>
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="relative rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+            <div class="flex items-center justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-800"><i data-lucide="folder-open" class="h-6 w-6"></i></span><span class="text-4xl font-black text-slate-100">۰۱</span></div>
+            <h3 class="mt-6 text-lg font-extrabold">انتخاب پوشه‌ها و تحلیل</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">پوشه‌های عکس و ویدئو را انتخاب کنید و تحلیل را برای ساخت نمای قابل‌مرور از آرشیو اجرا کنید.</p>
+          </div>
+          <div class="relative rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+            <div class="flex items-center justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-50 text-cyan-800"><i data-lucide="list-checks" class="h-6 w-6"></i></span><span class="text-4xl font-black text-slate-100">۰۲</span></div>
+            <h3 class="mt-6 text-lg font-extrabold">مرور، فیلتر و انتخاب</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">گروه‌های تکراری، عکس‌های متوالی، کیفیت تصاویر و چهره‌ها را بررسی کنید و انتخاب‌های لازم را انجام دهید.</p>
+          </div>
+          <div class="relative rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+            <div class="flex items-center justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-violet-800"><i data-lucide="save" class="h-6 w-6"></i></span><span class="text-4xl font-black text-slate-100">۰۳</span></div>
+            <h3 class="mt-6 text-lg font-extrabold">ذخیره پروژه و خروجی</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">پروژه را ذخیره کنید و پس از بررسی نهایی، اطلاعات آرشیو یا دیتابیس را برای نگهداری و جابه‌جایی آماده کنید.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTABILITY -->
+    <section id="archive" class="overflow-hidden bg-slate-950 py-20 text-white sm:py-24">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-emerald-200"><i data-lucide="hard-drive" class="h-4 w-4"></i> برای آرشیوهای قابل‌انتقال</span>
+          <h2 class="mt-5 text-3xl sm:text-4xl font-black leading-relaxed">اطلاعات آرشیو را همراه مجموعه نگه دارید</h2>
+          <p class="mt-5 leading-9 text-slate-300">آرشینو امکانات ذخیره و بازیابی پروژه و خروجی گرفتن از دیتابیس SQLite را در اختیار می‌گذارد تا مدیریت اطلاعات آرشیو از یک مسیر یا نشست کاری فراتر برود.</p>
+          <ul class="mt-7 space-y-4 text-sm text-slate-200">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-emerald-300"></i><span>ذخیره و بازکردن پروژه برای ادامه کار در زمان دیگر</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-emerald-300"></i><span>خروجی دیتابیس در مسیر دلخواه برای پشتیبان‌گیری</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-emerald-300"></i><span>امکان بازیابی اطلاعات آرشیو از روی فضای ذخیره‌سازی انتخاب‌شده</span></li>
+          </ul>
+          <p class="mt-5 text-xs leading-6 text-slate-400">نکته: فایل دیتابیس جایگزین فایل‌های اصلی عکس و ویدئو نیست؛ برای نگهداری کامل آرشیو، از رسانه‌ها نیز نسخه پشتیبان داشته باشید.</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-5 rounded-[2rem] bg-emerald-500/10 blur-2xl"></div>
+          <div class="relative rounded-3xl border border-white/10 bg-white/[.06] p-5 sm:p-7">
+            <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[.05] p-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-emerald-400/15 text-emerald-200"><i data-lucide="folder" class="h-6 w-6"></i></span>
+              <div class="min-w-0 flex-1"><b class="block">آرشیو رسانه‌ای</b><small class="text-slate-400">تصاویر و ویدئوهای اصلی</small></div>
+              <i data-lucide="check" class="h-5 w-5 text-emerald-300"></i>
+            </div>
+            <div class="mx-auto flex h-12 w-1 items-center justify-center bg-gradient-to-b from-emerald-400 to-cyan-300"></div>
+            <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[.05] p-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-cyan-400/15 text-cyan-200"><i data-lucide="database" class="h-6 w-6"></i></span>
+              <div class="min-w-0 flex-1"><b class="block">دیتابیس SQLite</b><small class="text-slate-400">اطلاعات چهره‌ها و داده‌های آرشیو</small></div>
+              <i data-lucide="shield-check" class="h-5 w-5 text-cyan-200"></i>
+            </div>
+            <div class="mx-auto flex h-12 w-1 items-center justify-center bg-gradient-to-b from-cyan-300 to-indigo-300"></div>
+            <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[.05] p-4">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-indigo-400/15 text-indigo-200"><i data-lucide="laptop" class="h-6 w-6"></i></span>
+              <div class="min-w-0 flex-1"><b class="block">ادامه مدیریت آرشیو</b><small class="text-slate-400">بازکردن و بررسی اطلاعات در آرشینو</small></div>
+              <i data-lucide="arrow-left-right" class="h-5 w-5 text-indigo-200"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section id="audience" class="py-20 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="text-sm font-extrabold text-brand-700">برای چه کسانی؟</span>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-black leading-relaxed text-slate-950">وقتی آرشیو بخشی از کار روزانه شماست</h2>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6"><i data-lucide="building-2" class="h-7 w-7 text-brand-700"></i><h3 class="mt-4 font-extrabold">روابط عمومی‌ها</h3><p class="mt-2 text-sm leading-7 text-slate-600">سامان‌دهی تصاویر مراسم‌ها، برنامه‌ها و رویدادها.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6"><i data-lucide="newspaper" class="h-7 w-7 text-brand-700"></i><h3 class="mt-4 font-extrabold">رسانه‌ها و تحریریه‌ها</h3><p class="mt-2 text-sm leading-7 text-slate-600">پیدا کردن عکس‌های رویدادها و نسخه‌های مشابه.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6"><i data-lucide="camera" class="h-7 w-7 text-brand-700"></i><h3 class="mt-4 font-extrabold">عکاسان و فیلم‌برداران</h3><p class="mt-2 text-sm leading-7 text-slate-600">مرور مجموعه‌های بزرگ و انتخاب تصاویر مناسب.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6"><i data-lucide="archive" class="h-7 w-7 text-brand-700"></i><h3 class="mt-4 font-extrabold">آرشیویست‌ها و سازمان‌ها</h3><p class="mt-2 text-sm leading-7 text-slate-600">نگهداری منظم مجموعه‌های چندساله و قابل‌انتقال.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-y border-slate-200 bg-white py-16 sm:py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 class="text-center text-3xl font-black text-slate-950">پرسش‌های متداول</h2>
+        <div class="mt-9 space-y-3">
+          <details class="group rounded-2xl border border-slate-200 p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold"><span>آیا آرشینو عکس‌ها را خودش به‌صورت خودکار جابه‌جا می‌کند؟</span><i data-lucide="plus" class="h-5 w-5 shrink-0 text-brand-700 transition group-open:rotate-45"></i></summary>
+            <p class="mt-4 text-sm leading-7 text-slate-600">شما می‌توانید رسانه‌ها و گروه‌ها را بررسی و انتخاب کنید؛ انتقال و آماده‌سازی خروجی از مسیر عملیات برنامه انجام می‌شود. پیش از اجرای عملیات، تنظیمات و انتخاب‌ها را بررسی کنید.</p>
+          </details>
+          <details class="group rounded-2xl border border-slate-200 p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold"><span>آیا می‌توانم آرشیو را بر اساس پوشه‌ها یا تاریخ مرور کنم؟</span><i data-lucide="plus" class="h-5 w-5 shrink-0 text-brand-700 transition group-open:rotate-45"></i></summary>
+            <p class="mt-4 text-sm leading-7 text-slate-600">بله؛ تایم‌لاین می‌تواند بر اساس سال و ماه یا ساختار پوشه‌ها نمایش داده شود تا مسیر مرور با نوع آرشیو شما هماهنگ باشد.</p>
+          </details>
+          <details class="group rounded-2xl border border-slate-200 p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold"><span>آیا فایل SQLite به‌تنهایی شامل عکس‌ها هم هست؟</span><i data-lucide="plus" class="h-5 w-5 shrink-0 text-brand-700 transition group-open:rotate-45"></i></summary>
+            <p class="mt-4 text-sm leading-7 text-slate-600">خیر؛ دیتابیس اطلاعات و ارتباطات ثبت‌شده را نگه می‌دارد، نه خود فایل‌های رسانه‌ای. برای آرشیو کامل باید عکس‌ها و ویدئوها را جداگانه نگهداری کنید.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD / CTA -->
+    <section id="download" class="px-4 py-20 sm:px-6 sm:py-28">
+      <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] gradient-panel px-6 py-14 text-center text-white shadow-lift sm:px-14 sm:py-20">
+        <div class="pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-slate-950/10 blur-3xl"></div>
+        <div class="relative mx-auto max-w-3xl">
+          <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-white/20 bg-white/10"><i data-lucide="images" class="h-8 w-8"></i></span>
+          <h2 class="mt-6 text-3xl sm:text-4xl font-black leading-relaxed">آرشیو رسانه‌ای‌تان را به یک مجموعه قابل‌مدیریت تبدیل کنید.</h2>
+          <p class="mx-auto mt-5 max-w-2xl leading-8 text-white/80">آرشینو را برای سامان‌دهی تصاویر، بررسی گروه‌ها و نگهداری منظم اطلاعات آرشیو به کار بگیرید.</p>
+          <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <!-- TODO: Replace # with the actual download URL -->
+            <a href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl bg-white px-7 py-4 font-black text-brand-800 transition hover:-translate-y-1 hover:bg-emerald-50"><i data-lucide="download" class="h-5 w-5"></i> دانلود آرشینو</a>
+            <!-- TODO: Replace # with contact/support URL if available -->
+            <a href="#screenshots" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-7 py-4 font-bold text-white transition hover:bg-white/15">مشاهده تصاویر برنامه <i data-lucide="arrow-left" class="h-4 w-4"></i></a>
+          </div>
+          <p class="mt-5 text-xs text-white/65">پیش از انتشار، نشانی دانلود واقعی و اسکرین‌شات‌های برنامه را جایگزین کنید.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 py-8 sm:px-6 md:flex-row">
+      <a href="#top" class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl gradient-panel text-white"><i data-lucide="images" class="h-5 w-5"></i></span><span><b class="block font-black text-slate-900">آرشینو</b><small class="text-xs text-slate-500">مدیریت آرشیو رسانه‌ای</small></span></a>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500"><a href="#features" class="hover:text-brand-700">قابلیت‌ها</a><a href="#workflow" class="hover:text-brand-700">روند کار</a><a href="#screenshots" class="hover:text-brand-700">تصاویر برنامه</a><a href="#download" class="hover:text-brand-700">دریافت</a></div>
+      <span class="text-xs text-slate-400">© ۱۴۰۵ آرشینو</span>
     </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- FEATURES -->
-<!-- ========================================================= -->
-
-<section
-    id="features"
-    class="py-24 bg-white">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="max-w-2xl mx-auto text-center mb-16">
-
-            <div
-                class="inline-flex
-                       px-4 py-2
-                       rounded-full
-                       bg-emerald-50
-                       text-emerald-700
-                       text-sm font-bold">
-
-                امکانات آرشینو
-
-            </div>
-
-            <h2
-                class="mt-5
-                       text-3xl sm:text-4xl
-                       font-black
-                       text-slate-950">
-
-                همه چیز برای یک آرشیو
-                <span class="gradient-text">
-                    حرفه‌ای
-                </span>
-
-            </h2>
-
-            <p
-                class="mt-5
-                       text-slate-500
-                       leading-8">
-
-                آرشینو طراحی شده تا مدیریت فایل‌های رسانه‌ای
-                سریع‌تر، ساده‌تر و منظم‌تر شود.
-
-            </p>
-
-        </div>
-
-
-        <div
-            class="grid sm:grid-cols-2 lg:grid-cols-3
-                   gap-6">
-
-
-            <!-- Feature 1 -->
-
-            <div
-                class="feature-card
-                       p-7
-                       rounded-3xl
-                       border border-slate-100
-                       bg-white">
-
-                <div
-                    class="w-14 h-14
-                           rounded-2xl
-                           bg-emerald-50
-                           text-emerald-600
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M4 7h16M4 12h16M4 17h10"/>
-
-                    </svg>
-
-                </div>
-
-                <h3
-                    class="font-black text-lg text-slate-900">
-                    دسته‌بندی هوشمند
-                </h3>
-
-                <p
-                    class="mt-3
-                           text-sm
-                           leading-7
-                           text-slate-500">
-
-                    فایل‌های رسانه‌ای خود را بر اساس رویداد،
-                    زمان و ساختار دلخواهتان مرتب کنید.
-
-                </p>
-
-            </div>
-
-
-            <!-- Feature 2 -->
-
-            <div
-                class="feature-card
-                       p-7
-                       rounded-3xl
-                       border border-slate-100
-                       bg-white">
-
-                <div
-                    class="w-14 h-14
-                           rounded-2xl
-                           bg-cyan-50
-                           text-cyan-600
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <circle
-                            cx="11"
-                            cy="11"
-                            r="7"/>
-
-                        <path
-                            stroke-linecap="round"
-                            d="M20 20l-4-4"/>
-
-                    </svg>
-
-                </div>
-
-                <h3
-                    class="font-black text-lg text-slate-900">
-                    جستجوی سریع
-                </h3>
-
-                <p
-                    class="mt-3
-                           text-sm
-                           leading-7
-                           text-slate-500">
-
-                    در میان حجم زیادی از تصاویر و ویدئوها،
-                    فایل موردنظر خود را سریع پیدا کنید.
-
-                </p>
-
-            </div>
-
-
-            <!-- Feature 3 -->
-
-            <div
-                class="feature-card
-                       p-7
-                       rounded-3xl
-                       border border-slate-100
-                       bg-white">
-
-                <div
-                    class="w-14 h-14
-                           rounded-2xl
-                           bg-blue-50
-                           text-blue-600
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M4 5h16v14H4z"/>
-
-                        <path
-                            stroke-linecap="round"
-                            d="M8 9h8M8 13h5"/>
-
-                    </svg>
-
-                </div>
-
-                <h3
-                    class="font-black text-lg text-slate-900">
-                    مدیریت رویدادها
-                </h3>
-
-                <p
-                    class="mt-3
-                           text-sm
-                           leading-7
-                           text-slate-500">
-
-                    برای هر مراسم یا رویداد یک آرشیو مرتب داشته باشید
-                    و تمام فایل‌ها را یکجا مدیریت کنید.
-
-                </p>
-
-            </div>
-
-
-            <!-- Feature 4 -->
-
-            <div
-                class="feature-card
-                       p-7
-                       rounded-3xl
-                       border border-slate-100
-                       bg-white">
-
-                <div
-                    class="w-14 h-14
-                           rounded-2xl
-                           bg-violet-50
-                           text-violet-600
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 7h18M3 12h18M3 17h18"/>
-
-                        <circle
-                            cx="7"
-                            cy="7"
-                            r="1"/>
-
-                    </svg>
-
-                </div>
-
-                <h3
-                    class="font-black text-lg text-slate-900">
-                    تشخیص فایل‌های تکراری
-                </h3>
-
-                <p
-                    class="mt-3
-                           text-sm
-                           leading-7
-                           text-slate-500">
-
-                    فایل‌های مشابه و تکراری را پیدا کنید و
-                    از شلوغ شدن آرشیو جلوگیری کنید.
-
-                </p>
-
-            </div>
-
-
-            <!-- Feature 5 -->
-
-            <div
-                class="feature-card
-                       p-7
-                       rounded-3xl
-                       border border-slate-100
-                       bg-white">
-
-                <div
-                    class="w-14 h-14
-                           rounded-2xl
-                           bg-orange-50
-                           text-orange-500
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 3v18M3 12h18"/>
-
-                    </svg>
-
-                </div>
-
-                <h3
-                    class="font-black text-lg text-slate-900">
-                    سازمان‌دهی خودکار
-                </h3>
-
-                <p
-                    class="mt-3
-                           text-sm
-                           leading-7
-                           text-slate-500">
-
-                    هزاران فایل را با ساختار مشخص و منظم
-                    در پوشه‌های مناسب قرار دهید.
-
-                </p>
-
-            </div>
-
-
-            <!-- Feature 6 -->
-
-            <div
-                class="feature-card
-                       p-7
-                       rounded-3xl
-                       border border-slate-100
-                       bg-white">
-
-                <div
-                    class="w-14 h-14
-                           rounded-2xl
-                           bg-pink-50
-                           text-pink-600
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/>
-
-                    </svg>
-
-                </div>
-
-                <h3
-                    class="font-black text-lg text-slate-900">
-                    رابط کاربری ساده
-                </h3>
-
-                <p
-                    class="mt-3
-                           text-sm
-                           leading-7
-                           text-slate-500">
-
-                    بدون پیچیدگی و آموزش‌های طولانی؛
-                    آرشینو را باز کنید و شروع کنید.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- HOW IT WORKS -->
-<!-- ========================================================= -->
-
-<section
-    id="how"
-    class="py-24 bg-slate-50">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="max-w-2xl mx-auto text-center mb-16">
-
-            <div
-                class="inline-flex
-                       px-4 py-2
-                       rounded-full
-                       bg-white
-                       border border-slate-100
-                       text-emerald-700
-                       text-sm font-bold">
-
-                ساده‌تر از چیزی که فکر می‌کنید
-
-            </div>
-
-            <h2
-                class="mt-5
-                       text-3xl sm:text-4xl
-                       font-black
-                       text-slate-950">
-
-                سه قدم تا یک آرشیو مرتب
-
-            </h2>
-
-        </div>
-
-
-        <div
-            class="grid md:grid-cols-3
-                   gap-8
-                   relative">
-
-
-            <!-- Step 1 -->
-
-            <div class="relative text-center">
-
-                <div
-                    class="relative z-10
-                           mx-auto
-                           w-20 h-20
-                           rounded-3xl
-                           gradient-bg
-                           text-white
-                           flex items-center
-                           justify-center
-                           text-2xl
-                           font-black
-                           shadow-xl
-                           shadow-emerald-500/20">
-
-                    ۱
-
-                </div>
-
-                <h3
-                    class="mt-6 font-black text-xl">
-                    پوشه را انتخاب کنید
-                </h3>
-
-                <p
-                    class="mt-3 text-sm
-                           text-slate-500
-                           leading-7
-                           max-w-xs mx-auto">
-
-                    پوشه‌ای که فایل‌های رسانه‌ای شما در آن قرار دارد
-                    به آرشینو معرفی کنید.
-
-                </p>
-
-            </div>
-
-
-            <!-- Step 2 -->
-
-            <div class="relative text-center">
-
-                <div
-                    class="relative z-10
-                           mx-auto
-                           w-20 h-20
-                           rounded-3xl
-                           gradient-bg
-                           text-white
-                           flex items-center
-                           justify-center
-                           text-2xl
-                           font-black
-                           shadow-xl
-                           shadow-cyan-500/20">
-
-                    ۲
-
-                </div>
-
-                <h3
-                    class="mt-6 font-black text-xl">
-                    آرشینو فایل‌ها را بررسی می‌کند
-                </h3>
-
-                <p
-                    class="mt-3 text-sm
-                           text-slate-500
-                           leading-7
-                           max-w-xs mx-auto">
-
-                    فایل‌ها بررسی شده و بر اساس زمان،
-                    نوع و ساختار آرشیو شناسایی می‌شوند.
-
-                </p>
-
-            </div>
-
-
-            <!-- Step 3 -->
-
-            <div class="relative text-center">
-
-                <div
-                    class="relative z-10
-                           mx-auto
-                           w-20 h-20
-                           rounded-3xl
-                           gradient-bg
-                           text-white
-                           flex items-center
-                           justify-center
-                           text-2xl
-                           font-black
-                           shadow-xl
-                           shadow-blue-500/20">
-
-                    ۳
-
-                </div>
-
-                <h3
-                    class="mt-6 font-black text-xl">
-                    آرشیو خود را مدیریت کنید
-                </h3>
-
-                <p
-                    class="mt-3 text-sm
-                           text-slate-500
-                           leading-7
-                           max-w-xs mx-auto">
-
-                    حالا همه چیز مرتب است؛
-                    جستجو کنید، دسته‌بندی کنید و فایل‌ها را مدیریت کنید.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- AUDIENCE -->
-<!-- ========================================================= -->
-
-<section
-    id="audience"
-    class="py-24">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div
-            class="grid lg:grid-cols-2
-                   gap-14 items-center">
-
-
-            <div>
-
-                <div
-                    class="inline-flex
-                           px-4 py-2
-                           rounded-full
-                           bg-emerald-50
-                           text-emerald-700
-                           text-sm font-bold">
-
-                    برای تیم‌های رسانه‌ای
-
-                </div>
-
-
-                <h2
-                    class="mt-5
-                           text-3xl sm:text-4xl
-                           font-black
-                           leading-[1.4]
-                           text-slate-950">
-
-                    وقتی آرشیو شما بزرگ می‌شود،
-                    <span class="gradient-text">
-                        آرشینو
-                    </span>
-                    وارد می‌شود.
-
-                </h2>
-
-
-                <p
-                    class="mt-6
-                           text-slate-500
-                           leading-8">
-
-                    اگر هر روز با صدها عکس و ویدئو سروکار دارید،
-                    پیدا کردن یک فایل خاص نباید تبدیل به یک کار زمان‌بر شود.
-
-                    آرشینو برای همین ساخته شده است.
-
-                </p>
-
-
-                <div class="mt-8 space-y-5">
-
-
-                    <div class="flex gap-4">
-
-                        <div
-                            class="w-7 h-7
-                                   shrink-0
-                                   rounded-full
-                                   bg-emerald-100
-                                   text-emerald-600
-                                   flex items-center
-                                   justify-center">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <h4 class="font-bold">
-                                روابط عمومی‌ها
-                            </h4>
-
-                            <p
-                                class="text-sm
-                                       text-slate-500
-                                       mt-1">
-                                مدیریت آرشیو مراسم‌ها و برنامه‌ها
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="flex gap-4">
-
-                        <div
-                            class="w-7 h-7
-                                   shrink-0
-                                   rounded-full
-                                   bg-emerald-100
-                                   text-emerald-600
-                                   flex items-center
-                                   justify-center">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <h4 class="font-bold">
-                                تیم‌های تولید محتوا
-                            </h4>
-
-                            <p
-                                class="text-sm
-                                       text-slate-500
-                                       mt-1">
-                                دسترسی سریع به فایل‌های پروژه
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="flex gap-4">
-
-                        <div
-                            class="w-7 h-7
-                                   shrink-0
-                                   rounded-full
-                                   bg-emerald-100
-                                   text-emerald-600
-                                   flex items-center
-                                   justify-center">
-
-                            ✓
-
-                        </div>
-
-                        <div>
-
-                            <h4 class="font-bold">
-                                عکاسان و فیلم‌برداران
-                            </h4>
-
-                            <p
-                                class="text-sm
-                                       text-slate-500
-                                       mt-1">
-                                سازمان‌دهی سریع پروژه‌ها و فایل‌ها
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <!-- Stats card -->
-
-            <div
-                class="relative">
-
-                <div
-                    class="absolute
-                           -inset-5
-                           gradient-bg
-                           rounded-[40px]
-                           opacity-10
-                           blur-2xl">
-                </div>
-
-                <div
-                    class="relative
-                           bg-slate-950
-                           rounded-[32px]
-                           p-8 sm:p-10
-                           text-white
-                           overflow-hidden">
-
-                    <div
-                        class="absolute
-                               -top-20
-                               -left-20
-                               w-64 h-64
-                               rounded-full
-                               bg-emerald-500
-                               opacity-20
-                               blur-3xl">
-                    </div>
-
-
-                    <div class="relative">
-
-                        <div
-                            class="text-sm text-slate-400">
-                            با آرشینو
-                        </div>
-
-                        <div
-                            class="mt-2
-                                   text-3xl
-                                   font-black">
-                            آرشیو شما،
-                            همیشه آماده است.
-                        </div>
-
-
-                        <div
-                            class="grid grid-cols-2
-                                   gap-4 mt-10">
-
-
-                            <div
-                                class="rounded-2xl
-                                       bg-white/5
-                                       border border-white/10
-                                       p-5">
-
-                                <div
-                                    class="text-3xl
-                                           font-black
-                                           gradient-text">
-
-                                    ۱۰۰٪
-
-                                </div>
-
-                                <div
-                                    class="mt-2
-                                           text-sm
-                                           text-slate-400">
-
-                                    نظم بیشتر
-
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="rounded-2xl
-                                       bg-white/5
-                                       border border-white/10
-                                       p-5">
-
-                                <div
-                                    class="text-3xl
-                                           font-black
-                                           gradient-text">
-
-                                    سریع
-
-                                </div>
-
-                                <div
-                                    class="mt-2
-                                           text-sm
-                                           text-slate-400">
-
-                                    دسترسی به فایل‌ها
-
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="rounded-2xl
-                                       bg-white/5
-                                       border border-white/10
-                                       p-5">
-
-                                <div
-                                    class="text-3xl
-                                           font-black
-                                           gradient-text">
-
-                                    ساده
-
-                                </div>
-
-                                <div
-                                    class="mt-2
-                                           text-sm
-                                           text-slate-400">
-
-                                    بدون پیچیدگی
-
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="rounded-2xl
-                                       bg-white/5
-                                       border border-white/10
-                                       p-5">
-
-                                <div
-                                    class="text-3xl
-                                           font-black
-                                           gradient-text">
-
-                                    حرفه‌ای
-
-                                </div>
-
-                                <div
-                                    class="mt-2
-                                           text-sm
-                                           text-slate-400">
-
-                                    برای تیم‌ها
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- CTA -->
-<!-- ========================================================= -->
-
-<section
-    id="download"
-    class="py-24">
-
-    <div class="max-w-6xl mx-auto px-4">
-
-        <div
-            class="relative
-                   overflow-hidden
-                   rounded-[40px]
-                   gradient-bg
-                   px-7 py-16
-                   sm:px-14
-                   text-center
-                   text-white">
-
-            <div
-                class="absolute
-                       -top-32
-                       -right-32
-                       w-80 h-80
-                       rounded-full
-                       bg-white/10
-                       blur-3xl">
-            </div>
-
-            <div
-                class="absolute
-                       -bottom-32
-                       -left-32
-                       w-80 h-80
-                       rounded-full
-                       bg-slate-950/10
-                       blur-3xl">
-            </div>
-
-
-            <div class="relative">
-
-                <div
-                    class="mx-auto
-                           w-16 h-16
-                           rounded-2xl
-                           bg-white/15
-                           border border-white/20
-                           flex items-center
-                           justify-center
-                           mb-6">
-
-                    <svg
-                        class="w-8 h-8"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-
-                    </svg>
-
-                </div>
-
-
-                <h2
-                    class="text-3xl
-                           sm:text-4xl
-                           font-black">
-
-                    آرشیو خود را از همین امروز مرتب کنید.
-
-                </h2>
-
-
-                <p
-                    class="mt-5
-                           text-white/80
-                           leading-8
-                           max-w-xl
-                           mx-auto">
-
-                    آرشینو را امتحان کنید و مدیریت فایل‌های رسانه‌ای
-                    خود را به یک تجربه ساده و لذت‌بخش تبدیل کنید.
-
-                </p>
-
-
-                <div
-                    class="mt-9
-                           flex flex-col
-                           sm:flex-row
-                           justify-center
-                           gap-4">
-
-                    <a
-                        href="#"
-                        class="px-8 py-4
-                               rounded-2xl
-                               bg-white
-                               text-emerald-700
-                               font-black
-                               shadow-xl
-                               hover:-translate-y-1
-                               transition">
-
-                        دانلود آرشینو
-
-                    </a>
-
-
-                    <a
-                        href="#features"
-                        class="px-8 py-4
-                               rounded-2xl
-                               bg-white/10
-                               border border-white/20
-                               text-white
-                               font-bold
-                               hover:bg-white/20
-                               transition">
-
-                        مشاهده امکانات
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- FOOTER -->
-<!-- ========================================================= -->
-
-<footer
-    class="border-t border-slate-100
-           bg-slate-50">
-
-    <div
-        class="max-w-7xl mx-auto
-               px-4 sm:px-6 lg:px-8
-               py-10">
-
-        <div
-            class="flex flex-col
-                   md:flex-row
-                   items-center
-                   justify-between
-                   gap-6">
-
-
-            <div
-                class="flex items-center gap-3">
-
-                <div
-                    class="w-10 h-10
-                           rounded-xl
-                           gradient-bg
-                           text-white
-                           flex items-center
-                           justify-center">
-
-                    <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-
-                    </svg>
-
-                </div>
-
-
-                <div>
-
-                    <div
-                        class="font-black text-slate-900">
-                        آرشینو
-                    </div>
-
-                    <div
-                        class="text-xs text-slate-400">
-                        مدیریت هوشمند آرشیو رسانه‌ای
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="flex items-center
-                       gap-6
-                       text-sm
-                       text-slate-500">
-
-                <a
-                    href="#features"
-                    class="hover:text-emerald-600 transition">
-                    امکانات
-                </a>
-
-                <a
-                    href="#how"
-                    class="hover:text-emerald-600 transition">
-                    نحوه کار
-                </a>
-
-                <a
-                    href="#download"
-                    class="hover:text-emerald-600 transition">
-                    دانلود
-                </a>
-
-            </div>
-
-
-            <div
-                class="text-xs text-slate-400">
-
-                © ۱۴۰۵ آرشینو
-                · ساخته شده با ❤️
-
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
-
+  </footer>
+
+  <script>
+    // Icons from the Lucide CDN; all page behavior and styling are kept in this file.
+    if (window.lucide) window.lucide.createIcons();
+  </script>
 </body>
 </html>
