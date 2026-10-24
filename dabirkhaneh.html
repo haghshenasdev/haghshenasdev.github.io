@@ -1,4002 +1,654 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>دبیرخانه | مدیریت مکاتبات و نامه‌ها به صورت آفلاین</title>
-
-    <meta
-        name="description"
-        content="نرم‌افزار دبیرخانه آفلاین برای ثبت، مدیریت، پیگیری و بایگانی نامه‌ها و مکاتبات سازمانی بدون نیاز به اینترنت."
-    >
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
-                    },
-
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            200: '#bfdbfe',
-                            300: '#93c5fd',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b36">
+  <title>باینو | بایگانی سریع، راحت و نوین</title>
+  <meta name="description"
+    content="باینو؛ نرم‌افزار مدیریت نامه‌ها و مکاتبات اداری با جستجوی پیشرفته، ثبت و ویرایش نامه، مدیریت فایل‌ها و پیوست‌ها، اسکن اسناد و پشتیبان‌گیری.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+          colors: { bayno: { ink: '#101b36', navy: '#172746', blue: '#4361ee', cyan: '#24c6dc', mint: '#40d9a2', paper: '#f5f7fc' } },
+          boxShadow: { soft: '0 24px 70px rgba(25,43,83,.12)', card: '0 12px 35px rgba(25,43,83,.07)' }
         }
-    </script>
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    body {
+      font-family: Vazirmatn, Tahoma, sans-serif
+    }
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
+    .hero-bg {
+      background: radial-gradient(circle at 12% 12%, rgba(36, 198, 220, .18), transparent 30%), radial-gradient(circle at 88% 30%, rgba(67, 97, 238, .28), transparent 34%), #101b36
+    }
 
-    <style>
+    .grid-bg {
+      background-image: linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+      background-size: 38px 38px
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .gradient-text {
+      background: linear-gradient(110deg, #4361ee, #24c6dc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
 
-        body {
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
-        }
+    .gradient-button {
+      background: linear-gradient(115deg, #4361ee, #277fdb 55%, #24b9d2)
+    }
 
-        .hero-grid {
-            background-image:
-                linear-gradient(rgba(37, 99, 235, .045) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(37, 99, 235, .045) 1px, transparent 1px);
+    .glass {
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(18px)
+    }
 
-            background-size: 44px 44px;
-        }
+    .feature-card {
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease
+    }
 
-        .glass {
-            background: rgba(255,255,255,.78);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 22px 48px rgba(25, 43, 83, .1);
+      border-color: #c7d2fe
+    }
 
-        .gradient-text {
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #4f46e5
-            );
+    .screenshot {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      overflow: hidden;
+      border: 1px dashed #aab8d2;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #eef3ff, #f8fbff);
+      color: #61708b;
+      text-align: center
+    }
 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .screenshot:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(67, 97, 238, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(67, 97, 238, .045) 1px, transparent 1px);
+      background-size: 22px 22px;
+      pointer-events: none
+    }
 
-        .gradient-bg {
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #4f46e5
-            );
-        }
+    .screenshot-content {
+      position: relative;
+      z-index: 1;
+      padding: 24px
+    }
 
-        .gradient-bg-soft {
-            background: linear-gradient(
-                135deg,
-                #eff6ff,
-                #eef2ff
-            );
-        }
+    .screenshot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2
+    }
 
-        .hero-shadow {
-            box-shadow:
-                0 35px 100px rgba(30, 64, 175, .14),
-                0 10px 30px rgba(15, 23, 42, .08);
-        }
+    .float {
+      animation: float 6s ease-in-out infinite
+    }
 
-        .feature-card {
-            transition:
-                transform .3s ease,
-                box-shadow .3s ease,
-                border-color .3s ease;
-        }
+    @keyframes float {
 
-        .feature-card:hover {
-            transform: translateY(-7px);
+      0%,
+      100% {
+        transform: translateY(0)
+      }
 
-            box-shadow:
-                0 25px 60px rgba(15, 23, 42, .08);
+      50% {
+        transform: translateY(-8px)
+      }
+    }
 
-            border-color: rgba(37, 99, 235, .2);
-        }
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease
+    }
 
-        .floating {
-            animation: floating 5s ease-in-out infinite;
-        }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
 
-        .floating-slow {
-            animation: floating 7s ease-in-out infinite;
-        }
+    @media(prefers-reduced-motion:reduce) {
 
-        @keyframes floating {
+      *,
+      *:before,
+      *:after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important
+      }
 
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-        }
-
-        .blob {
-            filter: blur(60px);
-            opacity: .18;
-        }
-
-        .document-line {
-            background:
-                linear-gradient(
-                    90deg,
-                    #e2e8f0 70%,
-                    transparent 70%
-                );
-        }
-
-    </style>
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+    }
+  </style>
 </head>
 
-
 <body class="bg-white text-slate-800 antialiased">
-
-
-<!-- ========================================================= -->
-<!-- NAVBAR -->
-<!-- ========================================================= -->
-
-<header class="fixed top-0 right-0 left-0 z-50">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-
-        <nav
-            class="
-                glass
-                border border-white/80
-                rounded-2xl
-                shadow-sm
-            "
-        >
-
+  <header class="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pt-3">
+    <nav
+      class="glass border border-white/70 shadow-sm rounded-2xl max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3 shrink-0" aria-label="باینو، صفحه اصلی">
+        <span
+          class="w-11 h-11 rounded-2xl gradient-button text-white flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H20v13H6.5A2.5 2.5 0 0 1 4 15.5z" />
+            <path d="M4 8h13M8 11h8M8 14h6" />
+            <path d="M7 5V3h11v2" />
+          </svg>
+        </span>
+        <span><strong class="block text-xl font-black text-bayno-ink">باینو</strong><small
+            class="block text-[11px] text-slate-500">بایگانی سریع، راحت و نوین</small></span>
+      </a>
+      <div class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+        <a class="hover:text-blue-600" href="#features">امکانات</a><a class="hover:text-blue-600"
+          href="#screenshots">نمای محیط برنامه</a><a class="hover:text-blue-600" href="#workflow">روند کار</a><a
+          class="hover:text-blue-600" href="#security">اطلاعات و پشتیبان‌گیری</a><a class="hover:text-blue-600"
+          href="#faq">سؤالات متداول</a>
+      </div>
+      <a href="#download"
+        class="gradient-button text-white text-sm font-bold rounded-xl px-4 sm:px-5 py-3 shadow-lg shadow-blue-500/20 whitespace-nowrap">دریافت
+        باینو <span aria-hidden="true">←</span></a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero-bg grid-bg text-white relative overflow-hidden pt-36 sm:pt-40 pb-20 sm:pb-28">
+      <div class="absolute -top-28 -left-20 w-80 h-80 rounded-full bg-cyan-400/10 blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/3 w-96 h-64 rounded-full bg-blue-500/20 blur-3xl"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid lg:grid-cols-[.92fr_1.08fr] gap-12 xl:gap-16 items-center">
+          <div class="text-center lg:text-right">
             <div
-                class="
-                    flex
-                    items-center
-                    justify-between
-                    px-5
-                    py-3
-                "
-            >
-
-                <!-- Logo -->
-
-                <a href="#" class="flex items-center gap-3">
-
-                    <div
-                        class="
-                            w-11
-                            h-11
-                            rounded-xl
-                            gradient-bg
-                            text-white
-                            flex
-                            items-center
-                            justify-center
-                            shadow-lg
-                        "
-                    >
-
-                        <svg
-                            class="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                        >
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="
-                                    M6 2h9l5 5v15H6a2 2 0 01-2-2V4a2 2 0 012-2z
-                                "
-                            />
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M14 2v6h6"
-                            />
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M8 13h8M8 17h6"
-                            />
-
-                        </svg>
-
-                    </div>
-
-
-                    <div>
-
-                        <div
-                            class="
-                                font-black
-                                text-xl
-                                text-slate-900
-                            "
-                        >
-                            دبیرخانه
-                        </div>
-
-                        <div
-                            class="
-                                text-[10px]
-                                text-slate-500
-                            "
-                        >
-                            مدیریت مکاتبات سازمانی
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <!-- Navigation -->
-
-                <div
-                    class="
-                        hidden
-                        md:flex
-                        items-center
-                        gap-8
-                        text-sm
-                        font-medium
-                    "
-                >
-
-                    <a
-                        href="#features"
-                        class="
-                            text-slate-600
-                            hover:text-primary-600
-                            transition
-                        "
-                    >
-                        امکانات
-                    </a>
-
-                    <a
-                        href="#workflow"
-                        class="
-                            text-slate-600
-                            hover:text-primary-600
-                            transition
-                        "
-                    >
-                        نحوه کار
-                    </a>
-
-                    <a
-                        href="#security"
-                        class="
-                            text-slate-600
-                            hover:text-primary-600
-                            transition
-                        "
-                    >
-                        امنیت
-                    </a>
-
-                    <a
-                        href="#faq"
-                        class="
-                            text-slate-600
-                            hover:text-primary-600
-                            transition
-                        "
-                    >
-                        سوالات متداول
-                    </a>
-
-                </div>
-
-
-                <!-- CTA -->
-
-                <a
-                    href="#download"
-                    class="
-                        hidden
-                        sm:inline-flex
-                        items-center
-                        gap-2
-                        px-5
-                        py-2.5
-                        rounded-xl
-                        gradient-bg
-                        text-white
-                        text-sm
-                        font-bold
-                        shadow-lg
-                        shadow-blue-500/20
-                        hover:-translate-y-0.5
-                        transition
-                    "
-                >
-
-                    دریافت نرم‌افزار
-
-                    <svg
-                        class="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M15 19l-7-7 7-7"
-                        />
-
-                    </svg>
-
-                </a>
-
+              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm text-cyan-100 mb-6">
+              <span class="w-2 h-2 rounded-full bg-emerald-300"></span> راهکاری برای مدیریت مکاتبات اداری</div>
+            <h1 class="text-4xl sm:text-5xl xl:text-6xl font-black leading-[1.35] tracking-tight">باینو؛<br><span
+                class="text-cyan-300">بایگانی سریع، راحت و نوین</span></h1>
+            <p class="mt-6 text-lg sm:text-xl leading-9 text-slate-300 max-w-2xl mx-auto lg:mx-0">نامه‌ها و فایل‌های
+              اداری را ثبت، جستجو، مرتب و پیگیری کنید؛ با محیطی کاربردی برای کارهای روزمره دبیرخانه و دسترسی آسان‌تر به
+              سوابق مکاتبات.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"><a href="#features"
+                class="gradient-button rounded-2xl px-7 py-4 font-extrabold shadow-xl shadow-blue-950/30 hover:-translate-y-0.5 transition">با
+                امکانات باینو آشنا شوید <span aria-hidden="true">←</span></a><a href="#screenshots"
+                class="rounded-2xl px-7 py-4 border border-white/20 bg-white/5 hover:bg-white/10 font-bold transition">دیدن
+                تصاویر محیط برنامه</a></div>
+            <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 text-sm text-slate-300">
+              <span class="flex items-center gap-2"><span class="text-emerald-300">✓</span> جستجو و فیلتر
+                رکوردها</span><span class="flex items-center gap-2"><span class="text-emerald-300">✓</span> مدیریت فایل
+                و پیوست</span><span class="flex items-center gap-2"><span class="text-emerald-300">✓</span> پشتیبان‌گیری
+                از اطلاعات</span></div>
+          </div>
+          <div class="relative max-w-2xl mx-auto w-full">
+            <div class="absolute -inset-5 rounded-[34px] bg-gradient-to-br from-cyan-400/20 to-blue-500/20 blur-2xl">
             </div>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<!-- ========================================================= -->
-<!-- HERO -->
-<!-- ========================================================= -->
-
-<section
-    class="
-        relative
-        overflow-hidden
-        pt-36
-        pb-24
-        hero-grid
-    "
->
-
-    <!-- Background -->
-
-    <div
-        class="
-            blob
-            absolute
-            -top-32
-            -right-20
-            w-96
-            h-96
-            rounded-full
-            bg-blue-500
-        "
-    ></div>
-
-    <div
-        class="
-            blob
-            absolute
-            top-72
-            -left-32
-            w-96
-            h-96
-            rounded-full
-            bg-indigo-500
-        "
-    ></div>
-
-
-    <div
-        class="
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            lg:px-8
-        "
-    >
-
-        <div
-            class="
-                grid
-                lg:grid-cols-2
-                gap-16
-                items-center
-            "
-        >
-
-
-            <!-- Text -->
-
-            <div
-                class="
-                    text-center
-                    lg:text-right
-                "
-            >
-
-                <div
-                    class="
-                        inline-flex
-                        items-center
-                        gap-2
-                        px-4
-                        py-2
-                        rounded-full
-                        bg-blue-50
-                        border
-                        border-blue-100
-                        text-blue-700
-                        text-sm
-                        font-medium
-                        mb-7
-                    "
-                >
-
-                    <span
-                        class="
-                            w-2
-                            h-2
-                            rounded-full
-                            bg-blue-500
-                        "
-                    ></span>
-
-                    دبیرخانه بدون نیاز به اینترنت
-
+            <div class="relative rounded-[26px] border border-white/15 bg-white/10 p-2 sm:p-3 shadow-2xl">
+              <div class="rounded-[20px] overflow-hidden bg-white text-slate-800">
+                <div class="h-12 bg-slate-50 border-b border-slate-200 flex items-center justify-between px-4">
+                  <div class="flex gap-1.5"><i class="w-2.5 h-2.5 bg-rose-300 rounded-full"></i><i
+                      class="w-2.5 h-2.5 bg-amber-300 rounded-full"></i><i
+                      class="w-2.5 h-2.5 bg-emerald-300 rounded-full"></i></div><span
+                    class="text-xs font-bold text-slate-500">پیش‌نمایش محیط باینو</span><span
+                    class="text-xs text-slate-400">نسخه نمایشی</span>
                 </div>
-
-
-                <h1
-                    class="
-                        text-4xl
-                        sm:text-5xl
-                        lg:text-6xl
-                        font-black
-                        leading-[1.3]
-                        tracking-tight
-                        text-slate-950
-                    "
-                >
-
-                    مکاتبات سازمانی را
-
-                    <span class="gradient-text">
-                        ساده و منظم
-                    </span>
-
-                    مدیریت کنید.
-
-                </h1>
-
-
-                <p
-                    class="
-                        mt-7
-                        text-lg
-                        leading-9
-                        text-slate-600
-                        max-w-xl
-                        mx-auto
-                        lg:mx-0
-                    "
-                >
-
-                    یک نرم‌افزار دبیرخانه سریع و کاربردی برای
-                    ثبت، مدیریت، پیگیری و بایگانی نامه‌ها؛
-                    بدون وابستگی به اینترنت و سرویس‌های ابری.
-
-                </p>
-
-
-                <!-- Buttons -->
-
-                <div
-                    class="
-                        mt-9
-                        flex
-                        flex-col
-                        sm:flex-row
-                        justify-center
-                        lg:justify-start
-                        gap-4
-                    "
-                >
-
-                    <a
-                        href="#download"
-                        class="
-                            gradient-bg
-                            text-white
-                            px-7
-                            py-4
-                            rounded-2xl
-                            font-bold
-                            shadow-xl
-                            shadow-blue-500/20
-                            hover:-translate-y-1
-                            transition
-                            flex
-                            items-center
-                            justify-center
-                            gap-3
-                        "
-                    >
-
-                        دانلود نرم‌افزار
-
-                        <svg
-                            class="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                        >
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="
-                                    M12 3v12
-                                    m0 0l-4-4
-                                    m4 4l4-4
-                                    M5 21h14
-                                "
-                            />
-
-                        </svg>
-
-                    </a>
-
-
-                    <a
-                        href="#features"
-                        class="
-                            px-7
-                            py-4
-                            rounded-2xl
-                            font-bold
-                            border
-                            border-slate-200
-                            bg-white
-                            text-slate-700
-                            hover:border-blue-200
-                            hover:text-blue-600
-                            transition
-                        "
-                    >
-
-                        مشاهده امکانات
-
-                    </a>
-
-                </div>
-
-
-                <!-- Trust -->
-
-                <div
-                    class="
-                        mt-9
-                        flex
-                        items-center
-                        justify-center
-                        lg:justify-start
-                        gap-6
-                        text-sm
-                        text-slate-500
-                    "
-                >
-
-                    <div
-                        class="flex items-center gap-2"
-                    >
-
-                        <svg
-                            class="w-5 h-5 text-blue-500"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                        >
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7"
-                            />
-
-                        </svg>
-
-                        کاملاً آفلاین
-
-                    </div>
-
-
-                    <div
-                        class="flex items-center gap-2"
-                    >
-
-                        <svg
-                            class="w-5 h-5 text-blue-500"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                        >
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7"
-                            />
-
-                        </svg>
-
-                        اطلاعات روی سیستم شما
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Application Mockup -->
-
-            <div class="relative">
-
-
-                <!-- Floating notification -->
-
-                <div
-                    class="
-                        floating
-                        absolute
-                        -top-8
-                        -right-5
-                        z-20
-                        bg-white
-                        rounded-2xl
-                        border
-                        border-slate-100
-                        shadow-xl
-                        p-4
-                        hidden
-                        sm:block
-                    "
-                >
-
-                    <div
-                        class="flex items-center gap-3"
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-blue-50
-                                text-blue-600
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            ✓
-
-                        </div>
-
-
+                <!-- تصویر واقعی صفحه اصلی را در مسیر images/bayno-home.png قرار دهید؛ تصویر نمایشی زیر جایگزین می‌شود. -->
+                <div class="p-4 sm:p-5 bg-slate-100">
+                  <div class="flex gap-3 min-h-[300px] sm:min-h-[360px]">
+                    <aside class="hidden sm:block w-36 bg-white rounded-xl p-3 border border-slate-200">
+                      <div class="rounded-lg gradient-button text-white text-center text-sm font-black py-3 mb-4">باینو
+                      </div>
+                      <div class="space-y-2 text-[11px]">
+                        <div class="bg-blue-50 text-blue-700 rounded-lg p-2.5 font-bold">فهرست نامه‌ها</div>
+                        <div class="text-slate-500 p-2">ثبت نامه</div>
+                        <div class="text-slate-500 p-2">فایل‌ها و پیوست‌ها</div>
+                        <div class="text-slate-500 p-2">گزارش و پشتیبان</div>
+                        <div class="text-slate-500 p-2">تنظیمات</div>
+                      </div>
+                    </aside>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between mb-3">
                         <div>
-
-                            <div
-                                class="
-                                    text-xs
-                                    text-slate-400
-                                "
-                            >
-                                نامه جدید
-                            </div>
-
-                            <div
-                                class="
-                                    font-black
-                                    text-slate-800
-                                "
-                            >
-                                با موفقیت ثبت شد
-                            </div>
-
+                          <div class="font-black text-sm sm:text-base">مدیریت مکاتبات</div>
+                          <div class="text-[10px] sm:text-xs text-slate-400 mt-1">جستجو و دسترسی به سوابق</div>
                         </div>
-
+                        <div class="gradient-button text-white rounded-lg px-3 py-2 text-[10px] sm:text-xs font-bold">+
+                          ثبت رکورد</div>
+                      </div>
+                      <div class="grid grid-cols-3 gap-2 mb-3">
+                        <div class="bg-white rounded-xl border border-slate-200 p-3">
+                          <div class="text-xl sm:text-2xl font-black text-blue-600">نامه</div>
+                          <div class="text-[9px] sm:text-[10px] text-slate-400 mt-1">ثبت و مدیریت</div>
+                        </div>
+                        <div class="bg-white rounded-xl border border-slate-200 p-3">
+                          <div class="text-xl sm:text-2xl font-black text-cyan-600">فایل</div>
+                          <div class="text-[9px] sm:text-[10px] text-slate-400 mt-1">پیوست و اسکن</div>
+                        </div>
+                        <div class="bg-white rounded-xl border border-slate-200 p-3">
+                          <div class="text-xl sm:text-2xl font-black text-emerald-600">جستجو</div>
+                          <div class="text-[9px] sm:text-[10px] text-slate-400 mt-1">فیلتر سریع</div>
+                        </div>
+                      </div>
+                      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden">
+                        <div class="bg-slate-50 px-3 py-3 flex items-center justify-between"><span
+                            class="text-xs font-black">آخرین رکوردها</span><span
+                            class="text-[10px] text-slate-400">نمایش نمونه</span></div>
+                        <div class="divide-y divide-slate-100 text-xs">
+                          <div class="flex items-center gap-2 p-3"><span
+                              class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 grid place-items-center">۱</span>
+                            <div class="flex-1"><b class="block text-slate-700">درخواست اداری</b><small
+                                class="text-slate-400">شماره و تاریخ نامه</small></div><span
+                              class="text-emerald-600 text-[10px]">ثبت‌شده</span>
+                          </div>
+                          <div class="flex items-center gap-2 p-3"><span
+                              class="w-8 h-8 rounded-lg bg-cyan-50 text-cyan-600 grid place-items-center">۲</span>
+                            <div class="flex-1"><b class="block text-slate-700">مکاتبه سازمانی</b><small
+                                class="text-slate-400">دارای فایل پیوست</small></div><span
+                              class="text-blue-600 text-[10px]">بایگانی</span>
+                          </div>
+                          <div class="flex items-center gap-2 p-3"><span
+                              class="w-8 h-8 rounded-lg bg-violet-50 text-violet-600 grid place-items-center">۳</span>
+                            <div class="flex-1"><b class="block text-slate-700">نامه جهت بررسی</b><small
+                                class="text-slate-400">قابل جستجو و ویرایش</small></div><span
+                              class="text-amber-600 text-[10px]">در دسترس</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
+                  </div>
                 </div>
-
-
-
-                <!-- Main Window -->
-
-                <div
-                    class="
-                        hero-shadow
-                        relative
-                        bg-white
-                        rounded-3xl
-                        border
-                        border-slate-200
-                        overflow-hidden
-                    "
-                >
-
-
-                    <!-- Window Header -->
-
-                    <div
-                        class="
-                            h-14
-                            border-b
-                            border-slate-100
-                            flex
-                            items-center
-                            justify-between
-                            px-5
-                        "
-                    >
-
-                        <div
-                            class="flex gap-2"
-                        >
-
-                            <span
-                                class="
-                                    w-3
-                                    h-3
-                                    rounded-full
-                                    bg-red-300
-                                "
-                            ></span>
-
-                            <span
-                                class="
-                                    w-3
-                                    h-3
-                                    rounded-full
-                                    bg-yellow-300
-                                "
-                            ></span>
-
-                            <span
-                                class="
-                                    w-3
-                                    h-3
-                                    rounded-full
-                                    bg-green-300
-                                "
-                            ></span>
-
-                        </div>
-
-
-                        <div
-                            class="
-                                text-xs
-                                font-bold
-                                text-slate-500
-                            "
-                        >
-
-                            سامانه دبیرخانه
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div
-                        class="flex min-h-[460px]"
-                    >
-
-
-                        <!-- Sidebar -->
-
-                        <aside
-                            class="
-                                w-48
-                                bg-slate-50
-                                border-l
-                                border-slate-100
-                                p-4
-                                hidden
-                                sm:block
-                            "
-                        >
-
-                            <div
-                                class="
-                                    h-9
-                                    rounded-xl
-                                    gradient-bg
-                                    text-white
-                                    flex
-                                    items-center
-                                    justify-center
-                                    text-xs
-                                    font-bold
-                                    mb-5
-                                "
-                            >
-
-                                دبیرخانه
-
-                            </div>
-
-
-                            <div
-                                class="
-                                    space-y-1
-                                    text-xs
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        bg-blue-50
-                                        text-blue-700
-                                        rounded-lg
-                                        p-3
-                                        font-semibold
-                                    "
-                                >
-
-                                    کارتابل
-
-                                </div>
-
-                                <div
-                                    class="
-                                        p-3
-                                        text-slate-500
-                                    "
-                                >
-
-                                    نامه‌های وارده
-
-                                </div>
-
-                                <div
-                                    class="
-                                        p-3
-                                        text-slate-500
-                                    "
-                                >
-
-                                    نامه‌های صادره
-
-                                </div>
-
-                                <div
-                                    class="
-                                        p-3
-                                        text-slate-500
-                                    "
-                                >
-
-                                    پیش‌نویس‌ها
-
-                                </div>
-
-                                <div
-                                    class="
-                                        p-3
-                                        text-slate-500
-                                    "
-                                >
-
-                                    بایگانی
-
-                                </div>
-
-                                <div
-                                    class="
-                                        p-3
-                                        text-slate-500
-                                    "
-                                >
-
-                                    گزارش‌ها
-
-                                </div>
-
-                            </div>
-
-                        </aside>
-
-
-
-                        <!-- Content -->
-
-                        <main
-                            class="
-                                flex-1
-                                p-5
-                            "
-                        >
-
-                            <div
-                                class="
-                                    flex
-                                    items-center
-                                    justify-between
-                                    mb-6
-                                "
-                            >
-
-                                <div>
-
-                                    <div
-                                        class="
-                                            text-sm
-                                            font-black
-                                            text-slate-800
-                                        "
-                                    >
-
-                                        کارتابل دبیرخانه
-
-                                    </div>
-
-                                    <div
-                                        class="
-                                            text-[10px]
-                                            text-slate-400
-                                            mt-1
-                                        "
-                                    >
-
-                                        مدیریت مکاتبات
-
-                                    </div>
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        px-3
-                                        py-2
-                                        rounded-lg
-                                        bg-blue-50
-                                        text-blue-600
-                                        text-[10px]
-                                        font-bold
-                                    "
-                                >
-
-                                    + ثبت نامه
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- Stats -->
-
-                            <div
-                                class="
-                                    grid
-                                    grid-cols-3
-                                    gap-3
-                                    mb-5
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        bg-blue-50
-                                        rounded-2xl
-                                        p-4
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            text-2xl
-                                            font-black
-                                            text-blue-600
-                                        "
-                                    >
-
-                                        ۲۴
-
-                                    </div>
-
-                                    <div
-                                        class="
-                                            text-[9px]
-                                            text-slate-500
-                                            mt-1
-                                        "
-                                    >
-
-                                        نامه وارده
-
-                                    </div>
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        bg-indigo-50
-                                        rounded-2xl
-                                        p-4
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            text-2xl
-                                            font-black
-                                            text-indigo-600
-                                        "
-                                    >
-
-                                        ۱۸
-
-                                    </div>
-
-                                    <div
-                                        class="
-                                            text-[9px]
-                                            text-slate-500
-                                            mt-1
-                                        "
-                                    >
-
-                                        نامه صادره
-
-                                    </div>
-
-                                </div>
-
-
-                                <div
-                                    class="
-                                        bg-emerald-50
-                                        rounded-2xl
-                                        p-4
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            text-2xl
-                                            font-black
-                                            text-emerald-600
-                                        "
-                                    >
-
-                                        ۷
-
-                                    </div>
-
-                                    <div
-                                        class="
-                                            text-[9px]
-                                            text-slate-500
-                                            mt-1
-                                        "
-                                    >
-
-                                        در انتظار پیگیری
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- Letters -->
-
-                            <div
-                                class="
-                                    rounded-2xl
-                                    border
-                                    border-slate-100
-                                    overflow-hidden
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        px-4
-                                        py-3
-                                        bg-slate-50
-                                        text-[10px]
-                                        font-bold
-                                        text-slate-500
-                                    "
-                                >
-
-                                    آخرین مکاتبات
-
-                                </div>
-
-
-                                <!-- Letter -->
-
-                                <div
-                                    class="
-                                        flex
-                                        items-center
-                                        gap-3
-                                        px-4
-                                        py-4
-                                        border-t
-                                        border-slate-100
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            w-9
-                                            h-9
-                                            rounded-xl
-                                            bg-blue-50
-                                            text-blue-600
-                                            flex
-                                            items-center
-                                            justify-center
-                                            text-xs
-                                            font-black
-                                        "
-                                    >
-
-                                        ۰۱
-
-                                    </div>
-
-
-                                    <div
-                                        class="flex-1"
-                                    >
-
-                                        <div
-                                            class="
-                                                text-[10px]
-                                                font-bold
-                                                text-slate-700
-                                            "
-                                        >
-
-                                            درخواست همکاری
-
-                                        </div>
-
-                                        <div
-                                            class="
-                                                text-[8px]
-                                                text-slate-400
-                                                mt-1
-                                            "
-                                        >
-
-                                            شماره: ۱۲۴۵۸
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <span
-                                        class="
-                                            px-2
-                                            py-1
-                                            rounded-md
-                                            bg-emerald-50
-                                            text-emerald-600
-                                            text-[8px]
-                                        "
-                                    >
-
-                                        ثبت شده
-
-                                    </span>
-
-                                </div>
-
-
-
-                                <!-- Letter -->
-
-                                <div
-                                    class="
-                                        flex
-                                        items-center
-                                        gap-3
-                                        px-4
-                                        py-4
-                                        border-t
-                                        border-slate-100
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            w-9
-                                            h-9
-                                            rounded-xl
-                                            bg-indigo-50
-                                            text-indigo-600
-                                            flex
-                                            items-center
-                                            justify-center
-                                            text-xs
-                                            font-black
-                                        "
-                                    >
-
-                                        ۰۲
-
-                                    </div>
-
-
-                                    <div
-                                        class="flex-1"
-                                    >
-
-                                        <div
-                                            class="
-                                                text-[10px]
-                                                font-bold
-                                                text-slate-700
-                                            "
-                                        >
-
-                                            دعوت‌نامه جلسه
-
-                                        </div>
-
-                                        <div
-                                            class="
-                                                text-[8px]
-                                                text-slate-400
-                                                mt-1
-                                            "
-                                        >
-
-                                            شماره: ۱۲۴۵۷
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <span
-                                        class="
-                                            px-2
-                                            py-1
-                                            rounded-md
-                                            bg-yellow-50
-                                            text-yellow-600
-                                            text-[8px]
-                                        "
-                                    >
-
-                                        پیگیری
-
-                                    </span>
-
-                                </div>
-
-
-
-                                <!-- Letter -->
-
-                                <div
-                                    class="
-                                        flex
-                                        items-center
-                                        gap-3
-                                        px-4
-                                        py-4
-                                        border-t
-                                        border-slate-100
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            w-9
-                                            h-9
-                                            rounded-xl
-                                            bg-slate-100
-                                            text-slate-500
-                                            flex
-                                            items-center
-                                            justify-center
-                                            text-xs
-                                            font-black
-                                        "
-                                    >
-
-                                        ۰۳
-
-                                    </div>
-
-
-                                    <div
-                                        class="flex-1"
-                                    >
-
-                                        <div
-                                            class="
-                                                text-[10px]
-                                                font-bold
-                                                text-slate-700
-                                            "
-                                        >
-
-                                            پاسخ به نامه اداری
-
-                                        </div>
-
-                                        <div
-                                            class="
-                                                text-[8px]
-                                                text-slate-400
-                                                mt-1
-                                            "
-                                        >
-
-                                            شماره: ۱۲۴۵۶
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <span
-                                        class="
-                                            px-2
-                                            py-1
-                                            rounded-md
-                                            bg-blue-50
-                                            text-blue-600
-                                            text-[8px]
-                                        "
-                                    >
-
-                                        صادره
-
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </main>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Bottom floating -->
-
-                <div
-                    class="
-                        floating-slow
-                        absolute
-                        -bottom-7
-                        -left-7
-                        bg-white
-                        rounded-2xl
-                        border
-                        border-slate-100
-                        shadow-xl
-                        p-4
-                        hidden
-                        sm:block
-                    "
-                >
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-3
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-full
-                                gradient-bg
-                                flex
-                                items-center
-                                justify-center
-                                text-white
-                            "
-                        >
-
-                            🔒
-
-                        </div>
-
-
-                        <div>
-
-                            <div
-                                class="
-                                    text-xs
-                                    text-slate-400
-                                "
-                            >
-
-                                وضعیت اطلاعات
-
-                            </div>
-
-                            <div
-                                class="
-                                    font-black
-                                    text-sm
-                                "
-                            >
-
-                                روی سیستم شما
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+              </div>
             </div>
-
+            <div
+              class="float hidden sm:flex absolute -right-5 top-12 items-center gap-3 rounded-2xl bg-white text-slate-800 shadow-xl p-3">
+              <span
+                class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 grid place-items-center text-xl">✓</span><span><b
+                  class="block text-sm">دسترسی آسان</b><small class="text-slate-400">سوابق در چند لحظه</small></span>
+            </div>
+            <div
+              class="float hidden sm:flex absolute -left-4 bottom-8 items-center gap-3 rounded-2xl bg-white text-slate-800 shadow-xl p-3"
+              style="animation-delay:-2s"><span
+                class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 grid place-items-center text-xl">▤</span><span><b
+                  class="block text-sm">پشتیبان‌گیری</b><small class="text-slate-400">برای نگهداری
+                  مطمئن‌تر</small></span></div>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-
-<!-- ========================================================= -->
-<!-- FEATURES -->
-<!-- ========================================================= -->
-
-<section
-    id="features"
-    class="py-24 bg-white"
->
-
-    <div
-        class="
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            lg:px-8
-        "
-    >
-
-        <div
-            class="
-                max-w-2xl
-                mx-auto
-                text-center
-                mb-16
-            "
-        >
-
-            <div
-                class="
-                    inline-flex
-                    px-4
-                    py-2
-                    rounded-full
-                    bg-blue-50
-                    text-blue-700
-                    text-sm
-                    font-bold
-                "
-            >
-
-                امکانات نرم‌افزار
-
-            </div>
-
-
-            <h2
-                class="
-                    mt-5
-                    text-3xl
-                    sm:text-4xl
-                    font-black
-                    text-slate-950
-                "
-            >
-
-                همه ابزارهای موردنیاز
-                <span class="gradient-text">
-                    دبیرخانه
-                </span>
-
-            </h2>
-
-
-            <p
-                class="
-                    mt-5
-                    text-slate-500
-                    leading-8
-                "
-            >
-
-                از ثبت یک نامه تا بایگانی و پیگیری آن،
-                همه چیز را در یک محیط ساده مدیریت کنید.
-
-            </p>
-
+    <section class="py-8 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="p-4">
+          <div class="text-2xl font-black text-bayno-ink">ثبت و ویرایش</div>
+          <div class="text-sm text-slate-500 mt-1">اطلاعات مکاتبات</div>
         </div>
-
-
-
-        <div
-            class="
-                grid
-                sm:grid-cols-2
-                lg:grid-cols-3
-                gap-6
-            "
-        >
-
-
-            <!-- Feature -->
-
-            <div
-                class="
-                    feature-card
-                    p-7
-                    rounded-3xl
-                    border
-                    border-slate-100
-                    bg-white
-                "
-            >
-
-                <div
-                    class="
-                        w-14
-                        h-14
-                        rounded-2xl
-                        bg-blue-50
-                        text-blue-600
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 2h9l5 5v15H6a2 2 0 01-2-2V4a2 2 0 012-2z"
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M14 2v6h6"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3
-                    class="
-                        font-black
-                        text-lg
-                        text-slate-900
-                    "
-                >
-
-                    ثبت نامه
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                    "
-                >
-
-                    ثبت سریع نامه‌های وارده و صادره
-                    به همراه شماره، تاریخ، موضوع و اطلاعات فرستنده.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Feature -->
-
-            <div
-                class="
-                    feature-card
-                    p-7
-                    rounded-3xl
-                    border
-                    border-slate-100
-                    bg-white
-                "
-            >
-
-                <div
-                    class="
-                        w-14
-                        h-14
-                        rounded-2xl
-                        bg-indigo-50
-                        text-indigo-600
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <circle
-                            cx="11"
-                            cy="11"
-                            r="7"
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M20 20l-4-4"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3
-                    class="font-black text-lg text-slate-900"
-                >
-
-                    جستجوی پیشرفته
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                    "
-                >
-
-                    نامه موردنظر را بر اساس شماره،
-                    موضوع، تاریخ، فرستنده یا گیرنده پیدا کنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Feature -->
-
-            <div
-                class="
-                    feature-card
-                    p-7
-                    rounded-3xl
-                    border
-                    border-slate-100
-                    bg-white
-                "
-            >
-
-                <div
-                    class="
-                        w-14
-                        h-14
-                        rounded-2xl
-                        bg-emerald-50
-                        text-emerald-600
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="9"
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M12 7v5l3 2"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3
-                    class="font-black text-lg text-slate-900"
-                >
-
-                    پیگیری مکاتبات
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                    "
-                >
-
-                    وضعیت نامه‌ها را دنبال کنید و هیچ
-                    مکاتبه‌ای را از چرخه پیگیری خارج نکنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Feature -->
-
-            <div
-                class="
-                    feature-card
-                    p-7
-                    rounded-3xl
-                    border
-                    border-slate-100
-                    bg-white
-                "
-            >
-
-                <div
-                    class="
-                        w-14
-                        h-14
-                        rounded-2xl
-                        bg-purple-50
-                        text-purple-600
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M4 5h16v14H4z"
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M8 9h8M8 13h5"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3
-                    class="font-black text-lg text-slate-900"
-                >
-
-                    بایگانی منظم
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                    "
-                >
-
-                    اسناد و فایل‌های پیوست را همراه با
-                    اطلاعات نامه در آرشیو نگهداری کنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Feature -->
-
-            <div
-                class="
-                    feature-card
-                    p-7
-                    rounded-3xl
-                    border
-                    border-slate-100
-                    bg-white
-                "
-            >
-
-                <div
-                    class="
-                        w-14
-                        h-14
-                        rounded-2xl
-                        bg-orange-50
-                        text-orange-600
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M5 4h14v16H5z"
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M8 8h8M8 12h8M8 16h5"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3
-                    class="font-black text-lg text-slate-900"
-                >
-
-                    گزارش‌گیری
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                    "
-                >
-
-                    گزارش‌های موردنیاز دبیرخانه را
-                    به‌سادگی مشاهده و بررسی کنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Feature -->
-
-            <div
-                class="
-                    feature-card
-                    p-7
-                    rounded-3xl
-                    border
-                    border-slate-100
-                    bg-white
-                "
-            >
-
-                <div
-                    class="
-                        w-14
-                        h-14
-                        rounded-2xl
-                        bg-red-50
-                        text-red-600
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-7 h-7"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="
-                                M12 3
-                                l8 4v5
-                                c0 5-3.5 8-8 9
-                                -4.5-1-8-4-8-9V7l8-4z
-                            "
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M9 12l2 2 4-4"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h3
-                    class="font-black text-lg text-slate-900"
-                >
-
-                    امنیت اطلاعات
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        leading-7
-                        text-slate-500
-                    "
-                >
-
-                    اطلاعات شما روی سیستم خودتان باقی می‌ماند
-                    و برای کارکرد نرم‌افزار نیازی به اینترنت ندارید.
-
-                </p>
-
-            </div>
-
+        <div class="p-4">
+          <div class="text-2xl font-black text-bayno-ink">جستجوی سریع</div>
+          <div class="text-sm text-slate-500 mt-1">فیلتر و صفحه‌بندی</div>
         </div>
+        <div class="p-4">
+          <div class="text-2xl font-black text-bayno-ink">فایل و اسکن</div>
+          <div class="text-sm text-slate-500 mt-1">مدیریت اسناد مرتبط</div>
+        </div>
+        <div class="p-4">
+          <div class="text-2xl font-black text-bayno-ink">پشتیبان‌گیری</div>
+          <div class="text-sm text-slate-500 mt-1">کمک به حفظ اطلاعات</div>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <section id="features" class="py-20 sm:py-24 bg-bayno-paper">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14"><span
+            class="inline-flex rounded-full bg-blue-50 text-blue-700 px-4 py-2 text-sm font-bold">امکانات کاربردی</span>
+          <h2 class="mt-5 text-3xl sm:text-4xl font-black text-bayno-ink leading-tight">کارهای دبیرخانه، <span
+              class="gradient-text">مرتب‌تر و سریع‌تر</span></h2>
+          <p class="mt-5 text-slate-500 leading-8">باینو ابزارهای اصلی مدیریت مکاتبات را در یک محیط یکپارچه کنار هم قرار
+            می‌دهد؛ از ورود اطلاعات تا پیدا کردن نامه و رسیدگی به فایل‌های مرتبط.</p>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="feature-card bg-white rounded-3xl border border-slate-200 p-5 shadow-card">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 grid place-items-center text-2xl">✎</div>
+            <h3 class="mt-4 text-lg font-black">ثبت و ویرایش نامه‌ها</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">اطلاعات مکاتبات را ثبت کنید، رکوردهای قبلی را باز کنید و در
+              صورت نیاز ویرایش کنید؛ بدون گشت‌وگذار بین چند ابزار مختلف.</p>
+            <div class="screenshot mt-5">
+              <div class="screenshot-content">
+                <div class="text-3xl mb-2">▤</div><b>تصویر فرم ثبت و ویرایش نامه</b>
+                <p class="text-xs mt-2">فایل پیشنهادی: images/record-form.png</p>
+              </div><img src="images/record-form.png" alt="تصویر فرم ثبت و ویرایش نامه در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+          </article>
+          <article class="feature-card bg-white rounded-3xl border border-slate-200 p-5 shadow-card">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 grid place-items-center text-2xl">⌕</div>
+            <h3 class="mt-4 text-lg font-black">جستجو و فیلتر پیشرفته</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">در میان رکوردها جستجو کنید، فیلترها را برای محدود کردن
+              نتایج به کار ببرید و برای دسترسی به نامه‌های موردنظر کمتر وقت صرف کنید.</p>
+            <div class="screenshot mt-5">
+              <div class="screenshot-content">
+                <div class="text-3xl mb-2">⌕</div><b>تصویر صفحه اصلی و فیلترها</b>
+                <p class="text-xs mt-2">فایل پیشنهادی: images/search-filters.png</p>
+              </div><img src="images/search-filters.png" alt="تصویر جستجو و فیلتر رکوردها در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+          </article>
+          <article class="feature-card bg-white rounded-3xl border border-slate-200 p-5 shadow-card">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-700 grid place-items-center text-2xl">▧</div>
+            <h3 class="mt-4 text-lg font-black">مدیریت فایل‌ها و پیوست‌ها</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">فایل‌های مرتبط با هر نامه را کنار اطلاعات همان رکورد مدیریت
+              کنید و ساختار پوشه‌بندی آرشیو را متناسب با گردش کار خود به کار بگیرید.</p>
+            <div class="screenshot mt-5">
+              <div class="screenshot-content">
+                <div class="text-3xl mb-2">📁</div><b>تصویر بخش فایل‌ها و پیوست‌ها</b>
+                <p class="text-xs mt-2">فایل پیشنهادی: images/attachments.png</p>
+              </div><img src="images/attachments.png" alt="تصویر مدیریت فایل‌ها و پیوست‌های نامه در باینو"
+                loading="lazy" onerror="this.style.display='none'">
+            </div>
+          </article>
+          <article class="feature-card bg-white rounded-3xl border border-slate-200 p-5 shadow-card">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 grid place-items-center text-2xl">▤</div>
+            <h3 class="mt-4 text-lg font-black">اسکن و ورود اسناد</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">برای دیجیتالی‌کردن مکاتبات کاغذی، از گردش کار اسکن و
+              نگهداری فایل‌های سند مرتبط با رکورد استفاده کنید. امکانات دستگاه اسکنر به سخت‌افزار و تنظیمات سیستم وابسته
+              است.</p>
+            <div class="screenshot mt-5">
+              <div class="screenshot-content">
+                <div class="text-3xl mb-2">▤</div><b>تصویر پنجره اسکن یا فایل اسکن‌شده</b>
+                <p class="text-xs mt-2">فایل پیشنهادی: images/scanner.png</p>
+              </div><img src="images/scanner.png" alt="تصویر بخش اسکن اسناد در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+          </article>
+          <article class="feature-card bg-white rounded-3xl border border-slate-200 p-5 shadow-card">
+            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 grid place-items-center text-2xl">▦</div>
+            <h3 class="mt-4 text-lg font-black">تاریخ شمسی و آرشیو منظم</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">با نمایش تاریخ‌های شمسی و سازمان‌دهی فایل‌ها بر اساس سال و
+              ماه، مرور سوابق و پیدا کردن اسناد را ساده‌تر کنید.</p>
+            <div class="screenshot mt-5">
+              <div class="screenshot-content">
+                <div class="text-3xl mb-2">▦</div><b>تصویر تاریخ‌ها یا ساختار آرشیو</b>
+                <p class="text-xs mt-2">فایل پیشنهادی: images/archive-calendar.png</p>
+              </div><img src="images/archive-calendar.png" alt="تصویر آرشیو سالانه و ماهانه در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+          </article>
+          <article class="feature-card bg-white rounded-3xl border border-slate-200 p-5 shadow-card">
+            <div class="w-12 h-12 rounded-2xl bg-violet-50 text-violet-700 grid place-items-center text-2xl">⤓</div>
+            <h3 class="mt-4 text-lg font-black">پشتیبان‌گیری از اطلاعات</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">از پایگاه داده نسخه پشتیبان تهیه کنید تا نگهداری نسخه‌ای
+              جداگانه از اطلاعات برای انتقال یا بازیابی احتمالی آسان‌تر شود.</p>
+            <div class="screenshot mt-5">
+              <div class="screenshot-content">
+                <div class="text-3xl mb-2">⤓</div><b>تصویر پنجره پشتیبان‌گیری</b>
+                <p class="text-xs mt-2">فایل پیشنهادی: images/backup.png</p>
+              </div><img src="images/backup.png" alt="تصویر پشتیبان‌گیری اطلاعات در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <section id="screenshots" class="py-20 sm:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
+          <div><span class="inline-flex rounded-full bg-cyan-50 text-cyan-800 px-4 py-2 text-sm font-bold">نگاهی به محیط
+              برنامه</span>
+            <h2 class="mt-4 text-3xl sm:text-4xl font-black text-bayno-ink">باینو را در عمل ببینید</h2>
+            <p class="mt-3 text-slate-500 leading-8 max-w-2xl">تصاویر واقعی برنامه را در جایگاه‌های زیر قرار دهید تا
+              مخاطب پیش از دریافت نرم‌افزار با محیط آن آشنا شود.</p>
+          </div>
+          <p class="text-xs text-slate-400">تصاویر نمونه را با اسکرین‌شات‌های واقعی جایگزین کنید.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <figure class="rounded-3xl border border-slate-200 p-3 shadow-card">
+            <div class="screenshot min-h-[260px] sm:min-h-[340px]">
+              <div class="screenshot-content">
+                <div class="text-4xl mb-3">▤</div><b>صفحه اصلی و فهرست مکاتبات</b>
+                <p class="text-xs mt-2">images/bayno-home.png</p>
+              </div><img src="images/bayno-home.png" alt="صفحه اصلی نرم‌افزار باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+            <figcaption class="px-2 pt-4 pb-2"><b class="text-bayno-ink">همه رکوردها در یک نگاه</b>
+              <p class="text-sm text-slate-500 mt-1">فهرست مکاتبات، جستجو و دسترسی به رکوردها.</p>
+            </figcaption>
+          </figure>
+          <figure class="rounded-3xl border border-slate-200 p-3 shadow-card">
+            <div class="screenshot min-h-[260px] sm:min-h-[340px]">
+              <div class="screenshot-content">
+                <div class="text-4xl mb-3">✎</div><b>فرم اطلاعات نامه</b>
+                <p class="text-xs mt-2">images/bayno-record.png</p>
+              </div><img src="images/bayno-record.png" alt="فرم اطلاعات نامه در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+            <figcaption class="px-2 pt-4 pb-2"><b class="text-bayno-ink">ثبت و ویرایش اطلاعات</b>
+              <p class="text-sm text-slate-500 mt-1">اطلاعات اصلی نامه را در فرم مربوط به همان رکورد مدیریت کنید.</p>
+            </figcaption>
+          </figure>
+          <figure class="rounded-3xl border border-slate-200 p-3 shadow-card">
+            <div class="screenshot min-h-[260px] sm:min-h-[340px]">
+              <div class="screenshot-content">
+                <div class="text-4xl mb-3">📁</div><b>فایل‌ها و اسناد پیوست</b>
+                <p class="text-xs mt-2">images/bayno-files.png</p>
+              </div><img src="images/bayno-files.png" alt="بخش فایل‌ها و اسناد مرتبط در باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+            <figcaption class="px-2 pt-4 pb-2"><b class="text-bayno-ink">اسناد در کنار مکاتبات</b>
+              <p class="text-sm text-slate-500 mt-1">فایل‌های مرتبط را با ساختار پوشه‌های آرشیو هماهنگ کنید.</p>
+            </figcaption>
+          </figure>
+          <figure class="rounded-3xl border border-slate-200 p-3 shadow-card">
+            <div class="screenshot min-h-[260px] sm:min-h-[340px]">
+              <div class="screenshot-content">
+                <div class="text-4xl mb-3">⚙</div><b>تنظیمات برنامه</b>
+                <p class="text-xs mt-2">images/bayno-settings.png</p>
+              </div><img src="images/bayno-settings.png" alt="صفحه تنظیمات نرم‌افزار باینو" loading="lazy"
+                onerror="this.style.display='none'">
+            </div>
+            <figcaption class="px-2 pt-4 pb-2"><b class="text-bayno-ink">تنظیم متناسب با شیوه کار شما</b>
+              <p class="text-sm text-slate-500 mt-1">تنظیمات برنامه و گزینه‌های نگهداری فایل‌ها.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
+    <section id="workflow" class="py-20 sm:py-24 bg-bayno-paper">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-14"><span
+            class="inline-flex rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-bold text-blue-700">روند
+            کار</span>
+          <h2 class="mt-5 text-3xl sm:text-4xl font-black text-bayno-ink">از ثبت تا دسترسی دوباره</h2>
+          <p class="mt-4 text-slate-500 leading-8">گردش کار ساده برای نظم‌دادن به سوابق اداری.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="bg-white border border-slate-200 rounded-3xl p-6">
+            <div class="w-12 h-12 rounded-2xl gradient-button text-white grid place-items-center font-black text-xl">۱
+            </div>
+            <h3 class="mt-5 font-black text-lg">ثبت اطلاعات</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">رکورد نامه را با اطلاعات موردنیاز ایجاد یا تکمیل کنید.</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-3xl p-6">
+            <div class="w-12 h-12 rounded-2xl gradient-button text-white grid place-items-center font-black text-xl">۲
+            </div>
+            <h3 class="mt-5 font-black text-lg">افزودن فایل‌ها</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">اسناد و فایل‌های مرتبط را به ساختار آرشیو اضافه کنید.</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-3xl p-6">
+            <div class="w-12 h-12 rounded-2xl gradient-button text-white grid place-items-center font-black text-xl">۳
+            </div>
+            <h3 class="mt-5 font-black text-lg">جستجو و بررسی</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">با جستجو و فیلترها، رکورد موردنظر را پیدا و باز کنید.</p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-3xl p-6">
+            <div class="w-12 h-12 rounded-2xl gradient-button text-white grid place-items-center font-black text-xl">۴
+            </div>
+            <h3 class="mt-5 font-black text-lg">پشتیبان‌گیری</h3>
+            <p class="mt-2 text-sm text-slate-500 leading-7">نسخه پشتیبان تهیه کنید و آن را در محل امن نگهداری کنید.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="security" class="py-20 sm:py-24 bg-bayno-ink text-white relative overflow-hidden">
+      <div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative grid lg:grid-cols-2 gap-12 items-center">
+        <div><span
+            class="inline-flex rounded-full bg-white/10 border border-white/10 px-4 py-2 text-sm font-bold text-cyan-200">کنترل
+            و نگهداری اطلاعات</span>
+          <h2 class="mt-5 text-3xl sm:text-4xl font-black leading-[1.45]">آرشیو شما، <span class="text-cyan-300">با نظم
+              بیشتر</span></h2>
+          <p class="mt-5 text-slate-300 leading-8">باینو برای مدیریت سوابق مکاتبات و فایل‌های مرتبط طراحی شده است. امکان
+            پشتیبان‌گیری به شما کمک می‌کند نسخه‌ای جدا از پایگاه داده نگهداری کنید. محل ذخیره و شیوه همگام‌سازی به
+            تنظیمات و نحوه استقرار نسخه مورد استفاده شما بستگی دارد.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex gap-3"><span class="text-emerald-300 text-xl">✓</span>
+              <div><b>پشتیبان‌گیری از پایگاه داده</b>
+                <p class="text-sm text-slate-400 mt-1">برای نگهداری نسخه پشتیبان در مسیر انتخابی.</p>
+              </div>
+            </div>
+            <div class="flex gap-3"><span class="text-emerald-300 text-xl">✓</span>
+              <div><b>مدیریت فایل‌های مرتبط</b>
+                <p class="text-sm text-slate-400 mt-1">سازمان‌دهی فایل‌ها بر اساس ساختار آرشیو.</p>
+              </div>
+            </div>
+            <div class="flex gap-3"><span class="text-emerald-300 text-xl">✓</span>
+              <div><b>گزینه‌های متناسب با گردش کار</b>
+                <p class="text-sm text-slate-400 mt-1">برخی رفتارها را از بخش تنظیمات برنامه مشخص کنید.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-[32px] border border-white/10 bg-white/5 p-5 sm:p-7">
+          <div class="flex items-center gap-4 border-b border-white/10 pb-5">
+            <div class="w-14 h-14 rounded-2xl gradient-button grid place-items-center text-2xl">⤓</div>
+            <div><b class="text-lg">پشتیبان‌گیری را جدی بگیرید</b>
+              <p class="text-sm text-slate-400 mt-1">یک عادت ساده برای مراقبت از آرشیو</p>
+            </div>
+          </div>
+          <div class="space-y-4 py-6">
+            <div class="flex justify-between gap-4 text-sm"><span class="text-slate-400">پشتیبان پایگاه
+                داده</span><b>قابل تهیه</b></div>
+            <div class="flex justify-between gap-4 text-sm"><span class="text-slate-400">انتخاب محل نگهداری</span><b>بر
+                اساس امکانات نسخه</b></div>
+            <div class="flex justify-between gap-4 text-sm"><span class="text-slate-400">فایل‌های آرشیو</span><b>مدیریت
+                در کنار رکوردها</b></div>
+          </div>
+          <div class="rounded-2xl bg-cyan-300/10 border border-cyan-300/10 p-4 text-sm leading-7 text-cyan-100">پیشنهاد:
+            نسخه پشتیبان را روی یک حافظه یا مسیر جداگانه هم نگهداری کنید و بازیابی آن را دوره‌ای آزمایش کنید.</div>
+        </div>
+      </div>
+    </section>
 
-<!-- ========================================================= -->
-<!-- OFFLINE SECTION -->
-<!-- ========================================================= -->
-
-<section
-    id="security"
-    class="
-        py-24
-        bg-slate-950
-        text-white
-        overflow-hidden
-        relative
-    "
->
-
-    <div
-        class="
-            absolute
-            -top-40
-            -right-40
-            w-96
-            h-96
-            rounded-full
-            bg-blue-600
-            opacity-20
-            blur-3xl
-        "
-    ></div>
-
-
-    <div
-        class="
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            lg:px-8
-            relative
-        "
-    >
-
+    <section class="py-20 sm:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
         <div
-            class="
-                grid
-                lg:grid-cols-2
-                gap-16
-                items-center
-            "
-        >
-
-
-            <!-- Text -->
-
+          class="rounded-[34px] bg-gradient-to-l from-blue-700 via-indigo-700 to-slate-900 text-white p-8 sm:p-14 relative overflow-hidden">
+          <div class="absolute -left-20 -top-20 w-72 h-72 rounded-full bg-cyan-300/15 blur-3xl"></div>
+          <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
             <div>
-
-                <div
-                    class="
-                        inline-flex
-                        px-4
-                        py-2
-                        rounded-full
-                        bg-white/10
-                        border
-                        border-white/10
-                        text-blue-300
-                        text-sm
-                        font-bold
-                    "
-                >
-
-                    مزیت اصلی
-
-                </div>
-
-
-                <h2
-                    class="
-                        mt-6
-                        text-3xl
-                        sm:text-4xl
-                        font-black
-                        leading-[1.5]
-                    "
-                >
-
-                    بدون اینترنت کار کنید؛
-                    <span class="text-blue-400">
-                        بدون نگرانی
-                    </span>
-                    از اطلاعاتتان.
-
-                </h2>
-
-
-                <p
-                    class="
-                        mt-6
-                        text-slate-400
-                        leading-8
-                    "
-                >
-
-                    دبیرخانه آفلاین برای سازمان‌هایی طراحی شده
-                    که می‌خواهند اطلاعات مکاتباتشان تحت کنترل خودشان باشد.
-                    نرم‌افزار برای انجام کارهای روزمره وابسته به
-                    اتصال اینترنت نیست.
-
-                </p>
-
-
-                <div class="mt-8 space-y-5">
-
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-blue-500/10
-                                text-blue-400
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            ✓
-
-                        </div>
-
-
-                        <div>
-
-                            <div
-                                class="
-                                    font-bold
-                                "
-                            >
-
-                                بدون نیاز به اینترنت
-
-                            </div>
-
-                            <div
-                                class="
-                                    text-sm
-                                    text-slate-500
-                                    mt-1
-                                "
-                            >
-
-                                عملیات اصلی نرم‌افزار کاملاً آفلاین است.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-blue-500/10
-                                text-blue-400
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            ✓
-
-                        </div>
-
-
-                        <div>
-
-                            <div
-                                class="font-bold"
-                            >
-
-                                کنترل اطلاعات
-
-                            </div>
-
-                            <div
-                                class="
-                                    text-sm
-                                    text-slate-500
-                                    mt-1
-                                "
-                            >
-
-                                اطلاعات در اختیار سازمان شما باقی می‌ماند.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-blue-500/10
-                                text-blue-400
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            ✓
-
-                        </div>
-
-
-                        <div>
-
-                            <div
-                                class="font-bold"
-                            >
-
-                                سرعت بالا
-
-                            </div>
-
-                            <div
-                                class="
-                                    text-sm
-                                    text-slate-500
-                                    mt-1
-                                "
-                            >
-
-                                بدون وابستگی به سرعت اینترنت.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Security card -->
-
-            <div>
-
-                <div
-                    class="
-                        bg-white/5
-                        border
-                        border-white/10
-                        rounded-[32px]
-                        p-7
-                        sm:p-9
-                    "
-                >
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                            pb-6
-                            border-b
-                            border-white/10
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-14
-                                h-14
-                                rounded-2xl
-                                gradient-bg
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            🔒
-
-                        </div>
-
-
-                        <div>
-
-                            <div
-                                class="
-                                    font-black
-                                    text-lg
-                                "
-                            >
-
-                                اطلاعات سازمان شما
-
-                            </div>
-
-                            <div
-                                class="
-                                    text-sm
-                                    text-slate-500
-                                    mt-1
-                                "
-                            >
-
-                                تحت کنترل خودتان
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="py-7 space-y-5">
-
-
-                        <div
-                            class="
-                                flex
-                                items-center
-                                justify-between
-                            "
-                        >
-
-                            <span
-                                class="
-                                    text-sm
-                                    text-slate-400
-                                "
-                            >
-                                اتصال اینترنت
-                            </span>
-
-                            <span
-                                class="
-                                    px-3
-                                    py-1
-                                    rounded-full
-                                    bg-emerald-500/10
-                                    text-emerald-400
-                                    text-xs
-                                    font-bold
-                                "
-                            >
-                                الزامی نیست
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="
-                                flex
-                                items-center
-                                justify-between
-                            "
-                        >
-
-                            <span
-                                class="
-                                    text-sm
-                                    text-slate-400
-                                "
-                            >
-                                محل ذخیره اطلاعات
-                            </span>
-
-                            <span
-                                class="
-                                    text-sm
-                                    font-bold
-                                "
-                            >
-                                سیستم شما
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="
-                                flex
-                                items-center
-                                justify-between
-                            "
-                        >
-
-                            <span
-                                class="
-                                    text-sm
-                                    text-slate-400
-                                "
-                            >
-                                دسترسی
-                            </span>
-
-                            <span
-                                class="
-                                    text-sm
-                                    font-bold
-                                "
-                            >
-                                تحت کنترل سازمان
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div
-                        class="
-                            rounded-2xl
-                            bg-blue-500/10
-                            border
-                            border-blue-500/10
-                            p-5
-                            text-sm
-                            leading-7
-                            text-blue-200
-                        "
-                    >
-
-                        برای سازمان‌هایی که امنیت و
-                        مالکیت اطلاعات برایشان اهمیت دارد،
-                        یک راهکار آفلاین می‌تواند انتخاب مناسبی باشد.
-
-                    </div>
-
-                </div>
-
-            </div>
-
+              <div class="text-cyan-200 text-sm font-bold">باینو؛ بایگانی سریع، راحت و نوین</div>
+              <h2 class="mt-4 text-3xl sm:text-4xl font-black leading-tight">برای مکاتباتتان نظم تازه‌ای بسازید.</h2>
+              <p class="mt-4 text-white/75 leading-8 max-w-2xl">با باینو، ثبت و پیدا کردن سوابق و مدیریت فایل‌های مرتبط
+                را در یک گردش کار منظم انجام دهید.</p>
+            </div><a id="download" href="#"
+              class="inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-blue-800 font-black px-7 py-4 hover:-translate-y-0.5 transition shadow-xl">لینک
+              دریافت نرم‌افزار <span>←</span></a>
+          </div>
+          <p class="relative text-xs text-white/50 mt-6">پیش از انتشار، مقدار href دکمه دریافت را با لینک واقعی دانلود
+            جایگزین کنید.</p>
         </div>
+      </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-
-<!-- ========================================================= -->
-<!-- WORKFLOW -->
-<!-- ========================================================= -->
-
-<section
-    id="workflow"
-    class="py-24 bg-slate-50"
->
-
-    <div
-        class="
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            lg:px-8
-        "
-    >
-
-        <div
-            class="
-                max-w-2xl
-                mx-auto
-                text-center
-                mb-16
-            "
-        >
-
-            <div
-                class="
-                    inline-flex
-                    px-4
-                    py-2
-                    rounded-full
-                    bg-white
-                    border
-                    border-slate-100
-                    text-blue-700
-                    text-sm
-                    font-bold
-                "
-            >
-
-                روند کار
-
-            </div>
-
-
-            <h2
-                class="
-                    mt-5
-                    text-3xl
-                    sm:text-4xl
-                    font-black
-                    text-slate-950
-                "
-            >
-
-                از ثبت نامه تا بایگانی
-
-            </h2>
-
+    <section id="faq" class="py-20 sm:py-24 bg-bayno-paper">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12"><span
+            class="inline-flex rounded-full bg-white border border-slate-200 px-4 py-2 text-sm font-bold text-blue-700">پرسش‌های
+            متداول</span>
+          <h2 class="mt-5 text-3xl sm:text-4xl font-black text-bayno-ink">پاسخ چند سؤال رایج</h2>
         </div>
-
-
-
-        <div
-            class="
-                grid
-                md:grid-cols-4
-                gap-8
-            "
-        >
-
-
-            <!-- Step 1 -->
-
-            <div class="text-center">
-
-                <div
-                    class="
-                        mx-auto
-                        w-20
-                        h-20
-                        rounded-3xl
-                        gradient-bg
-                        text-white
-                        flex
-                        items-center
-                        justify-center
-                        text-2xl
-                        font-black
-                        shadow-xl
-                        shadow-blue-500/20
-                    "
-                >
-
-                    ۱
-
-                </div>
-
-
-                <h3
-                    class="
-                        mt-6
-                        font-black
-                        text-lg
-                    "
-                >
-
-                    ثبت
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        text-slate-500
-                        leading-7
-                    "
-                >
-
-                    نامه وارده یا صادره را ثبت کنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Step 2 -->
-
-            <div class="text-center">
-
-                <div
-                    class="
-                        mx-auto
-                        w-20
-                        h-20
-                        rounded-3xl
-                        gradient-bg
-                        text-white
-                        flex
-                        items-center
-                        justify-center
-                        text-2xl
-                        font-black
-                        shadow-xl
-                        shadow-indigo-500/20
-                    "
-                >
-
-                    ۲
-
-                </div>
-
-
-                <h3
-                    class="
-                        mt-6
-                        font-black
-                        text-lg
-                    "
-                >
-
-                    ارجاع
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        text-slate-500
-                        leading-7
-                    "
-                >
-
-                    نامه را برای فرد یا واحد مربوطه ارسال کنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Step 3 -->
-
-            <div class="text-center">
-
-                <div
-                    class="
-                        mx-auto
-                        w-20
-                        h-20
-                        rounded-3xl
-                        gradient-bg
-                        text-white
-                        flex
-                        items-center
-                        justify-center
-                        text-2xl
-                        font-black
-                        shadow-xl
-                        shadow-purple-500/20
-                    "
-                >
-
-                    ۳
-
-                </div>
-
-
-                <h3
-                    class="
-                        mt-6
-                        font-black
-                        text-lg
-                    "
-                >
-
-                    پیگیری
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        text-slate-500
-                        leading-7
-                    "
-                >
-
-                    وضعیت انجام و پاسخ نامه را دنبال کنید.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Step 4 -->
-
-            <div class="text-center">
-
-                <div
-                    class="
-                        mx-auto
-                        w-20
-                        h-20
-                        rounded-3xl
-                        gradient-bg
-                        text-white
-                        flex
-                        items-center
-                        justify-center
-                        text-2xl
-                        font-black
-                        shadow-xl
-                        shadow-blue-500/20
-                    "
-                >
-
-                    ۴
-
-                </div>
-
-
-                <h3
-                    class="
-                        mt-6
-                        font-black
-                        text-lg
-                    "
-                >
-
-                    بایگانی
-
-                </h3>
-
-
-                <p
-                    class="
-                        mt-3
-                        text-sm
-                        text-slate-500
-                        leading-7
-                    "
-                >
-
-                    مکاتبات را برای دسترسی آینده بایگانی کنید.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ========================================================= -->
-<!-- WHO IS IT FOR -->
-<!-- ========================================================= -->
-
-<section class="py-24">
-
-    <div
-        class="
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            lg:px-8
-        "
-    >
-
-        <div
-            class="
-                grid
-                lg:grid-cols-2
-                gap-14
-                items-center
-            "
-        >
-
-
-            <!-- Text -->
-
-            <div>
-
-                <div
-                    class="
-                        inline-flex
-                        px-4
-                        py-2
-                        rounded-full
-                        bg-blue-50
-                        text-blue-700
-                        text-sm
-                        font-bold
-                    "
-                >
-
-                    مناسب چه کسانی است؟
-
-                </div>
-
-
-                <h2
-                    class="
-                        mt-5
-                        text-3xl
-                        sm:text-4xl
-                        font-black
-                        leading-[1.5]
-                    "
-                >
-
-                    برای هر مجموعه‌ای که
-                    <span class="gradient-text">
-                        مکاتبه دارد.
-                    </span>
-
-                </h2>
-
-
-                <p
-                    class="
-                        mt-6
-                        text-slate-500
-                        leading-8
-                    "
-                >
-
-                    از دفاتر کوچک تا مجموعه‌های اداری،
-                    دبیرخانه می‌تواند فرآیند ثبت و مدیریت
-                    مکاتبات را منظم‌تر کند.
-
-                </p>
-
-
-                <div class="mt-8 space-y-4">
-
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                            p-4
-                            rounded-2xl
-                            bg-slate-50
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-blue-100
-                                text-blue-600
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            🏢
-
-                        </div>
-
-
-                        <div
-                            class="font-bold"
-                        >
-
-                            شرکت‌ها و مجموعه‌های اداری
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                            p-4
-                            rounded-2xl
-                            bg-slate-50
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-indigo-100
-                                text-indigo-600
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            🏛️
-
-                        </div>
-
-
-                        <div
-                            class="font-bold"
-                        >
-
-                            سازمان‌ها و مراکز اداری
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-4
-                            p-4
-                            rounded-2xl
-                            bg-slate-50
-                        "
-                    >
-
-                        <div
-                            class="
-                                w-10
-                                h-10
-                                rounded-xl
-                                bg-emerald-100
-                                text-emerald-600
-                                flex
-                                items-center
-                                justify-center
-                            "
-                        >
-
-                            📁
-
-                        </div>
-
-
-                        <div
-                            class="font-bold"
-                        >
-
-                            دفاتر و مجموعه‌های کوچک
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Document visual -->
-
-            <div>
-
-                <div
-                    class="
-                        relative
-                        max-w-md
-                        mx-auto
-                    "
-                >
-
-                    <div
-                        class="
-                            absolute
-                            -inset-5
-                            gradient-bg
-                            rounded-[40px]
-                            opacity-10
-                            blur-2xl
-                        "
-                    ></div>
-
-
-                    <div
-                        class="
-                            relative
-                            bg-white
-                            rounded-[32px]
-                            border
-                            border-slate-200
-                            p-7
-                            shadow-2xl
-                        "
-                    >
-
-                        <div
-                            class="
-                                flex
-                                items-center
-                                justify-between
-                                mb-7
-                            "
-                        >
-
-                            <div
-                                class="
-                                    text-sm
-                                    font-black
-                                "
-                            >
-
-                                نامه اداری
-
-                            </div>
-
-
-                            <span
-                                class="
-                                    px-3
-                                    py-1
-                                    rounded-full
-                                    bg-emerald-50
-                                    text-emerald-600
-                                    text-xs
-                                    font-bold
-                                "
-                            >
-
-                                ثبت شده
-
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="
-                                space-y-5
-                            "
-                        >
-
-                            <div>
-
-                                <div
-                                    class="
-                                        text-xs
-                                        text-slate-400
-                                        mb-2
-                                    "
-                                >
-
-                                    شماره نامه
-
-                                </div>
-
-                                <div
-                                    class="
-                                        font-bold
-                                        text-slate-700
-                                    "
-                                >
-
-                                    ۱۲۴۵۸
-
-                                </div>
-
-                            </div>
-
-
-                            <div>
-
-                                <div
-                                    class="
-                                        text-xs
-                                        text-slate-400
-                                        mb-2
-                                    "
-                                >
-
-                                    موضوع
-
-                                </div>
-
-                                <div
-                                    class="
-                                        font-bold
-                                        text-slate-700
-                                    "
-                                >
-
-                                    درخواست همکاری
-
-                                </div>
-
-                            </div>
-
-
-                            <div>
-
-                                <div
-                                    class="
-                                        text-xs
-                                        text-slate-400
-                                        mb-2
-                                    "
-                                >
-
-                                    فرستنده
-
-                                </div>
-
-                                <div
-                                    class="
-                                        font-bold
-                                        text-slate-700
-                                    "
-                                >
-
-                                    واحد اداری
-
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="
-                                    h-px
-                                    bg-slate-100
-                                "
-                            ></div>
-
-
-                            <div
-                                class="
-                                    space-y-3
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        h-2
-                                        rounded
-                                        bg-slate-100
-                                        w-full
-                                    "
-                                ></div>
-
-                                <div
-                                    class="
-                                        h-2
-                                        rounded
-                                        bg-slate-100
-                                        w-11/12
-                                    "
-                                ></div>
-
-                                <div
-                                    class="
-                                        h-2
-                                        rounded
-                                        bg-slate-100
-                                        w-9/12
-                                    "
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ========================================================= -->
-<!-- CTA -->
-<!-- ========================================================= -->
-
-<section
-    id="download"
-    class="py-24"
->
-
-    <div
-        class="
-            max-w-6xl
-            mx-auto
-            px-4
-        "
-    >
-
-        <div
-            class="
-                relative
-                overflow-hidden
-                rounded-[40px]
-                gradient-bg
-                px-7
-                py-16
-                sm:px-14
-                text-center
-                text-white
-            "
-        >
-
-            <div
-                class="
-                    absolute
-                    -top-32
-                    -right-32
-                    w-80
-                    h-80
-                    rounded-full
-                    bg-white/10
-                    blur-3xl
-                "
-            ></div>
-
-
-            <div
-                class="
-                    absolute
-                    -bottom-32
-                    -left-32
-                    w-80
-                    h-80
-                    rounded-full
-                    bg-slate-950/10
-                    blur-3xl
-                "
-            ></div>
-
-
-            <div class="relative">
-
-
-                <div
-                    class="
-                        mx-auto
-                        w-16
-                        h-16
-                        rounded-2xl
-                        bg-white/15
-                        border
-                        border-white/20
-                        flex
-                        items-center
-                        justify-center
-                        mb-6
-                    "
-                >
-
-                    <svg
-                        class="w-8 h-8"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="
-                                M6 2h9l5 5v15H6
-                                a2 2 0 01-2-2V4
-                                a2 2 0 012-2z
-                            "
-                        />
-
-                        <path
-                            stroke-linecap="round"
-                            d="M14 2v6h6"
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <h2
-                    class="
-                        text-3xl
-                        sm:text-4xl
-                        font-black
-                    "
-                >
-
-                    دبیرخانه خود را
-                    ساده‌تر مدیریت کنید.
-
-                </h2>
-
-
-                <p
-                    class="
-                        mt-5
-                        text-white/80
-                        leading-8
-                        max-w-xl
-                        mx-auto
-                    "
-                >
-
-                    یک راهکار ساده، سریع و آفلاین
-                    برای مدیریت مکاتبات سازمانی شما.
-
-                </p>
-
-
-                <div
-                    class="
-                        mt-9
-                        flex
-                        flex-col
-                        sm:flex-row
-                        justify-center
-                        gap-4
-                    "
-                >
-
-                    <a
-                        href="#"
-                        class="
-                            px-8
-                            py-4
-                            rounded-2xl
-                            bg-white
-                            text-blue-700
-                            font-black
-                            shadow-xl
-                            hover:-translate-y-1
-                            transition
-                        "
-                    >
-
-                        دانلود نرم‌افزار
-
-                    </a>
-
-
-                    <a
-                        href="#features"
-                        class="
-                            px-8
-                            py-4
-                            rounded-2xl
-                            bg-white/10
-                            border
-                            border-white/20
-                            text-white
-                            font-bold
-                            hover:bg-white/20
-                            transition
-                        "
-                    >
-
-                        مشاهده امکانات
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ========================================================= -->
-<!-- FAQ -->
-<!-- ========================================================= -->
-
-<section
-    id="faq"
-    class="
-        py-24
-        bg-slate-50
-    "
->
-
-    <div
-        class="
-            max-w-4xl
-            mx-auto
-            px-4
-            sm:px-6
-        "
-    >
-
-        <div
-            class="
-                text-center
-                mb-14
-            "
-        >
-
-            <div
-                class="
-                    inline-flex
-                    px-4
-                    py-2
-                    rounded-full
-                    bg-white
-                    border
-                    border-slate-100
-                    text-blue-700
-                    text-sm
-                    font-bold
-                "
-            >
-
-                سوالات متداول
-
-            </div>
-
-
-            <h2
-                class="
-                    mt-5
-                    text-3xl
-                    sm:text-4xl
-                    font-black
-                "
-            >
-
-                سوالی دارید؟
-
-            </h2>
-
-        </div>
-
-
-
         <div class="space-y-4">
-
-
-            <details
-                class="
-                    group
-                    bg-white
-                    rounded-2xl
-                    border
-                    border-slate-100
-                    p-6
-                "
-            >
-
-                <summary
-                    class="
-                        cursor-pointer
-                        list-none
-                        flex
-                        items-center
-                        justify-between
-                        font-bold
-                    "
-                >
-
-                    آیا نرم‌افزار بدون اینترنت کار می‌کند؟
-
-                    <span
-                        class="
-                            text-blue-600
-                            text-xl
-                            group-open:rotate-45
-                            transition
-                        "
-                    >
-
-                        +
-
-                    </span>
-
-                </summary>
-
-
-                <p
-                    class="
-                        mt-5
-                        text-sm
-                        text-slate-500
-                        leading-8
-                    "
-                >
-
-                    بله. این نرم‌افزار با هدف استفاده آفلاین طراحی شده
-                    و برای انجام عملیات اصلی دبیرخانه به اینترنت نیاز ندارد.
-
-                </p>
-
-            </details>
-
-
-
-            <details
-                class="
-                    group
-                    bg-white
-                    rounded-2xl
-                    border
-                    border-slate-100
-                    p-6
-                "
-            >
-
-                <summary
-                    class="
-                        cursor-pointer
-                        list-none
-                        flex
-                        items-center
-                        justify-between
-                        font-bold
-                    "
-                >
-
-                    اطلاعات نامه‌ها کجا ذخیره می‌شوند؟
-
-                    <span
-                        class="
-                            text-blue-600
-                            text-xl
-                            group-open:rotate-45
-                            transition
-                        "
-                    >
-
-                        +
-
-                    </span>
-
-                </summary>
-
-
-                <p
-                    class="
-                        mt-5
-                        text-sm
-                        text-slate-500
-                        leading-8
-                    "
-                >
-
-                    اطلاعات در محیط محلی سیستم شما نگهداری می‌شود
-                    و برای استفاده روزمره نیازی به ارسال اطلاعات
-                    به سرویس ابری وجود ندارد.
-
-                </p>
-
-            </details>
-
-
-
-            <details
-                class="
-                    group
-                    bg-white
-                    rounded-2xl
-                    border
-                    border-slate-100
-                    p-6
-                "
-            >
-
-                <summary
-                    class="
-                        cursor-pointer
-                        list-none
-                        flex
-                        items-center
-                        justify-between
-                        font-bold
-                    "
-                >
-
-                    آیا امکان ثبت نامه وارده و صادره وجود دارد؟
-
-                    <span
-                        class="
-                            text-blue-600
-                            text-xl
-                            group-open:rotate-45
-                            transition
-                        "
-                    >
-
-                        +
-
-                    </span>
-
-                </summary>
-
-
-                <p
-                    class="
-                        mt-5
-                        text-sm
-                        text-slate-500
-                        leading-8
-                    "
-                >
-
-                    بله. ساختار نرم‌افزار برای مدیریت انواع
-                    مکاتبات و نامه‌های سازمانی طراحی شده است.
-
-                </p>
-
-            </details>
-
-
-
-            <details
-                class="
-                    group
-                    bg-white
-                    rounded-2xl
-                    border
-                    border-slate-100
-                    p-6
-                "
-            >
-
-                <summary
-                    class="
-                        cursor-pointer
-                        list-none
-                        flex
-                        items-center
-                        justify-between
-                        font-bold
-                    "
-                >
-
-                    آیا برای استفاده از نرم‌افزار نیاز به سرور دارم؟
-
-                    <span
-                        class="
-                            text-blue-600
-                            text-xl
-                            group-open:rotate-45
-                            transition
-                        "
-                    >
-
-                        +
-
-                    </span>
-
-                </summary>
-
-
-                <p
-                    class="
-                        mt-5
-                        text-sm
-                        text-slate-500
-                        leading-8
-                    "
-                >
-
-                    نسخه آفلاین برای استفاده محلی طراحی شده و
-                    وابستگی به سرور آنلاین ندارد.
-
-                </p>
-
-            </details>
-
-
+          <details class="group rounded-2xl bg-white border border-slate-200 p-5 sm:p-6">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 font-bold">باینو چه کاری
+              انجام می‌دهد؟<span class="text-blue-600 text-2xl group-open:rotate-45 transition">+</span></summary>
+            <p class="mt-4 text-sm text-slate-500 leading-8">باینو برای ثبت و ویرایش اطلاعات مکاتبات، جستجو و فیلتر
+              رکوردها، مدیریت فایل‌های مرتبط و نگهداری نسخه پشتیبان طراحی شده است.</p>
+          </details>
+          <details class="group rounded-2xl bg-white border border-slate-200 p-5 sm:p-6">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 font-bold">آیا می‌توانم
+              تصویر واقعی محیط برنامه را در سایت بگذارم؟<span
+                class="text-blue-600 text-2xl group-open:rotate-45 transition">+</span></summary>
+            <p class="mt-4 text-sm text-slate-500 leading-8">بله. پوشه images را کنار فایل HTML بسازید و تصاویر را با
+              نام‌های نوشته‌شده در جایگاه‌های تصویر قرار دهید. به محض وجود فایل، تصویر جایگزین کادر راهنما می‌شود.</p>
+          </details>
+          <details class="group rounded-2xl bg-white border border-slate-200 p-5 sm:p-6">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 font-bold">چرا باید از
+              اطلاعات پشتیبان بگیرم؟<span class="text-blue-600 text-2xl group-open:rotate-45 transition">+</span>
+            </summary>
+            <p class="mt-4 text-sm text-slate-500 leading-8">پشتیبان جداگانه می‌تواند در صورت خرابی دستگاه، حذف ناخواسته
+              یا جابه‌جایی اطلاعات کمک‌کننده باشد. فایل پشتیبان را جدا از محل اصلی نگهداری و امکان بازیابی آن را بررسی
+              کنید.</p>
+          </details>
+          <details class="group rounded-2xl bg-white border border-slate-200 p-5 sm:p-6">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 font-bold">چطور لینک دانلود
+              را فعال کنم؟<span class="text-blue-600 text-2xl group-open:rotate-45 transition">+</span></summary>
+            <p class="mt-4 text-sm text-slate-500 leading-8">در بخش دریافت نرم‌افزار، مقدار href لینک نمونه # را با
+              نشانی واقعی فایل نصب یا صفحه دانلود خودتان عوض کنید.</p>
+          </details>
         </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ========================================================= -->
-<!-- FOOTER -->
-<!-- ========================================================= -->
-
-<footer
-    class="
-        border-t
-        border-slate-100
-        bg-white
-    "
->
-
+      </div>
+    </section>
+  </main>
+  <footer class="bg-white border-t border-slate-200">
     <div
-        class="
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            lg:px-8
-            py-10
-        "
-    >
-
-        <div
-            class="
-                flex
-                flex-col
-                md:flex-row
-                items-center
-                justify-between
-                gap-6
-            "
-        >
-
-
-            <!-- Logo -->
-
-            <div
-                class="
-                    flex
-                    items-center
-                    gap-3
-                "
-            >
-
-                <div
-                    class="
-                        w-10
-                        h-10
-                        rounded-xl
-                        gradient-bg
-                        text-white
-                        flex
-                        items-center
-                        justify-center
-                    "
-                >
-
-                    <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                    >
-
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="
-                                M6 2h9l5 5v15H6
-                                a2 2 0 01-2-2V4
-                                a2 2 0 012-2z
-                            "
-                        />
-
-                    </svg>
-
-                </div>
-
-
-                <div>
-
-                    <div
-                        class="
-                            font-black
-                            text-slate-900
-                        "
-                    >
-
-                        دبیرخانه
-
-                    </div>
-
-                    <div
-                        class="
-                            text-xs
-                            text-slate-400
-                        "
-                    >
-
-                        مدیریت مکاتبات سازمانی
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Links -->
-
-            <div
-                class="
-                    flex
-                    items-center
-                    gap-6
-                    text-sm
-                    text-slate-500
-                "
-            >
-
-                <a
-                    href="#features"
-                    class="hover:text-blue-600 transition"
-                >
-
-                    امکانات
-
-                </a>
-
-
-                <a
-                    href="#security"
-                    class="hover:text-blue-600 transition"
-                >
-
-                    امنیت
-
-                </a>
-
-
-                <a
-                    href="#faq"
-                    class="hover:text-blue-600 transition"
-                >
-
-                    سوالات متداول
-
-                </a>
-
-            </div>
-
-
-
-            <!-- Copyright -->
-
-            <div
-                class="
-                    text-xs
-                    text-slate-400
-                "
-            >
-
-                © ۱۴۰۵
-                تمامی حقوق محفوظ است.
-
-            </div>
-
-        </div>
-
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+      <a href="#top" class="flex items-center gap-3"><span
+          class="w-10 h-10 rounded-xl gradient-button text-white grid place-items-center font-black">ب</span><span><b
+            class="block text-bayno-ink">باینو</b><small class="text-xs text-slate-500">بایگانی سریع، راحت و
+            نوین</small></span></a>
+      <div class="flex flex-wrap justify-center gap-5 text-sm text-slate-500"><a href="#features"
+          class="hover:text-blue-600">امکانات</a><a href="#screenshots" class="hover:text-blue-600">تصاویر برنامه</a><a
+          href="#security" class="hover:text-blue-600">پشتیبان‌گیری</a><a href="#faq" class="hover:text-blue-600">سؤالات
+          متداول</a></div>
+      <p class="text-xs text-slate-400">© <span id="year">۱۴۰۵</span> باینو</p>
     </div>
-
-</footer>
-
-
+  </footer>
+  <script>
+    // نمایش نرم بخش‌ها هنگام ورود به صفحه؛ در صورت نبود پشتیبانی، محتوا همچنان قابل دسترسی است.
+    const revealItems = document.querySelectorAll('.feature-card, #screenshots figure, #workflow .grid > div');
+    if ('IntersectionObserver' in window) {
+      revealItems.forEach(el => el.classList.add('reveal'));
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: 0.08 });
+      revealItems.forEach(el => observer.observe(el));
+    }
+  </script>
 </body>
+
 </html>
